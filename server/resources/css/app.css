@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+        overflow-x: hidden;
+    }
+    body {
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100%;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    [x-cloak] {
+        display: none !important;
+    }
+
+    /* Prevent auto-zoom on iOS when tapping inputs with font-size < 16px */
+    @media (max-width: 639px) {
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="password"],
+        input[type="number"],
+        textarea,
+        select {
+            font-size: 16px !important;
+        }
+    }
+}
+
+@layer utilities {
+    /* Hide scrollbar for clean horizontal swiping on mobile */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .touch-pan-x {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@layer components {
+    .bg-pos-responsive {
+        background-position: left center;
+    }
+
+    @media (min-width: 640px) {
+        .bg-pos-responsive {
+            background-position: center;
+        }
+    }
+
+    .btn-primary {
+        @apply inline-flex items-center justify-center px-6 py-3 bg-crimson-600 text-white text-sm font-medium rounded-full hover:bg-crimson-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-crimson-600 focus:ring-offset-2;
+    }
+
+    .btn-secondary {
+        @apply inline-flex items-center justify-center px-6 py-3 border-2 border-maroon-900 text-maroon-900 text-sm font-medium rounded-full hover:bg-maroon-900 hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-maroon-900 focus:ring-offset-2;
+    }
+
+    .btn-dark {
+        @apply inline-flex items-center justify-center px-6 py-3 bg-maroon-900 text-white text-sm font-medium rounded-full hover:bg-maroon-800 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-maroon-900 focus:ring-offset-2;
+    }
+
+    .section-eyebrow {
+        @apply text-xs font-semibold uppercase tracking-[0.2em] text-pink-300;
+    }
+
+    .section-headline {
+        @apply font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-maroon-900 leading-tight;
+    }
+
+    .card {
+        @apply bg-white rounded-2xl shadow-sm border border-cream-300 overflow-hidden;
+    }
+
+    /* Marquee animation for language strip */
+    @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    .animate-marquee {
+        animation: marquee 30s linear infinite;
+    }
+}
