@@ -29,6 +29,7 @@ yarn-error.log
 /seo_docx_extracted/
 /reference/
 test*.php
+!resources/views/pages/testimonials.blade.php
 read_docx.*
 build_seo_*.php
 create_*.php

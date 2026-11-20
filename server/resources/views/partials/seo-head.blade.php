@@ -32,7 +32,7 @@
     "description": "{{ $defaultDescription }}",
     "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "+919999999999",
+        "telephone": "+919585475959",
         "contactType": "customer service"
     }
 }

@@ -5,14 +5,20 @@
             'Anniversary', 
             'Proposal', 
             'Wedding', 
-            'Friendship', 
+            'Valentine’s Day',
+            'Love & Romance',
+            'Friends', 
             'Parents', 
-            'Corporate / Team', 
-            'Farewell', 
+            'Mother’s Day',
+            'Father’s Day',
+            'Just for You',
+            'Memories',
+            'Missing You',
+            'Long Distance',
+            'Corporate', 
             'Apology', 
             'Thank You', 
-            'Long-Distance', 
-            'Memory Song', 
+            'Farewell', 
             'Other'
         ];
     @endphp
@@ -97,8 +103,16 @@
                 const occParam = params.get('occasion');
                 if (occParam) {
                     const decoded = decodeURIComponent(occParam).trim();
-                    const matched = this.occasionsList.find(o => o.toLowerCase() === decoded.toLowerCase());
-                    if (matched) {
+                    const clean = (s) => (s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+                    const cleanDecoded = clean(decoded);
+                    let matched = this.occasionsList.find(o => clean(o) === cleanDecoded);
+                    if (!matched) {
+                        matched = this.occasionsList.find(o => {
+                            const c = clean(o);
+                            return c.length > 3 && (c.includes(cleanDecoded) || cleanDecoded.includes(c));
+                        });
+                    }
+                    if (matched && matched !== 'Other') {
                         this.selectOccasion(matched);
                     } else {
                         this.isCustomOccasion = true;
@@ -137,7 +151,7 @@
                         ? 'bg-gradient-to-r from-[#D99A26] via-[#FFE37E] to-[#C98B1B] text-[#241002] border border-[#FFE898]/80 shadow-[0_2px_14px_rgba(217,154,38,0.35)]' 
                         : 'bg-white text-[#c02d4b] border border-pink-200/80'"
                 >
-                    <span x-text="selectedPlan === 'premium' ? '★ HEARTGRAM PREMIUM · COMPLETE STORY FORM' : 'CREATE YOUR HEARTGRAM SONG · FULL FORM'"></span>
+                    <span x-text="selectedPlan === 'premium' ? '★ HEARTGRAM PREMIUM · COMPLETE STORY FORM' : 'ORDER YOUR PERSONALISED SONG'"></span>
                 </div>
 
                 <h1 
@@ -159,7 +173,7 @@
                     class="text-xs sm:text-[14.5px] max-w-xl mx-auto leading-relaxed transition-colors duration-300 font-medium"
                     :class="selectedPlan === 'premium' ? 'text-white/75' : 'text-brand-dark/75'"
                 >
-                    Share your story, memories, and personal details below. Our studio musicians and lyricists will turn your exact words into an unforgettable, radio-ready custom song.
+                    Share your story below. A lyricist who writes in your language turns it into lyrics, our team checks them, and you approve them before we make the song.
                 </p>
 
                 {{-- Trust Highlights --}}
@@ -168,19 +182,28 @@
                         class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border transition-colors duration-300"
                         :class="selectedPlan === 'premium' ? 'bg-white/5 border-white/10 text-white/80' : 'bg-white/80 border-pink-100 text-brand-dark/80'"
                     >
-                        ✨ 100% Original Studio Recording
+                        <svg class="w-3.5 h-3.5 shrink-0" :class="selectedPlan === 'premium' ? 'text-[#ECC15E]' : 'text-[#c02d4b]'" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                        </svg>
+                        Written by real lyricists
                     </span>
                     <span 
                         class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border transition-colors duration-300"
                         :class="selectedPlan === 'premium' ? 'bg-white/5 border-white/10 text-white/80' : 'bg-white/80 border-pink-100 text-brand-dark/80'"
                     >
-                        🎙️ Personalised Lyrics
+                        <svg class="w-3.5 h-3.5 shrink-0" :class="selectedPlan === 'premium' ? 'text-[#ECC15E]' : 'text-[#c02d4b]'" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        You approve the lyrics first
                     </span>
                     <span 
                         class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border transition-colors duration-300"
                         :class="selectedPlan === 'premium' ? 'bg-white/5 border-white/10 text-white/80' : 'bg-white/80 border-pink-100 text-brand-dark/80'"
                     >
-                        ⚡ 1–5 Days Express Delivery
+                        <svg class="w-3.5 h-3.5 shrink-0" :class="selectedPlan === 'premium' ? 'text-[#ECC15E]' : 'text-[#c02d4b]'" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        3–5 days · 1–2 with Premium
                     </span>
                 </div>
             </div>
@@ -307,14 +330,14 @@
                                                 class="text-[9px] px-2 py-0.5 rounded-full font-extrabold uppercase tracking-wider shrink-0"
                                                 :class="selectedPlan === 'premium' ? 'bg-[#241002] text-[#ECC15E]' : 'bg-[#DCA838]/20 text-[#B8841B]'"
                                             >
-                                                ★ Popular
+                                                ★ RECOMMENDED
                                             </span>
                                         </div>
                                         <div 
                                             class="text-[11.5px] leading-tight mt-1 transition-colors"
                                             :class="selectedPlan === 'premium' ? 'text-[#241002]/85' : 'text-brand-dark/60'"
                                         >
-                                            Priority Vocal · 1–2 days express
+                                            Priority queue · 1–2 days express
                                         </div>
                                     </div>
                                 </div>
@@ -429,6 +452,40 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="sm:col-span-2">
+                                <label 
+                                    class="block text-[11.5px] font-semibold mb-1 transition-colors duration-300"
+                                    :class="selectedPlan === 'premium' ? 'text-white/90' : 'text-brand-dark'"
+                                >
+                                    Song language <span :class="selectedPlan === 'premium' ? 'text-[#ECC15E]' : 'text-[#c02d4b]'">*</span>
+                                </label>
+                                <div class="relative">
+                                    <select 
+                                        name="language" 
+                                        required 
+                                        class="w-full rounded-xl px-4 py-3 text-[13px] sm:text-[13.5px] transition-all focus:outline-none appearance-none cursor-pointer pr-10"
+                                        :class="selectedPlan === 'premium' 
+                                            ? 'bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-[#DCA838]/30 focus:border-[#ECC15E] focus:bg-[#1E0913]' 
+                                            : 'bg-cream-100 border border-[#e6d8d0] text-brand-dark focus:ring-2 focus:ring-[#c02d4b]/20 focus:border-[#c02d4b]/40 bg-white'"
+                                    >
+                                        <option value="" disabled selected class="text-gray-400">Select song language</option>
+                                        <option value="Tamil" class="text-brand-dark">Tamil</option>
+                                        <option value="Malayalam" class="text-brand-dark">Malayalam</option>
+                                        <option value="Kannada" class="text-brand-dark">Kannada</option>
+                                        <option value="Telugu" class="text-brand-dark">Telugu</option>
+                                        <option value="Hindi" class="text-brand-dark">Hindi</option>
+                                        <option value="English" class="text-brand-dark">English</option>
+                                        <option value="Mix of two" class="text-brand-dark">Mix of two</option>
+                                    </select>
+                                    <div 
+                                        class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none transition-colors duration-300"
+                                        :class="selectedPlan === 'premium' ? 'text-[#ECC15E]/80' : 'text-brand-dark/40'"
+                                    >
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -450,7 +507,7 @@
                             <span 
                                 class="text-[11px] font-semibold px-3 py-1 rounded-full transition-colors"
                                 :class="selectedPlan === 'premium' ? 'bg-[#ECC15E]/20 text-[#ECC15E]' : 'bg-pink-100 text-[#c02d4b]'"
-                                x-text="'Detected: ' + (occasionCategory === 'corporate' ? 'Corporate' : (occasionCategory === 'family_friends' ? 'Friends & Family' : 'Love & Partner'))"
+                                x-text="'Questions for: ' + (occasionCategory === 'corporate' ? 'Corporate' : (occasionCategory === 'family_friends' ? 'Friends & Family' : 'Love & Partner'))"
                             ></span>
                         </div>
 
@@ -521,34 +578,37 @@
                                 <button 
                                     type="button" 
                                     @click="setCategory('romantic')"
-                                    class="px-3 py-1.5 rounded-full border text-[11px] font-medium transition-all cursor-pointer select-none"
+                                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-[11px] font-medium transition-all cursor-pointer select-none"
                                     :class="occasionCategory === 'romantic'
                                         ? (selectedPlan === 'premium' ? 'bg-[#ECC15E] text-[#241002] font-bold border-[#ECC15E] shadow-xs' : 'bg-[#c02d4b] text-white font-bold border-[#c02d4b] shadow-xs')
                                         : (selectedPlan === 'premium' ? 'bg-white/10 border-white/15 text-white/70 hover:bg-white/15' : 'bg-gray-100 border-gray-200 text-gray-600 hover:bg-gray-200/70')"
                                 >
-                                    💕 Love & Partner (10 Qs)
+                                    <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                                    <span>Love & Partner (10 questions)</span>
                                 </button>
 
                                 <button 
                                     type="button" 
                                     @click="setCategory('family_friends')"
-                                    class="px-3 py-1.5 rounded-full border text-[11px] font-medium transition-all cursor-pointer select-none"
+                                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-[11px] font-medium transition-all cursor-pointer select-none"
                                     :class="occasionCategory === 'family_friends'
                                         ? (selectedPlan === 'premium' ? 'bg-[#ECC15E] text-[#241002] font-bold border-[#ECC15E] shadow-xs' : 'bg-[#c02d4b] text-white font-bold border-[#c02d4b] shadow-xs')
                                         : (selectedPlan === 'premium' ? 'bg-white/10 border-white/15 text-white/70 hover:bg-white/15' : 'bg-gray-100 border-gray-200 text-gray-600 hover:bg-gray-200/70')"
                                 >
-                                    🤝 Friends & Family (8 Qs)
+                                    <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                                    <span>Friends & Family (8 questions)</span>
                                 </button>
 
                                 <button 
                                     type="button" 
                                     @click="setCategory('corporate')"
-                                    class="px-3 py-1.5 rounded-full border text-[11px] font-medium transition-all cursor-pointer select-none"
+                                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-[11px] font-medium transition-all cursor-pointer select-none"
                                     :class="occasionCategory === 'corporate'
                                         ? (selectedPlan === 'premium' ? 'bg-[#ECC15E] text-[#241002] font-bold border-[#ECC15E] shadow-xs' : 'bg-[#c02d4b] text-white font-bold border-[#c02d4b] shadow-xs')
                                         : (selectedPlan === 'premium' ? 'bg-white/10 border-white/15 text-white/70 hover:bg-white/15' : 'bg-gray-100 border-gray-200 text-gray-600 hover:bg-gray-200/70')"
                                 >
-                                    🏢 Corporate & Team (8 Qs)
+                                    <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                    <span>Corporate & Team (8 questions)</span>
                                 </button>
                             </div>
                         </div>
@@ -558,9 +618,11 @@
                             class="mb-6 p-3.5 sm:p-4 rounded-2xl text-[12px] leading-relaxed transition-colors flex items-start gap-3"
                             :class="selectedPlan === 'premium' ? 'bg-[#ECC15E]/10 text-amber-200/90 border border-[#ECC15E]/20' : 'bg-amber-50 text-amber-900 border border-amber-200/70'"
                         >
-                            <span class="text-lg shrink-0 mt-0.5">💡</span>
+                            <svg class="w-5 h-5 shrink-0 mt-0.5" :class="selectedPlan === 'premium' ? 'text-[#ECC15E]' : 'text-amber-600'" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                            </svg>
                             <div>
-                                <strong>Tip from our songwriters:</strong> Don't worry about rhyming or poetic phrases. Simply write what actually happened—inside jokes, little habits, places you visited, and emotions. We weave those authentic details directly into your song!
+                                <strong>Tip from Heartgrams:</strong> Don't worry about rhyming or poetic phrases. Simply write what actually happened—inside jokes, little habits, places you visited, and emotions. We weave those authentic details directly into your song!
                             </div>
                         </div>
 
@@ -1155,7 +1217,10 @@
                         >
                             <div class="flex items-center justify-between mb-1.5">
                                 <label class="text-[12.5px] font-bold flex items-center gap-2">
-                                    <span>📎 Photos, Audio, Letters or Notes</span>
+                                    <svg class="w-4 h-4 opacity-75 inline-block shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                                    </svg>
+                                    <span>Photos, audio, letters or notes</span>
                                     <span class="text-[11px] font-normal opacity-70">(Optional)</span>
                                 </label>
                                 <span 
@@ -1179,7 +1244,7 @@
                                     name="attachments[]" 
                                     multiple 
                                     @change="handleFileChange($event)"
-                                    accept="image/*,video/*,audio/*,.pdf,.doc,.docx,.txt"
+                                    accept="image/*,video/*,audio/*,.mp3,.m4a,.opus,.ogg,.wav,.pdf,.doc,.docx,.txt"
                                     class="hidden"
                                 >
                                 <div class="flex flex-col items-center justify-center gap-2 py-2">
@@ -1190,7 +1255,7 @@
                                         <span x-show="uploadedFilesCount === 0">Click or drag files here to upload</span>
                                         <span x-show="uploadedFilesCount > 0" class="text-emerald-500 font-bold" x-text="uploadedFilesCount + ' file(s) selected'"></span>
                                     </div>
-                                    <span class="text-[10.5px] opacity-60">Photos, Voice recordings, PDF, Word documents up to 30MB each</span>
+                                    <span class="text-[10.5px] opacity-60">Photos, videos, voice notes (MP3, M4A, OPUS), PDF or Word · up to 30 MB each</span>
                                 </div>
                             </label>
                         </div>
@@ -1226,6 +1291,35 @@
 
                     {{-- SECTION 7: SUBMISSION & ACTION BAR --}}
                     <div class="pt-4 border-t" :class="selectedPlan === 'premium' ? 'border-white/15' : 'border-pink-100'">
+                        {{-- Legal Checkboxes --}}
+                        <div class="mb-5 space-y-2.5 text-[12px] sm:text-[12.5px] transition-colors"
+                            :class="selectedPlan === 'premium' ? 'text-white/90' : 'text-brand-dark/90'">
+                            <label class="flex items-start gap-2.5 cursor-pointer select-none">
+                                <input 
+                                    type="checkbox" 
+                                    name="terms_privacy_accepted" 
+                                    required
+                                    class="mt-0.5 rounded border-gray-300 text-[#c02d4b] focus:ring-[#c02d4b] cursor-pointer"
+                                    :class="selectedPlan === 'premium' ? 'bg-white/10 border-white/30 checked:bg-[#DCA838]' : ''"
+                                >
+                                <span class="leading-snug">
+                                    I’ve read the <a href="{{ route('privacy') }}" target="_blank" class="underline hover:text-[#c02d4b] transition-colors" :class="selectedPlan === 'premium' ? 'hover:text-[#ECC15E]' : ''">Privacy Policy</a> and <a href="{{ route('refund') }}" target="_blank" class="underline hover:text-[#c02d4b] transition-colors" :class="selectedPlan === 'premium' ? 'hover:text-[#ECC15E]' : ''">Refund Policy</a> <span class="text-rose-500 font-bold">(required)</span>
+                                </span>
+                            </label>
+                            <label class="flex items-start gap-2.5 cursor-pointer select-none">
+                                <input 
+                                    type="checkbox" 
+                                    name="public_share_consent" 
+                                    value="1"
+                                    class="mt-0.5 rounded border-gray-300 text-[#c02d4b] focus:ring-[#c02d4b] cursor-pointer"
+                                    :class="selectedPlan === 'premium' ? 'bg-white/10 border-white/30 checked:bg-[#DCA838]' : ''"
+                                >
+                                <span class="leading-snug">
+                                    You may share my song or a line from my message publicly. I can change my mind anytime. <span class="opacity-70">(optional)</span>
+                                </span>
+                            </label>
+                        </div>
+
                         <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
                             <button 
                                 type="submit" 
@@ -1239,7 +1333,7 @@
                             </button>
 
                             <a 
-                                href="https://wa.me/919999999999?text=Hi%20Heartgrams%2C%20I%20have%20a%20question%20about%20creating%20my%20song" 
+                                href="https://wa.me/919585475959?text=Hi%20Heartgrams%2C%20I%20have%20a%20question%20about%20creating%20my%20song" 
                                 target="_blank" 
                                 class="w-full sm:w-auto py-3 px-6 rounded-full font-medium text-[13px] transition-colors flex items-center justify-center gap-2 shadow-xs"
                                 :class="selectedPlan === 'premium' 
@@ -1255,11 +1349,11 @@
                         <div class="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] opacity-70">
                             <span class="flex items-center gap-1.5">
                                 <svg class="w-3.5 h-3.5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-                                <span>100% Private &amp; Confidential</span>
+                                <span>Private &amp; confidential</span>
                             </span>
                             <span class="flex items-center gap-1.5">
-                                <svg class="w-3.5 h-3.5 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                                <span>Human Studio Quality Guarantee</span>
+                                <svg class="w-3.5 h-3.5 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <span>Every lyric quality-checked</span>
                             </span>
                             <span class="flex items-center gap-1.5">
                                 <svg class="w-3.5 h-3.5 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>

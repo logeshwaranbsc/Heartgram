@@ -1,6 +1,6 @@
 @php
     $email = 'hello@heartgrams.in';
-    $whatsappUrl = 'https://wa.me/?text=Hi%20Heartgrams%2C%20I%20would%20like%20to%20create%20a%20song';
+    $whatsappUrl = 'https://wa.me/919585475959?text=Hi%20Heartgrams%2C%20I%20would%20like%20to%20create%20a%20song';
 @endphp
 
 <footer 
@@ -190,17 +190,17 @@
                         </div>
                         <div>
                             <p class="text-[13px] font-medium text-white group-hover:text-pink-300 transition-colors">{{ $email }}</p>
-                            <p class="text-white/50 text-[11px]">Quick email reply</p>
+                            <p class="text-white/50 text-[11px]">We reply within [reply time]</p>
                         </div>
                     </a>
 
-                    {{-- 100% Private & Secure Trust Indicator --}}
+                    {{-- Private & Confidential Trust Indicator --}}
                     <div class="flex items-center gap-3.5 p-3 rounded-2xl bg-white/[0.015] border border-white/5">
                         <div class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
                             <svg class="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                         </div>
                         <div>
-                            <p class="text-[12.5px] font-medium text-white/85">100% Private &amp; Confidential</p>
+                            <p class="text-[12.5px] font-medium text-white/85">Private &amp; confidential</p>
                             <p class="text-white/40 text-[10.5px]">Your stories and audio are private</p>
                         </div>
                     </div>
@@ -309,17 +309,17 @@
                         </div>
                         <div>
                             <h5 class="text-[13px] font-semibold group-hover:text-pink-300 transition-colors">{{ $email }}</h5>
-                            <p class="text-white/50 text-[11px] mt-0.5">Quick email reply</p>
+                            <p class="text-white/50 text-[11px] mt-0.5">We reply within [reply time]</p>
                         </div>
                     </a>
                     
-                    {{-- Private & Secure Trust Indicator --}}
+                    {{-- Private & Confidential Trust Indicator --}}
                     <div class="flex items-center gap-3.5 p-3 rounded-2xl bg-white/[0.015] border border-white/5">
                         <div class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
                             <svg class="w-4 h-4 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
                         </div>
                         <div>
-                            <h5 class="text-[13px] font-semibold text-white/90">100% Private &amp; Secure</h5>
+                            <h5 class="text-[13px] font-semibold text-white/90">Private &amp; confidential</h5>
                             <p class="text-white/40 text-[11px] mt-0.5">Your memories remain confidential</p>
                         </div>
                     </div>

@@ -5,7 +5,7 @@
                 <h1 class="font-serif text-2xl sm:text-3xl md:text-4xl text-brand-dark mb-6 sm:mb-8 text-center font-bold">Refund Policy</h1>
                 
                 <div class="text-[15px] text-brand-dark/80 leading-relaxed">
-                    <p class="mb-10 text-sm opacity-70">Last updated: {{ date('F j, Y') }}</p>
+                    <p class="mb-10 text-sm opacity-70">Last updated: November 4, 2026</p>
                     
                     <h3 class="font-serif text-xl md:text-2xl text-brand-dark font-bold mt-12 mb-4">1. Custom Nature of Our Service</h3>
                     <p class="mb-8">Because every Heartgram is custom-written and produced specifically for you based on your personal story, we generally do not offer full refunds once production has begun.</p>

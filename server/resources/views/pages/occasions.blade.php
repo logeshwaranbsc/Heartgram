@@ -515,7 +515,7 @@
                 'id' => 'apology',
                 'title' => 'Apology',
                 'uppercase' => 'APOLOGY',
-                'subtitle' => 'When sorry is more than just a word',
+                'subtitle' => "For the sorry you couldn't say out loud",
                 'category' => 'heartfelt',
                 'language' => 'Hindi',
                 'image' => 'https://images.unsplash.com/photo-1513201099705-a9746e1e201f?q=80&w=400&auto=format&fit=crop',
@@ -536,17 +536,17 @@
                 {{-- Breadcrumb & Badge --}}
                 <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/10 border border-white/15 text-pink-200 text-xs font-medium mb-3 backdrop-blur-md">
                     <span>♥</span>
-                    <span>13 Dedicated Occasion Collections</span>
+                    <span>Personalised songs for 14 occasions</span>
                 </div>
 
                 {{-- Headline --}}
                 <h1 class="font-display text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight max-w-3xl mx-auto leading-[1.2] mb-3">
-                    A song for every moment that leaves them <span class="italic font-serif text-brand-pink relative inline-block">speechless.</span>
+                    A personalised song for every <span class="italic font-serif text-brand-pink relative inline-block">occasion.</span>
                 </h1>
 
                 {{-- Description --}}
                 <p class="text-white/80 text-xs sm:text-sm max-w-2xl mx-auto font-light leading-relaxed mb-4">
-                    Choose from our curated occasions below. Click play on any card to preview how real memories become timeless songs — crafted in <strong>English, Tamil, Telugu, Malayalam, or Hindi</strong>.
+                    A first birthday. A long-overdue sorry. Forty years together. Scroll down, find your moment, and press play to hear how it could sound.
                 </p>
 
                 {{-- Fast Search & Filter Tabs --}}
@@ -572,7 +572,7 @@
                         :class="activeCategory === 'all' ? 'bg-brand-pink text-white shadow-lg shadow-crimson-500/30' : 'bg-white/10 text-white/80 hover:bg-white/20'"
                         class="px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200 backdrop-blur-sm whitespace-nowrap shrink-0"
                     >
-                        All (13)
+                        All (14)
                     </button>
                     <button 
                         @click="activeCategory = 'love'" 
@@ -609,6 +609,41 @@
                     >
                         Corporate
                     </button>
+                </div>
+            </div>
+        </section>
+
+        {{-- Language Marquee --}}
+        <section class="bg-gradient-to-r from-cream-100/90 via-white to-cream-100/90 border-y border-cream-300/80 shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)] h-14 overflow-hidden flex items-center relative z-20" style="height: 3.5rem;">
+            @php
+                $langs = [
+                    ['name' => 'தமிழ்', 'badge' => 'த', 'badgeBg' => 'bg-red-50 border border-crimson-200', 'badgeText' => 'text-crimson-600'],
+                    ['name' => 'English', 'badge' => 'EN', 'badgeBg' => 'bg-maroon-900', 'badgeText' => 'text-white'],
+                    ['name' => 'తెలుగు', 'badge' => 'తె', 'badgeBg' => 'bg-amber-100/80 border border-amber-200', 'badgeText' => 'text-amber-800'],
+                    ['name' => 'ಕನ್ನಡ', 'badge' => 'ಕ', 'badgeBg' => 'bg-yellow-100/80 border border-yellow-200', 'badgeText' => 'text-yellow-800'],
+                    ['name' => 'മലയാളം', 'badge' => 'മ', 'badgeBg' => 'bg-pink-100/80 border border-pink-200', 'badgeText' => 'text-pink-800'],
+                    ['name' => 'हिन्दी', 'badge' => 'हि', 'badgeBg' => 'bg-rose-100/80 border border-rose-200', 'badgeText' => 'text-rose-800'],
+                ];
+            @endphp
+            
+            <div class="relative w-full overflow-hidden flex items-center">
+                <div class="flex animate-marquee whitespace-nowrap items-center">
+                    @for($i = 0; $i < 4; $i++)
+                        @foreach($langs as $lang)
+                            <div class="flex items-center">
+                                {{-- Pill --}}
+                                <div class="flex items-center gap-2.5 sm:gap-3 bg-white border border-stone-200/80 rounded-full py-1 pl-1 pr-4 sm:pr-4.5 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.06)] mx-3 hover:border-crimson-300 transition-colors">
+                                    <div class="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm {{ $lang['badgeBg'] }} {{ $lang['badgeText'] }} shrink-0">
+                                        {{ $lang['badge'] }}
+                                    </div>
+                                    <span class="text-maroon-900 font-medium text-sm sm:text-[15px] tracking-tight">{{ $lang['name'] }}</span>
+                                </div>
+                                
+                                {{-- Separator Star --}}
+                                <svg class="w-3.5 h-3.5 text-crimson-400/50 mx-2 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0l2 10 10 2-10 2-2 10-2-10-10-2 10-2z"/></svg>
+                            </div>
+                        @endforeach
+                    @endfor
                 </div>
             </div>
         </section>
@@ -981,21 +1016,21 @@
                 
                 <div class="relative z-10 grid md:grid-cols-3 gap-4 sm:gap-6 text-center md:text-left divide-y md:divide-y-0 md:divide-x divide-white/10">
                     <div class="pt-3 md:pt-0 md:pr-5">
-                        <h4 class="font-flowers-title text-xs sm:text-sm font-bold tracking-wider text-pink-100 uppercase mb-1">48-Hour Delivery</h4>
+                        <h4 class="font-flowers-title text-xs sm:text-sm font-bold tracking-wider text-pink-100 uppercase mb-1">On WhatsApp &amp; Email in 3–5 Days</h4>
                         <p class="text-white/70 text-[11px] sm:text-xs leading-relaxed">
-                            Need a song in a hurry? Master audio MP3 and lyric PDF arrive straight in your WhatsApp within 48 hours.
+                            Your MP3 and lyrics PDF arrive on WhatsApp and email in 3–5 days, or 1–2 days with Premium.
                         </p>
                     </div>
 
                     <div class="pt-3 md:pt-0 md:px-5">
-                        <h4 class="font-flowers-title text-xs sm:text-sm font-bold tracking-wider text-pink-100 uppercase mb-1">5 Languages Supported</h4>
+                        <h4 class="font-flowers-title text-xs sm:text-sm font-bold tracking-wider text-pink-100 uppercase mb-1">6 Languages</h4>
                         <p class="text-white/70 text-[11px] sm:text-xs leading-relaxed">
-                            Authentic lyrics written natively in <strong>English, Tamil, Telugu, Malayalam, or Hindi</strong>.
+                            Lyrics written in Tamil, Malayalam, Kannada, Telugu, Hindi or English, not translated from English.
                         </p>
                     </div>
 
                     <div class="pt-3 md:pt-0 md:pl-5">
-                        <h4 class="font-flowers-title text-xs sm:text-sm font-bold tracking-wider text-pink-100 uppercase mb-1">100% Confidential Story</h4>
+                        <h4 class="font-flowers-title text-xs sm:text-sm font-bold tracking-wider text-pink-100 uppercase mb-1">Your Story Stays Private</h4>
                         <p class="text-white/70 text-[11px] sm:text-xs leading-relaxed">
                             Your personal details, inside jokes, and memories stay strictly between you and your creative team.
                         </p>

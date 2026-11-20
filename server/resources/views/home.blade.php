@@ -11,8 +11,8 @@
                     </div>
 
                     <h1 class="hero-main-title font-display text-3xl sm:text-4xl md:text-5xl lg:text-[2.9rem] xl:text-[3.4rem] 2xl:text-[3.75rem] font-medium text-white leading-[1.2] sm:leading-[1.22] mb-4 sm:mb-4.5 xl:mb-5">
-                        Hear things that<br>
-                        left them<br>
+                        A personalised song<br>
+                        that leaves them<br>
                         <span class="text-crimson-500 italic font-serif relative inline-flex items-center flex-wrap mt-0.5 sm:mt-1">
                             <span>speechless.</span>
                             <svg class="inline-block ml-2 -mt-1 w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 xl:w-9 xl:h-9 text-crimson-500 shrink-0 align-middle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
@@ -21,7 +21,7 @@
                     </h1>
                     
                     <p class="hero-desc-p text-[14px] sm:text-[15px] lg:text-[14.5px] xl:text-[16px] text-white/85 mb-5 sm:mb-5.5 xl:mb-6 w-full max-w-full sm:max-w-[28rem] xl:max-w-[32rem] leading-relaxed font-light mt-2.5 sm:mt-3">
-                        Tell us the memory. We compose the melody, write the lyrics, and hand you a real song made for one person — in English, Tamil, Telugu, Malayalam, or Hindi.
+                        Tell us the memories only the two of you share. Our lyricists write them into a song made for that one person.
                     </p>
                     
                     <div class="hero-cta-buttons flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-3.5 mb-5 sm:mb-5.5 xl:mb-6 w-full max-w-md">
@@ -45,17 +45,17 @@
                         <div class="hidden sm:block w-px h-5 bg-white/10 shrink-0"></div>
                         <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
                             <svg class="w-4 h-4 sm:w-5 sm:h-5 text-crimson-500 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
-                            <span class="text-[11px] sm:text-xs xl:text-[12.5px] text-white/80 leading-tight">5 Languages<br class="hidden sm:inline"> available</span>
+                            <span class="text-[11px] sm:text-xs xl:text-[12.5px] text-white/80 leading-tight">6 Languages<br class="hidden sm:inline"> available</span>
                         </div>
                         <div class="hidden sm:block w-px h-5 bg-white/10 shrink-0"></div>
                         <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
                             <svg class="w-4 h-4 sm:w-5 sm:h-5 text-crimson-500 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                            <span class="text-[11px] sm:text-xs xl:text-[12.5px] text-white/80 leading-tight">Delivered within<br class="hidden sm:inline"> 48 hours</span>
+                            <span class="text-[11px] sm:text-xs xl:text-[12.5px] text-white/80 leading-tight">Ready in<br class="hidden sm:inline"> 3-5 days</span>
                         </div>
                         <div class="hidden sm:block w-px h-5 bg-white/10 shrink-0"></div>
                         <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
                             <svg class="w-4 h-4 sm:w-5 sm:h-5 text-crimson-500 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-                            <span class="text-[11px] sm:text-xs xl:text-[12.5px] text-white/80 leading-tight">Delivered<br class="hidden sm:inline"> via WhatsApp</span>
+                            <span class="text-[11px] sm:text-xs xl:text-[12.5px] text-white/80 leading-tight">Delivered on<br class="hidden sm:inline"> WhatsApp & email</span>
                         </div>
                     </div>
                     
@@ -168,6 +168,7 @@
                 ['name' => 'தமிழ்', 'badge' => 'த', 'badgeBg' => 'bg-red-50 border border-crimson-200', 'badgeText' => 'text-crimson-600'],
                 ['name' => 'English', 'badge' => 'EN', 'badgeBg' => 'bg-maroon-900', 'badgeText' => 'text-white'],
                 ['name' => 'తెలుగు', 'badge' => 'తె', 'badgeBg' => 'bg-amber-100/80 border border-amber-200', 'badgeText' => 'text-amber-800'],
+                ['name' => 'ಕನ್ನಡ', 'badge' => 'ಕ', 'badgeBg' => 'bg-yellow-100/80 border border-yellow-200', 'badgeText' => 'text-yellow-800'],
                 ['name' => 'മലയാളം', 'badge' => 'മ', 'badgeBg' => 'bg-pink-100/80 border border-pink-200', 'badgeText' => 'text-pink-800'],
                 ['name' => 'हिन्दी', 'badge' => 'हि', 'badgeBg' => 'bg-rose-100/80 border border-rose-200', 'badgeText' => 'text-rose-800'],
             ];
@@ -257,7 +258,7 @@
                                     'icon' => '<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"/></svg>', 
                                     'activeIcon' => '<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"/></svg>', 
                                     'title' => 'Anniversary', 
-                                    'desc' => 'Celebrate your journey together'
+                                    'desc' => 'Celebrate the years together'
                                 ],
                             ];
                         @endphp
@@ -357,17 +358,13 @@
                                     </div>
                                     <span class="text-[11px] font-bold tracking-[0.15em] text-maroon-900/60 uppercase">NOW PREVIEWING</span>
                                 </div>
-                                <button class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-red-100/50 shadow-sm text-maroon-900 hover:shadow transition">
-                                    <svg class="w-3.5 h-3.5 text-crimson-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-                                    <span class="text-xs font-semibold">1.2K</span>
-                                </button>
                             </div>
 
                             <h3 id="preview-title" class="font-display text-[2.25rem] sm:text-[2.5rem] text-maroon-900 mb-1 leading-none">An Apology Heartgram</h3>
                             <p id="preview-tags" class="text-maroon-800/60 text-xs sm:text-sm mb-3 flex items-center gap-2 sm:gap-2.5 flex-wrap font-medium">
                                 Soft acoustic 
                                 <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Hindi 
-                                <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> 60-second sample 
+                                <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> 25-second preview 
                                 <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Original composition
                             </p>
 
@@ -427,7 +424,7 @@
                     },
                     apology: {
                         title: "An Apology Heartgram",
-                        tags: 'Soft acoustic <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Hindi <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> 25-second sample <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Original composition',
+                        tags: 'Soft acoustic <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Hindi <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> 25-second preview <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Original composition',
                         time: "0:25",
                         quote: '<span class="font-semibold text-maroon-900">I\'m sorry</span> for the times I was wrong,<br>You mean the world, and I want to make it right.'
                     },
@@ -883,68 +880,69 @@
                         {{-- Step 1 --}}
                         <div 
                             onclick="scrollToHiwStep(0)"
-                            class="hiw-step-col snap-center flex flex-col items-center text-center group cursor-pointer px-1.5 transition-transform duration-300"
+                            class="hiw-step-col snap-center flex flex-col items-center text-center group cursor-pointer px-1.5"
                             data-step="0"
                         >
                             {{-- Number --}}
                             <div class="h-[74px] sm:h-[80px] lg:h-[84px] flex items-center justify-center">
                                 <span 
-                                    class="font-display text-[3.8rem] sm:text-[4.5rem] lg:text-[5.2rem] font-bold leading-none tracking-tight select-none transition-all duration-700 bg-clip-text text-transparent"
+                                    class="font-display text-[3.8rem] sm:text-[4.5rem] lg:text-[5.2rem] font-bold leading-none tracking-tight select-none transition-all duration-500 bg-clip-text text-transparent"
                                     :class="completedSteps >= 1 
-                                        ? 'bg-gradient-to-b from-[#EA4C70] via-[#F0728F] to-[#F8AAB9] opacity-100 scale-100 drop-shadow-[0_4px_16px_rgba(234,76,112,0.25)]' 
-                                        : 'bg-gradient-to-b from-[#F7B6C4] via-[#FAD0D9] to-[#FDE8EE] opacity-90 scale-95'"
+                                        ? 'bg-gradient-to-b from-[#EA4C70] via-[#F0728F] to-[#F8AAB9] opacity-100 drop-shadow-[0_4px_16px_rgba(234,76,112,0.25)]' 
+                                        : 'bg-gradient-to-b from-[#F7B6C4] via-[#FAD0D9] to-[#FDE8EE] opacity-80'"
                                 >
                                     01
                                 </span>
                             </div>
                             
-                            {{-- Wave Offset Wrapper --}}
-                            <div class="mt-1 flex flex-col items-center">
-                                {{-- Icon: Heart with radiant rays --}}
-                                <div 
-                                    class="h-[34px] flex items-center justify-center mb-1 text-[#9E2A4B] transition-all duration-700 group-hover:scale-110 group-hover:text-crimson-600"
-                                    :class="completedSteps >= 1 ? 'scale-100 opacity-100' : 'scale-95 opacity-85'"
-                                >
-                                    <svg class="w-8 h-8" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M22 30.5c-4.2-3.3-9-7.5-9-12a5 5 0 0 1 8.5-3.5L22 15.5l.5-.5a5 5 0 0 1 8.5 3.5c0 4.5-4.8 8.7-9 12z" />
-                                        <line x1="10" y1="14" x2="7" y2="12" />
-                                        <line x1="7" y1="19" x2="4" y2="19" />
-                                        <line x1="10" y1="24" x2="7" y2="26" />
-                                        <line x1="34" y1="14" x2="37" y2="12" />
-                                        <line x1="37" y1="19" x2="40" y2="19" />
-                                        <line x1="34" y1="24" x2="37" y2="26" />
-                                    </svg>
-                                </div>
+                            {{-- Icon: Heart with radiant rays --}}
+                            <div 
+                                class="h-[34px] flex items-center justify-center mb-1 text-[#9E2A4B] transition-colors duration-500 group-hover:text-crimson-600"
+                                :class="completedSteps >= 1 ? 'text-crimson-600 opacity-100' : 'text-[#9E2A4B] opacity-80'"
+                            >
+                                <svg class="w-8 h-8" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 30.5c-4.2-3.3-9-7.5-9-12a5 5 0 0 1 8.5-3.5L22 15.5l.5-.5a5 5 0 0 1 8.5 3.5c0 4.5-4.8 8.7-9 12z" />
+                                    <line x1="10" y1="14" x2="7" y2="12" />
+                                    <line x1="7" y1="19" x2="4" y2="19" />
+                                    <line x1="10" y1="24" x2="7" y2="26" />
+                                    <line x1="34" y1="14" x2="37" y2="12" />
+                                    <line x1="37" y1="19" x2="40" y2="19" />
+                                    <line x1="34" y1="24" x2="37" y2="26" />
+                                </svg>
+                            </div>
 
-                                {{-- Node on the Wave --}}
+                            {{-- Node on the Wave Container --}}
+                            <div class="h-12 sm:h-14 w-full flex items-center justify-center relative">
                                 <div 
-                                    class="relative z-10 w-4.5 h-4.5 rounded-full bg-white flex items-center justify-center my-1.5 transition-all duration-700"
+                                    class="relative z-10 w-4.5 h-4.5 rounded-full bg-white flex items-center justify-center transition-all duration-500 transform translate-y-0"
                                     :class="activePulseNode === 1 
-                                        ? 'border-2 border-[#E11D48] ring-4 ring-[#FF4D7D]/40 shadow-[0_0_15px_rgba(255,77,125,0.8)] scale-125 opacity-100' 
+                                        ? 'border-2 border-[#E11D48] ring-4 ring-[#FF4D7D]/40 shadow-[0_0_15px_rgba(255,77,125,0.8)] opacity-100' 
                                         : (completedSteps >= 1 
-                                            ? 'border-2 border-[#ECA1B3] shadow-sm scale-100 opacity-100 group-hover:border-crimson-500 group-hover:scale-110' 
-                                            : 'border-2 border-[#ECA1B3]/70 opacity-80 shadow-none scale-95')"
+                                            ? 'border-2 border-[#ECA1B3] shadow-sm opacity-100 group-hover:border-crimson-500' 
+                                            : 'border-2 border-[#ECA1B3]/70 opacity-80 shadow-none')"
                                 >
                                     <div 
-                                        class="w-1.5 h-1.5 rounded-full transition-all duration-700"
-                                        :class="activePulseNode === 1 ? 'bg-[#E11D48] scale-110 animate-pulse' : (completedSteps >= 1 ? 'bg-[#C83254]' : 'bg-[#C83254]/60')"
+                                        class="w-1.5 h-1.5 rounded-full transition-colors duration-500"
+                                        :class="activePulseNode === 1 ? 'bg-[#E11D48] animate-pulse' : (completedSteps >= 1 ? 'bg-[#C83254]' : 'bg-[#C83254]/60')"
                                     ></div>
                                 </div>
+                            </div>
 
-                                {{-- Step Badge --}}
-                                <span 
-                                    class="inline-flex items-center px-3 py-0.5 rounded-full text-[10px] sm:text-[10.5px] tracking-[0.14em] uppercase mb-2 transition-all duration-700 font-bold bg-[#FCE8ED] text-[#9E2A4B] border border-pink-200/60 shadow-sm group-hover:bg-pink-100"
-                                    :class="completedSteps >= 1 ? 'opacity-100' : 'opacity-85'"
-                                >
-                                    STEP 1
-                                </span>
+                            {{-- Step Badge --}}
+                            <span 
+                                class="inline-flex items-center px-3 py-0.5 rounded-full text-[10px] sm:text-[10.5px] tracking-[0.14em] uppercase mb-2 transition-all duration-500 font-bold bg-[#FCE8ED] text-[#9E2A4B] border border-pink-200/60 shadow-sm group-hover:bg-pink-100"
+                                :class="completedSteps >= 1 ? 'opacity-100' : 'opacity-85'"
+                            >
+                                STEP 1
+                            </span>
 
-                                {{-- Description Text --}}
+                            {{-- Description Text --}}
+                            <div class="min-h-[56px] sm:min-h-[62px] flex items-center justify-center w-full">
                                 <p 
-                                    class="font-display text-[13px] sm:text-[14px] lg:text-[15px] leading-[1.3] text-center max-w-[190px] text-[#3D141E] transition-all duration-700 group-hover:text-black"
-                                    :class="completedSteps >= 1 ? 'opacity-100 font-semibold' : 'opacity-85 font-medium'"
+                                    class="font-display text-[13px] sm:text-[14px] lg:text-[14.5px] leading-[1.35] text-center max-w-[185px] text-[#3D141E] font-medium transition-colors duration-300 group-hover:text-black"
+                                    :class="completedSteps >= 1 ? 'opacity-100 text-[#1F050B]' : 'opacity-80 text-[#3D141E]'"
                                 >
-                                    Choose your<br class="hidden sm:inline"> emotion or<br class="hidden sm:inline"> occasion.
+                                    Choose your emotion or occasion.
                                 </p>
                             </div>
                         </div>
@@ -952,66 +950,67 @@
                         {{-- Step 2 --}}
                         <div 
                             onclick="scrollToHiwStep(1)"
-                            class="hiw-step-col snap-center flex flex-col items-center text-center group cursor-pointer px-1.5 transition-transform duration-300"
+                            class="hiw-step-col snap-center flex flex-col items-center text-center group cursor-pointer px-1.5"
                             data-step="1"
                         >
                             {{-- Number --}}
                             <div class="h-[74px] sm:h-[80px] lg:h-[84px] flex items-center justify-center">
                                 <span 
-                                    class="font-display text-[3.8rem] sm:text-[4.5rem] lg:text-[5.2rem] font-bold leading-none tracking-tight select-none transition-all duration-700 bg-clip-text text-transparent"
+                                    class="font-display text-[3.8rem] sm:text-[4.5rem] lg:text-[5.2rem] font-bold leading-none tracking-tight select-none transition-all duration-500 bg-clip-text text-transparent"
                                     :class="completedSteps >= 2 
-                                        ? 'bg-gradient-to-b from-[#EA4C70] via-[#F0728F] to-[#F8AAB9] opacity-100 scale-100 drop-shadow-[0_4px_16px_rgba(234,76,112,0.25)]' 
-                                        : 'bg-gradient-to-b from-[#F7B6C4] via-[#FAD0D9] to-[#FDE8EE] opacity-90 scale-95'"
+                                        ? 'bg-gradient-to-b from-[#EA4C70] via-[#F0728F] to-[#F8AAB9] opacity-100 drop-shadow-[0_4px_16px_rgba(234,76,112,0.25)]' 
+                                        : 'bg-gradient-to-b from-[#F7B6C4] via-[#FAD0D9] to-[#FDE8EE] opacity-80'"
                                 >
                                     02
                                 </span>
                             </div>
 
-                            {{-- Wave Offset Wrapper (Dips Lower) --}}
-                            <div class="mt-7 sm:mt-8 flex flex-col items-center">
-                                {{-- Icon: Notepad with pen & heart --}}
-                                <div 
-                                    class="h-[34px] flex items-center justify-center mb-1 text-[#9E2A4B] transition-all duration-700 group-hover:scale-110 group-hover:text-crimson-600"
-                                    :class="completedSteps >= 2 ? 'scale-100 opacity-100' : 'scale-95 opacity-85'"
-                                >
-                                    <svg class="w-8 h-8" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                                        <rect x="11" y="9" width="18" height="25" rx="2.5" />
-                                        <line x1="15" y1="14" x2="23" y2="14" />
-                                        <line x1="15" y1="18.5" x2="21" y2="18.5" />
-                                        <path d="M16 27.5c-.8-.7-1.8-1.5-1.8-2.3a1.1 1.1 0 0 1 1.9-.8l.2.2.2-.2a1.1 1.1 0 0 1 1.9.8c0 .8-1 1.6-1.8 2.3z" stroke-width="1.3" />
-                                        <path d="M30 10l3 3-9 9-3 1 1-3 8-10z" />
-                                    </svg>
-                                </div>
+                            {{-- Icon: Notepad with pen & heart --}}
+                            <div 
+                                class="h-[34px] flex items-center justify-center mb-1 text-[#9E2A4B] transition-colors duration-500 group-hover:text-crimson-600"
+                                :class="completedSteps >= 2 ? 'text-crimson-600 opacity-100' : 'text-[#9E2A4B] opacity-80'"
+                            >
+                                <svg class="w-8 h-8" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="11" y="9" width="18" height="25" rx="2.5" />
+                                    <line x1="15" y1="14" x2="23" y2="14" />
+                                    <line x1="15" y1="18.5" x2="21" y2="18.5" />
+                                    <path d="M16 27.5c-.8-.7-1.8-1.5-1.8-2.3a1.1 1.1 0 0 1 1.9-.8l.2.2.2-.2a1.1 1.1 0 0 1 1.9.8c0 .8-1 1.6-1.8 2.3z" stroke-width="1.3" />
+                                    <path d="M30 10l3 3-9 9-3 1 1-3 8-10z" />
+                                </svg>
+                            </div>
 
-                                {{-- Node on the Wave --}}
+                            {{-- Node on the Wave Container --}}
+                            <div class="h-12 sm:h-14 w-full flex items-center justify-center relative">
                                 <div 
-                                    class="relative z-10 w-4.5 h-4.5 rounded-full bg-white flex items-center justify-center my-1.5 transition-all duration-700"
+                                    class="relative z-10 w-4.5 h-4.5 rounded-full bg-white flex items-center justify-center transition-all duration-500 transform translate-y-3.5 sm:translate-y-4"
                                     :class="activePulseNode === 2 
-                                        ? 'border-2 border-[#E11D48] ring-4 ring-[#FF4D7D]/40 shadow-[0_0_15px_rgba(255,77,125,0.8)] scale-125 opacity-100' 
+                                        ? 'border-2 border-[#E11D48] ring-4 ring-[#FF4D7D]/40 shadow-[0_0_15px_rgba(255,77,125,0.8)] opacity-100' 
                                         : (completedSteps >= 2 
-                                            ? 'border-2 border-[#ECA1B3] shadow-sm scale-100 opacity-100 group-hover:border-crimson-500 group-hover:scale-110' 
-                                            : 'border-2 border-[#ECA1B3]/70 opacity-80 shadow-none scale-95')"
+                                            ? 'border-2 border-[#ECA1B3] shadow-sm opacity-100 group-hover:border-crimson-500' 
+                                            : 'border-2 border-[#ECA1B3]/70 opacity-80 shadow-none')"
                                 >
                                     <div 
-                                        class="w-1.5 h-1.5 rounded-full transition-all duration-700"
-                                        :class="activePulseNode === 2 ? 'bg-[#E11D48] scale-110 animate-pulse' : (completedSteps >= 2 ? 'bg-[#C83254]' : 'bg-[#C83254]/60')"
+                                        class="w-1.5 h-1.5 rounded-full transition-colors duration-500"
+                                        :class="activePulseNode === 2 ? 'bg-[#E11D48] animate-pulse' : (completedSteps >= 2 ? 'bg-[#C83254]' : 'bg-[#C83254]/60')"
                                     ></div>
                                 </div>
+                            </div>
 
-                                {{-- Step Badge --}}
-                                <span 
-                                    class="inline-flex items-center px-3 py-0.5 rounded-full text-[10px] sm:text-[10.5px] tracking-[0.14em] uppercase mb-2 transition-all duration-700 font-bold bg-[#FCE8ED] text-[#9E2A4B] border border-pink-200/60 shadow-sm group-hover:bg-pink-100"
-                                    :class="completedSteps >= 2 ? 'opacity-100' : 'opacity-85'"
-                                >
-                                    STEP 2
-                                </span>
+                            {{-- Step Badge --}}
+                            <span 
+                                class="inline-flex items-center px-3 py-0.5 rounded-full text-[10px] sm:text-[10.5px] tracking-[0.14em] uppercase mb-2 transition-all duration-500 font-bold bg-[#FCE8ED] text-[#9E2A4B] border border-pink-200/60 shadow-sm group-hover:bg-pink-100"
+                                :class="completedSteps >= 2 ? 'opacity-100' : 'opacity-85'"
+                            >
+                                STEP 2
+                            </span>
 
-                                {{-- Description Text --}}
+                            {{-- Description Text --}}
+                            <div class="min-h-[56px] sm:min-h-[62px] flex items-center justify-center w-full">
                                 <p 
-                                    class="font-display text-[13px] sm:text-[14px] lg:text-[15px] leading-[1.3] text-center max-w-[195px] text-[#3D141E] transition-all duration-700 group-hover:text-black"
-                                    :class="completedSteps >= 2 ? 'opacity-100 font-semibold' : 'opacity-85 font-medium'"
+                                    class="font-display text-[13px] sm:text-[14px] lg:text-[14.5px] leading-[1.35] text-center max-w-[185px] text-[#3D141E] font-medium transition-colors duration-300 group-hover:text-black"
+                                    :class="completedSteps >= 2 ? 'opacity-100 text-[#1F050B]' : 'opacity-80 text-[#3D141E]'"
                                 >
-                                    Create Your Song –<br class="hidden sm:inline"> Fill Your<br class="hidden sm:inline"> Heartgram Story.
+                                    Tell us your story in our short form.
                                 </p>
                             </div>
                         </div>
@@ -1019,69 +1018,70 @@
                         {{-- Step 3 --}}
                         <div 
                             onclick="scrollToHiwStep(2)"
-                            class="hiw-step-col snap-center flex flex-col items-center text-center group cursor-pointer px-1.5 transition-transform duration-300"
+                            class="hiw-step-col snap-center flex flex-col items-center text-center group cursor-pointer px-1.5"
                             data-step="2"
                         >
                             {{-- Number --}}
                             <div class="h-[74px] sm:h-[80px] lg:h-[84px] flex items-center justify-center">
                                 <span 
-                                    class="font-display text-[3.8rem] sm:text-[4.5rem] lg:text-[5.2rem] font-bold leading-none tracking-tight select-none transition-all duration-700 bg-clip-text text-transparent"
+                                    class="font-display text-[3.8rem] sm:text-[4.5rem] lg:text-[5.2rem] font-bold leading-none tracking-tight select-none transition-all duration-500 bg-clip-text text-transparent"
                                     :class="completedSteps >= 3 
-                                        ? 'bg-gradient-to-b from-[#EA4C70] via-[#F0728F] to-[#F8AAB9] opacity-100 scale-100 drop-shadow-[0_4px_16px_rgba(234,76,112,0.25)]' 
-                                        : 'bg-gradient-to-b from-[#F7B6C4] via-[#FAD0D9] to-[#FDE8EE] opacity-90 scale-95'"
+                                        ? 'bg-gradient-to-b from-[#EA4C70] via-[#F0728F] to-[#F8AAB9] opacity-100 drop-shadow-[0_4px_16px_rgba(234,76,112,0.25)]' 
+                                        : 'bg-gradient-to-b from-[#F7B6C4] via-[#FAD0D9] to-[#FDE8EE] opacity-80'"
                                 >
                                     03
                                 </span>
                             </div>
 
-                            {{-- Wave Offset Wrapper (Peaks Higher) --}}
-                            <div class="-mt-3 flex flex-col items-center">
-                                {{-- Icon: Musical eighth notes with sparkles --}}
-                                <div 
-                                    class="h-[34px] flex items-center justify-center mb-1 text-[#9E2A4B] transition-all duration-700 group-hover:scale-110 group-hover:text-crimson-600"
-                                    :class="completedSteps >= 3 ? 'scale-100 opacity-100' : 'scale-95 opacity-85'"
-                                >
-                                    <svg class="w-8 h-8" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                                        <ellipse cx="18" cy="28.5" rx="3.2" ry="2.2" transform="rotate(-15 18 28.5)" fill="currentColor" stroke="none" />
-                                        <ellipse cx="27" cy="24.5" rx="3.2" ry="2.2" transform="rotate(-15 27 24.5)" fill="currentColor" stroke="none" />
-                                        <line x1="20.8" y1="27.5" x2="20.8" y2="14" />
-                                        <line x1="29.8" y1="23.5" x2="29.8" y2="10" />
-                                        <polygon points="20.8,14 29.8,10 29.8,13.5 20.8,17.5" fill="currentColor" stroke="none" />
-                                        <path d="M11 16v-3m-1.5 1.5h3" stroke-width="1.5" />
-                                        <path d="M33 16v-3m-1.5 1.5h3" stroke-width="1.5" />
-                                        <circle cx="12" cy="25" r="0.8" fill="currentColor" stroke="none" />
-                                    </svg>
-                                </div>
+                            {{-- Icon: Musical eighth notes with sparkles --}}
+                            <div 
+                                class="h-[34px] flex items-center justify-center mb-1 text-[#9E2A4B] transition-colors duration-500 group-hover:text-crimson-600"
+                                :class="completedSteps >= 3 ? 'text-crimson-600 opacity-100' : 'text-[#9E2A4B] opacity-80'"
+                            >
+                                <svg class="w-8 h-8" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                    <ellipse cx="18" cy="28.5" rx="3.2" ry="2.2" transform="rotate(-15 18 28.5)" fill="currentColor" stroke="none" />
+                                    <ellipse cx="27" cy="24.5" rx="3.2" ry="2.2" transform="rotate(-15 27 24.5)" fill="currentColor" stroke="none" />
+                                    <line x1="20.8" y1="27.5" x2="20.8" y2="14" />
+                                    <line x1="29.8" y1="23.5" x2="29.8" y2="10" />
+                                    <polygon points="20.8,14 29.8,10 29.8,13.5 20.8,17.5" fill="currentColor" stroke="none" />
+                                    <path d="M11 16v-3m-1.5 1.5h3" stroke-width="1.5" />
+                                    <path d="M33 16v-3m-1.5 1.5h3" stroke-width="1.5" />
+                                    <circle cx="12" cy="25" r="0.8" fill="currentColor" stroke="none" />
+                                </svg>
+                            </div>
 
-                                {{-- Node on the Wave --}}
+                            {{-- Node on the Wave Container --}}
+                            <div class="h-12 sm:h-14 w-full flex items-center justify-center relative">
                                 <div 
-                                    class="relative z-10 w-4.5 h-4.5 rounded-full bg-white flex items-center justify-center my-1.5 transition-all duration-700"
+                                    class="relative z-10 w-4.5 h-4.5 rounded-full bg-white flex items-center justify-center transition-all duration-500 transform -translate-y-3.5 sm:-translate-y-4"
                                     :class="activePulseNode === 3 
-                                        ? 'border-2 border-[#E11D48] ring-4 ring-[#FF4D7D]/40 shadow-[0_0_15px_rgba(255,77,125,0.8)] scale-125 opacity-100' 
+                                        ? 'border-2 border-[#E11D48] ring-4 ring-[#FF4D7D]/40 shadow-[0_0_15px_rgba(255,77,125,0.8)] opacity-100' 
                                         : (completedSteps >= 3 
-                                            ? 'border-2 border-[#ECA1B3] shadow-sm scale-100 opacity-100 group-hover:border-crimson-500 group-hover:scale-110' 
-                                            : 'border-2 border-[#ECA1B3]/70 opacity-80 shadow-none scale-95')"
+                                            ? 'border-2 border-[#ECA1B3] shadow-sm opacity-100 group-hover:border-crimson-500' 
+                                            : 'border-2 border-[#ECA1B3]/70 opacity-80 shadow-none')"
                                 >
                                     <div 
-                                        class="w-1.5 h-1.5 rounded-full transition-all duration-700"
-                                        :class="activePulseNode === 3 ? 'bg-[#E11D48] scale-110 animate-pulse' : (completedSteps >= 3 ? 'bg-[#C83254]' : 'bg-[#C83254]/60')"
+                                        class="w-1.5 h-1.5 rounded-full transition-colors duration-500"
+                                        :class="activePulseNode === 3 ? 'bg-[#E11D48] animate-pulse' : (completedSteps >= 3 ? 'bg-[#C83254]' : 'bg-[#C83254]/60')"
                                     ></div>
                                 </div>
+                            </div>
 
-                                {{-- Step Badge --}}
-                                <span 
-                                    class="inline-flex items-center px-3 py-0.5 rounded-full text-[10px] sm:text-[10.5px] tracking-[0.14em] uppercase mb-2 transition-all duration-700 font-bold bg-[#FCE8ED] text-[#9E2A4B] border border-pink-200/60 shadow-sm group-hover:bg-pink-100"
-                                    :class="completedSteps >= 3 ? 'opacity-100' : 'opacity-85'"
-                                >
-                                    STEP 3
-                                </span>
+                            {{-- Step Badge --}}
+                            <span 
+                                class="inline-flex items-center px-3 py-0.5 rounded-full text-[10px] sm:text-[10.5px] tracking-[0.14em] uppercase mb-2 transition-all duration-500 font-bold bg-[#FCE8ED] text-[#9E2A4B] border border-pink-200/60 shadow-sm group-hover:bg-pink-100"
+                                :class="completedSteps >= 3 ? 'opacity-100' : 'opacity-85'"
+                            >
+                                STEP 3
+                            </span>
 
-                                {{-- Description Text --}}
+                            {{-- Description Text --}}
+                            <div class="min-h-[56px] sm:min-h-[62px] flex items-center justify-center w-full">
                                 <p 
-                                    class="font-display text-[12.5px] sm:text-[13.5px] lg:text-[14.5px] leading-[1.3] text-center max-w-[200px] text-[#3D141E] transition-all duration-700 group-hover:text-black"
-                                    :class="completedSteps >= 3 ? 'opacity-100 font-semibold' : 'opacity-85 font-medium'"
+                                    class="font-display text-[13px] sm:text-[14px] lg:text-[14.5px] leading-[1.35] text-center max-w-[195px] text-[#3D141E] font-medium transition-colors duration-300 group-hover:text-black"
+                                    :class="completedSteps >= 3 ? 'opacity-100 text-[#1F050B]' : 'opacity-80 text-[#3D141E]'"
                                 >
-                                    Your personalized<br class="hidden sm:inline"> Heartgram song<br class="hidden sm:inline"> will be composed<br class="hidden sm:inline"> and delivered<br class="hidden sm:inline"> within 2 – 5 days.
+                                    A lyricist writes it. Our team checks it. You approve it.
                                 </p>
                             </div>
                         </div>
@@ -1089,67 +1089,68 @@
                         {{-- Step 4 --}}
                         <div 
                             onclick="scrollToHiwStep(3)"
-                            class="hiw-step-col snap-center flex flex-col items-center text-center group cursor-pointer px-1.5 transition-transform duration-300"
+                            class="hiw-step-col snap-center flex flex-col items-center text-center group cursor-pointer px-1.5"
                             data-step="3"
                         >
                             {{-- Number --}}
                             <div class="h-[74px] sm:h-[80px] lg:h-[84px] flex items-center justify-center">
                                 <span 
-                                    class="font-display text-[3.8rem] sm:text-[4.5rem] lg:text-[5.2rem] font-bold leading-none tracking-tight select-none transition-all duration-700 bg-clip-text text-transparent"
+                                    class="font-display text-[3.8rem] sm:text-[4.5rem] lg:text-[5.2rem] font-bold leading-none tracking-tight select-none transition-all duration-500 bg-clip-text text-transparent"
                                     :class="completedSteps >= 4 
-                                        ? 'bg-gradient-to-b from-[#EA4C70] via-[#F0728F] to-[#F8AAB9] opacity-100 scale-100 drop-shadow-[0_4px_16px_rgba(234,76,112,0.25)]' 
-                                        : 'bg-gradient-to-b from-[#F7B6C4] via-[#FAD0D9] to-[#FDE8EE] opacity-90 scale-95'"
+                                        ? 'bg-gradient-to-b from-[#EA4C70] via-[#F0728F] to-[#F8AAB9] opacity-100 drop-shadow-[0_4px_16px_rgba(234,76,112,0.25)]' 
+                                        : 'bg-gradient-to-b from-[#F7B6C4] via-[#FAD0D9] to-[#FDE8EE] opacity-80'"
                                 >
                                     04
                                 </span>
                             </div>
 
-                            {{-- Wave Offset Wrapper (Dips Lower) --}}
-                            <div class="mt-7 sm:mt-8 flex flex-col items-center">
-                                {{-- Icon: Mail delivery envelope with speed lines & heart --}}
-                                <div 
-                                    class="h-[34px] flex items-center justify-center mb-1 text-[#9E2A4B] transition-all duration-700 group-hover:scale-110 group-hover:text-crimson-600"
-                                    :class="completedSteps >= 4 ? 'scale-100 opacity-100' : 'scale-95 opacity-85'"
-                                >
-                                    <svg class="w-9 h-8" viewBox="0 0 48 44" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                                        <line x1="7" y1="17" x2="12" y2="17" />
-                                        <line x1="5" y1="22" x2="11" y2="22" />
-                                        <line x1="7" y1="27" x2="12" y2="27" />
-                                        <rect x="14" y="14" width="24" height="17" rx="2" />
-                                        <path d="M14 15.5l12 8.5 12-8.5" />
-                                        <path d="M26 24.5c-1-.9-2.2-2-2.2-3a1.4 1.4 0 0 1 2.4-.9l.2.2.2-.2a1.4 1.4 0 0 1 2.4.9c0 1-1.2 2.1-2.2 3z" fill="#C83254" stroke="#C83254" stroke-width="0.5" />
-                                    </svg>
-                                </div>
+                            {{-- Icon: Mail delivery envelope with speed lines & heart --}}
+                            <div 
+                                class="h-[34px] flex items-center justify-center mb-1 text-[#9E2A4B] transition-colors duration-500 group-hover:text-crimson-600"
+                                :class="completedSteps >= 4 ? 'text-crimson-600 opacity-100' : 'text-[#9E2A4B] opacity-80'"
+                            >
+                                <svg class="w-9 h-8" viewBox="0 0 48 44" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="7" y1="17" x2="12" y2="17" />
+                                    <line x1="5" y1="22" x2="11" y2="22" />
+                                    <line x1="7" y1="27" x2="12" y2="27" />
+                                    <rect x="14" y="14" width="24" height="17" rx="2" />
+                                    <path d="M14 15.5l12 8.5 12-8.5" />
+                                    <path d="M26 24.5c-1-.9-2.2-2-2.2-3a1.4 1.4 0 0 1 2.4-.9l.2.2.2-.2a1.4 1.4 0 0 1 2.4.9c0 1-1.2 2.1-2.2 3z" fill="#C83254" stroke="#C83254" stroke-width="0.5" />
+                                </svg>
+                            </div>
 
-                                {{-- Node on the Wave --}}
+                            {{-- Node on the Wave Container --}}
+                            <div class="h-12 sm:h-14 w-full flex items-center justify-center relative">
                                 <div 
-                                    class="relative z-10 w-4.5 h-4.5 rounded-full bg-white flex items-center justify-center my-1.5 transition-all duration-700"
+                                    class="relative z-10 w-4.5 h-4.5 rounded-full bg-white flex items-center justify-center transition-all duration-500 transform translate-y-3.5 sm:translate-y-4"
                                     :class="activePulseNode === 4 
-                                        ? 'border-2 border-[#E11D48] ring-4 ring-[#FF4D7D]/40 shadow-[0_0_15px_rgba(255,77,125,0.8)] scale-125 opacity-100' 
+                                        ? 'border-2 border-[#E11D48] ring-4 ring-[#FF4D7D]/40 shadow-[0_0_15px_rgba(255,77,125,0.8)] opacity-100' 
                                         : (completedSteps >= 4 
-                                            ? 'border-2 border-[#ECA1B3] shadow-sm scale-100 opacity-100 group-hover:border-crimson-500 group-hover:scale-110' 
-                                            : 'border-2 border-[#ECA1B3]/70 opacity-80 shadow-none scale-95')"
+                                            ? 'border-2 border-[#ECA1B3] shadow-sm opacity-100 group-hover:border-crimson-500' 
+                                            : 'border-2 border-[#ECA1B3]/70 opacity-80 shadow-none')"
                                 >
                                     <div 
-                                        class="w-1.5 h-1.5 rounded-full transition-all duration-700"
-                                        :class="activePulseNode === 4 ? 'bg-[#E11D48] scale-110 animate-pulse' : (completedSteps >= 4 ? 'bg-[#C83254]' : 'bg-[#C83254]/60')"
+                                        class="w-1.5 h-1.5 rounded-full transition-colors duration-500"
+                                        :class="activePulseNode === 4 ? 'bg-[#E11D48] animate-pulse' : (completedSteps >= 4 ? 'bg-[#C83254]' : 'bg-[#C83254]/60')"
                                     ></div>
                                 </div>
+                            </div>
 
-                                {{-- Step Badge --}}
-                                <span 
-                                    class="inline-flex items-center px-3 py-0.5 rounded-full text-[10px] sm:text-[10.5px] tracking-[0.14em] uppercase mb-2 transition-all duration-700 font-bold bg-[#FCE8ED] text-[#9E2A4B] border border-pink-200/60 shadow-sm group-hover:bg-pink-100"
-                                    :class="completedSteps >= 4 ? 'opacity-100' : 'opacity-85'"
-                                >
-                                    STEP 4
-                                </span>
+                            {{-- Step Badge --}}
+                            <span 
+                                class="inline-flex items-center px-3 py-0.5 rounded-full text-[10px] sm:text-[10.5px] tracking-[0.14em] uppercase mb-2 transition-all duration-500 font-bold bg-[#FCE8ED] text-[#9E2A4B] border border-pink-200/60 shadow-sm group-hover:bg-pink-100"
+                                :class="completedSteps >= 4 ? 'opacity-100' : 'opacity-85'"
+                            >
+                                STEP 4
+                            </span>
 
-                                {{-- Description Text --}}
+                            {{-- Description Text --}}
+                            <div class="min-h-[56px] sm:min-h-[62px] flex items-center justify-center w-full">
                                 <p 
-                                    class="font-display text-[13px] sm:text-[14px] lg:text-[15px] leading-[1.3] text-center max-w-[190px] text-[#3D141E] transition-all duration-700 group-hover:text-black"
-                                    :class="completedSteps >= 4 ? 'opacity-100 font-semibold' : 'opacity-85 font-medium'"
+                                    class="font-display text-[13px] sm:text-[14px] lg:text-[14.5px] leading-[1.35] text-center max-w-[195px] text-[#3D141E] font-medium transition-colors duration-300 group-hover:text-black"
+                                    :class="completedSteps >= 4 ? 'opacity-100 text-[#1F050B]' : 'opacity-80 text-[#3D141E]'"
                                 >
-                                    Sound Delivery<br class="hidden sm:inline"> Through Mail.
+                                    Song + lyrics PDF on WhatsApp and email in 3-5 days.
                                 </p>
                             </div>
                         </div>
@@ -1157,69 +1158,70 @@
                         {{-- Step 5 --}}
                         <div 
                             onclick="scrollToHiwStep(4)"
-                            class="hiw-step-col snap-center flex flex-col items-center text-center group cursor-pointer px-1.5 transition-transform duration-300"
+                            class="hiw-step-col snap-center flex flex-col items-center text-center group cursor-pointer px-1.5"
                             data-step="4"
                         >
                             {{-- Number --}}
                             <div class="h-[74px] sm:h-[80px] lg:h-[84px] flex items-center justify-center">
                                 <span 
-                                    class="font-display text-[3.8rem] sm:text-[4.5rem] lg:text-[5.2rem] font-bold leading-none tracking-tight select-none transition-all duration-700 bg-clip-text text-transparent"
+                                    class="font-display text-[3.8rem] sm:text-[4.5rem] lg:text-[5.2rem] font-bold leading-none tracking-tight select-none transition-all duration-500 bg-clip-text text-transparent"
                                     :class="completedSteps >= 5 
-                                        ? 'bg-gradient-to-b from-[#EA4C70] via-[#F0728F] to-[#F8AAB9] opacity-100 scale-100 drop-shadow-[0_4px_16px_rgba(234,76,112,0.25)]' 
-                                        : 'bg-gradient-to-b from-[#F7B6C4] via-[#FAD0D9] to-[#FDE8EE] opacity-90 scale-95'"
+                                        ? 'bg-gradient-to-b from-[#EA4C70] via-[#F0728F] to-[#F8AAB9] opacity-100 drop-shadow-[0_4px_16px_rgba(234,76,112,0.25)]' 
+                                        : 'bg-gradient-to-b from-[#F7B6C4] via-[#FAD0D9] to-[#FDE8EE] opacity-80'"
                                 >
                                     05
                                 </span>
                             </div>
 
-                            {{-- Wave Offset Wrapper --}}
-                            <div class="mt-1.5 flex flex-col items-center">
-                                {{-- Icon: Party popper with celebration hearts --}}
-                                <div 
-                                    class="h-[34px] flex items-center justify-center mb-1 text-[#9E2A4B] transition-all duration-700 group-hover:scale-110 group-hover:text-crimson-600"
-                                    :class="completedSteps >= 5 ? 'scale-100 opacity-100' : 'scale-95 opacity-85'"
-                                >
-                                    <svg class="w-8 h-8" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M14 32l13-5.5-5.5-13-7.5 18.5z" />
-                                        <line x1="17" y1="24.5" x2="21.5" y2="26.5" />
-                                        <line x1="15.5" y1="28" x2="20" y2="30" />
-                                        <path d="M25 12c-.7-.6-1.5-1.3-1.5-2a1 1 0 0 1 1.7-.6l.1.1.1-.1a1 1 0 0 1 1.7.6c0 .7-.8 1.4-1.5 2z" stroke-width="1.3" />
-                                        <path d="M33 16.5c-.7-.6-1.5-1.3-1.5-2a1 1 0 0 1 1.7-.6l.1.1.1-.1a1 1 0 0 1 1.7.6c0 .7-.8 1.4-1.5 2z" stroke-width="1.3" />
-                                        <line x1="21" y1="10" x2="22.5" y2="8" />
-                                        <line x1="30" y1="21.5" x2="33" y2="22.5" />
-                                        <circle cx="31" cy="9.5" r="0.75" fill="currentColor" stroke="none" />
-                                    </svg>
-                                </div>
+                            {{-- Icon: Party popper with celebration hearts --}}
+                            <div 
+                                class="h-[34px] flex items-center justify-center mb-1 text-[#9E2A4B] transition-colors duration-500 group-hover:text-crimson-600"
+                                :class="completedSteps >= 5 ? 'text-crimson-600 opacity-100' : 'text-[#9E2A4B] opacity-80'"
+                            >
+                                <svg class="w-8 h-8" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 32l13-5.5-5.5-13-7.5 18.5z" />
+                                    <line x1="17" y1="24.5" x2="21.5" y2="26.5" />
+                                    <line x1="15.5" y1="28" x2="20" y2="30" />
+                                    <path d="M25 12c-.7-.6-1.5-1.3-1.5-2a1 1 0 0 1 1.7-.6l.1.1.1-.1a1 1 0 0 1 1.7.6c0 .7-.8 1.4-1.5 2z" stroke-width="1.3" />
+                                    <path d="M33 16.5c-.7-.6-1.5-1.3-1.5-2a1 1 0 0 1 1.7-.6l.1.1.1-.1a1 1 0 0 1 1.7.6c0 .7-.8 1.4-1.5 2z" stroke-width="1.3" />
+                                    <line x1="21" y1="10" x2="22.5" y2="8" />
+                                    <line x1="30" y1="21.5" x2="33" y2="22.5" />
+                                    <circle cx="31" cy="9.5" r="0.75" fill="currentColor" stroke="none" />
+                                </svg>
+                            </div>
 
-                                {{-- Node on the Wave --}}
+                            {{-- Node on the Wave Container --}}
+                            <div class="h-12 sm:h-14 w-full flex items-center justify-center relative">
                                 <div 
-                                    class="relative z-10 w-4.5 h-4.5 rounded-full bg-white flex items-center justify-center my-1.5 transition-all duration-700"
+                                    class="relative z-10 w-4.5 h-4.5 rounded-full bg-white flex items-center justify-center transition-all duration-500 transform translate-y-0"
                                     :class="activePulseNode === 5 
-                                        ? 'border-2 border-[#E11D48] ring-4 ring-[#FF4D7D]/40 shadow-[0_0_15px_rgba(255,77,125,0.8)] scale-125 opacity-100' 
+                                        ? 'border-2 border-[#E11D48] ring-4 ring-[#FF4D7D]/40 shadow-[0_0_15px_rgba(255,77,125,0.8)] opacity-100' 
                                         : (completedSteps >= 5 
-                                            ? 'border-2 border-[#ECA1B3] shadow-sm scale-100 opacity-100 group-hover:border-crimson-500 group-hover:scale-110' 
-                                            : 'border-2 border-[#ECA1B3]/70 opacity-80 shadow-none scale-95')"
+                                            ? 'border-2 border-[#ECA1B3] shadow-sm opacity-100 group-hover:border-crimson-500' 
+                                            : 'border-2 border-[#ECA1B3]/70 opacity-80 shadow-none')"
                                 >
                                     <div 
-                                        class="w-1.5 h-1.5 rounded-full transition-all duration-700"
-                                        :class="activePulseNode === 5 ? 'bg-[#E11D48] scale-110 animate-pulse' : (completedSteps >= 5 ? 'bg-[#C83254]' : 'bg-[#C83254]/60')"
+                                        class="w-1.5 h-1.5 rounded-full transition-colors duration-500"
+                                        :class="activePulseNode === 5 ? 'bg-[#E11D48] animate-pulse' : (completedSteps >= 5 ? 'bg-[#C83254]' : 'bg-[#C83254]/60')"
                                     ></div>
                                 </div>
+                            </div>
 
-                                {{-- Step Badge --}}
-                                <span 
-                                    class="inline-flex items-center px-3 py-0.5 rounded-full text-[10px] sm:text-[10.5px] tracking-[0.14em] uppercase mb-2 transition-all duration-700 font-bold bg-[#FCE8ED] text-[#9E2A4B] border border-pink-200/60 shadow-sm group-hover:bg-pink-100"
-                                    :class="completedSteps >= 5 ? 'opacity-100' : 'opacity-85'"
-                                >
-                                    STEP 5
-                                </span>
+                            {{-- Step Badge --}}
+                            <span 
+                                class="inline-flex items-center px-3 py-0.5 rounded-full text-[10px] sm:text-[10.5px] tracking-[0.14em] uppercase mb-2 transition-all duration-500 font-bold bg-[#FCE8ED] text-[#9E2A4B] border border-pink-200/60 shadow-sm group-hover:bg-pink-100"
+                                :class="completedSteps >= 5 ? 'opacity-100' : 'opacity-85'"
+                            >
+                                STEP 5
+                            </span>
 
-                                {{-- Description Text --}}
+                            {{-- Description Text --}}
+                            <div class="min-h-[56px] sm:min-h-[62px] flex items-center justify-center w-full">
                                 <p 
-                                    class="font-display text-[13px] sm:text-[14px] lg:text-[15px] leading-[1.3] text-center max-w-[190px] text-[#3D141E] transition-all duration-700 group-hover:text-black"
-                                    :class="completedSteps >= 5 ? 'opacity-100 font-semibold' : 'opacity-85 font-medium'"
+                                    class="font-display text-[13px] sm:text-[14px] lg:text-[14.5px] leading-[1.35] text-center max-w-[185px] text-[#3D141E] font-medium transition-colors duration-300 group-hover:text-black"
+                                    :class="completedSteps >= 5 ? 'opacity-100 text-[#1F050B]' : 'opacity-80 text-[#3D141E]'"
                                 >
-                                    Celebrate Your<br class="hidden sm:inline"> Heartgram<br class="hidden sm:inline"> Moment/Story.
+                                    Play it for them. Watch their face.
                                 </p>
                             </div>
                         </div>
@@ -1661,14 +1663,14 @@
             {{-- Header with Clean Spacing & Proper Typography --}}
             <div class="text-center max-w-2xl mx-auto flex flex-col items-center">
                 <div class="inline-flex items-center gap-2 mb-1.5 sm:mb-2">
-                    <span class="text-[10px] sm:text-[11px] font-bold tracking-[0.22em] text-pink-300 uppercase">WALL OF LOVE & REAL REVIEWS</span>
+                    <span class="text-[10px] sm:text-[11px] font-bold tracking-[0.22em] text-pink-300 uppercase">WALL OF LOVE</span>
                     <span class="text-pink-300 text-xs">♥</span>
                 </div>
                 <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl text-white font-semibold leading-tight tracking-tight">
                     Songs that made them <span class="text-crimson-400 italic font-normal font-serif">cry, laugh & remember.</span>
                 </h2>
                 <p class="text-white/70 text-xs sm:text-sm font-normal leading-relaxed mt-2 max-w-lg mx-auto">
-                    Real unboxings, emotional reactions, and photo keepsakes from over 1,500+ custom Heartgrams.
+                    Real reactions from real families, shared with their permission.
                 </p>
             </div>
 
@@ -1731,7 +1733,6 @@
                                 <div class="min-w-0">
                                     <h4 class="text-xs sm:text-[13px] font-bold text-white group-hover:text-pink-200 transition-colors flex items-center gap-1 truncate">
                                         {{ $item['name'] }}
-                                        <span class="text-crimson-400 text-xs">✓</span>
                                     </h4>
                                     <p class="text-[10px] sm:text-[11px] text-pink-200/70 truncate">{{ $item['occasion'] }} • {{ $item['location'] }}</p>
                                 </div>
@@ -1750,7 +1751,7 @@
                     href="{{ route('testimonials') }}" 
                     class="inline-flex items-center gap-2.5 px-6 py-2.5 sm:px-8 sm:py-3 rounded-full bg-gradient-to-r from-crimson-500 to-maroon-700 hover:from-crimson-600 hover:to-maroon-800 text-white font-bold text-xs sm:text-[13px] shadow-lg shadow-crimson-600/30 hover:shadow-crimson-600/50 hover:scale-102 transition-all group"
                 >
-                    <span>For More Testimonials & Real Stories</span>
+                    <span>See more reactions</span>
                     <span class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-1 transition-transform">
                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </span>
@@ -1968,12 +1969,17 @@
             goToStep2() {
                 const nameEl = this.$refs.nameInput;
                 const phoneEl = this.$refs.phoneInput;
+                const langEl = this.$refs.langInput;
                 if (nameEl && !nameEl.checkValidity()) {
                     nameEl.reportValidity();
                     return;
                 }
                 if (phoneEl && !phoneEl.checkValidity()) {
                     phoneEl.reportValidity();
+                    return;
+                }
+                if (langEl && !langEl.checkValidity()) {
+                    langEl.reportValidity();
                     return;
                 }
                 this.step = 2;
@@ -2016,7 +2022,7 @@
                             <div class="flex items-center justify-between mb-1">
                                 <span class="text-[9px] font-bold tracking-[0.15em] text-brand-dark/40 uppercase block">FOR HEARTFELT PERSONAL GIFTS</span>
                                 <span x-show="selectedPlan === 'classic'" class="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-[#c02d4b] bg-pink-50 border border-pink-200/80 px-2.5 py-0.5 rounded-full">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-crimson-500"></span> Active Choice
+                                    <span class="w-1.5 h-1.5 rounded-full bg-crimson-500"></span> Selected
                                 </span>
                             </div>
                             <h3 class="font-serif text-2xl lg:text-[26px] font-medium text-brand-dark leading-tight mb-2">Heartgram Classic</h3>
@@ -2033,7 +2039,7 @@
                             <ul class="space-y-2 text-[12.5px] lg:text-[13px] text-brand-dark/80 font-medium mb-4">
                                 <li class="flex items-center gap-2.5"><span class="text-brand-pink font-bold text-sm">✓</span> Personalised song from your story</li>
                                 <li class="flex items-center gap-2.5"><span class="text-brand-pink font-bold text-sm">✓</span> One lyric-writing option</li>
-                                <li class="flex items-center gap-2.5"><span class="text-brand-pink font-bold text-sm">✓</span> Studio vocal & acoustic melody</li>
+                                <li class="flex items-center gap-2.5"><span class="text-brand-pink font-bold text-sm">✓</span> Full vocals with an acoustic feel</li>
                                 <li class="flex items-center gap-2.5"><span class="text-brand-pink font-bold text-sm">✓</span> High-quality MP3 format only</li>
                                 <li class="flex items-center gap-2.5"><span class="text-brand-pink font-bold text-sm">✓</span> Keepsake Lyric PDF via WhatsApp</li>
                                 <li class="flex items-center gap-2.5"><span class="text-brand-pink font-bold text-sm">✓</span> 3–5 days delivery time</li>
@@ -2072,7 +2078,7 @@
                             <div class="flex items-center justify-between mb-1">
                                 <span class="text-[9px] font-bold tracking-[0.18em] text-amber-200/90 uppercase block">FOR DEEPER EMOTIONAL STORIES</span>
                                 <span x-show="selectedPlan === 'premium'" class="inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-wider text-[#241002] bg-gradient-to-r from-[#FFE37E] to-[#D99A26] px-2.5 py-0.5 rounded-full shadow-xs border border-[#FFE898]/60">
-                                    ★ Active Choice
+                                    ★ Selected
                                 </span>
                             </div>
                             <h3 class="font-serif text-2xl lg:text-[26px] font-medium text-white leading-tight mb-2">Heartgram Premium</h3>
@@ -2097,11 +2103,11 @@
                                 </li>
                                 <li class="flex items-center gap-2.5">
                                     <span class="w-2 h-2 rounded-full bg-gradient-to-br from-[#FFE37E] to-[#D99A26] shadow-[0_0_8px_rgba(255,227,126,0.85)] shrink-0"></span>
-                                    <span>Priority studio vocal & composition</span>
+                                    <span>Your song goes to the front of the queue</span>
                                 </li>
                                 <li class="flex items-center gap-2.5">
                                     <span class="w-2 h-2 rounded-full bg-gradient-to-br from-[#FFE37E] to-[#D99A26] shadow-[0_0_8px_rgba(255,227,126,0.85)] shrink-0"></span>
-                                    <span>High-quality formats: MP3, WAV & Dolby</span>
+                                    <span>High-quality MP3 and WAV files</span>
                                 </li>
                                 <li class="flex items-center gap-2.5">
                                     <span class="w-2 h-2 rounded-full bg-gradient-to-br from-[#FFE37E] to-[#D99A26] shadow-[0_0_8px_rgba(255,227,126,0.85)] shrink-0"></span>
@@ -2165,7 +2171,7 @@
                     </h2>
                     <p class="text-xs sm:text-[13px] text-brand-dark/70 font-medium max-w-md mx-auto transition-colors duration-300">
                         <span x-show="selectedPlan === 'classic'">Personalised song from your story · Acoustic melody & lyrics · ₹1,999</span>
-                        <span x-show="selectedPlan === 'premium'">Priority studio vocal · MP3, WAV & Dolby · Express 1–2 days · ₹2,999</span>
+                        <span x-show="selectedPlan === 'premium'">Front of the queue · MP3 and WAV files · Express 1–2 days · ₹2,999</span>
                     </p>
                 </div>
 
@@ -2356,14 +2362,14 @@
                                                         class="text-[8.5px] px-1.5 py-0.5 rounded-full font-extrabold uppercase tracking-wider shrink-0"
                                                         :class="selectedPlan === 'premium' ? 'bg-[#241002] text-[#ECC15E]' : 'bg-[#DCA838]/20 text-[#B8841B]'"
                                                     >
-                                                        ★ Popular
+                                                        ★ Recommended
                                                     </span>
                                                 </div>
                                                 <div 
                                                     class="text-[11px] leading-tight mt-0.5 transition-colors"
                                                     :class="selectedPlan === 'premium' ? 'text-[#241002]/85' : 'text-brand-dark/60'"
                                                 >
-                                                    Priority Vocal · 1–2 days express
+                                                    Priority queue · 1–2 days express
                                                 </div>
                                             </div>
                                         </div>
@@ -2464,6 +2470,40 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="sm:col-span-2">
+                                        <label 
+                                            class="block text-[11px] font-semibold mb-1 transition-colors duration-300"
+                                            :class="selectedPlan === 'premium' ? 'text-white/90' : 'text-brand-dark'"
+                                        >
+                                            Song language <span :class="selectedPlan === 'premium' ? 'text-[#ECC15E]' : 'text-[#c02d4b]'">*</span>
+                                        </label>
+                                        <div class="relative">
+                                            <select 
+                                                x-ref="langInput"
+                                                name="language" 
+                                                required 
+                                                class="w-full rounded-xl px-3.5 py-2.5 text-[13px] transition-all focus:outline-none appearance-none cursor-pointer pr-10"
+                                                :class="selectedPlan === 'premium' 
+                                                    ? 'bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-[#DCA838]/30 focus:border-[#ECC15E] focus:bg-[#1E0913]' 
+                                                    : 'bg-white border border-[#e6d8d0] text-brand-dark focus:ring-2 focus:ring-[#c02d4b]/20 focus:border-[#c02d4b]/40'"
+                                            >
+                                                <option value="" disabled selected class="text-gray-400">Select song language</option>
+                                                <option value="Tamil" class="text-brand-dark">Tamil</option>
+                                                <option value="Malayalam" class="text-brand-dark">Malayalam</option>
+                                                <option value="Kannada" class="text-brand-dark">Kannada</option>
+                                                <option value="Telugu" class="text-brand-dark">Telugu</option>
+                                                <option value="Hindi" class="text-brand-dark">Hindi</option>
+                                                <option value="English" class="text-brand-dark">English</option>
+                                                <option value="Mix of two" class="text-brand-dark">Mix of two</option>
+                                            </select>
+                                            <div 
+                                                class="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none transition-colors duration-300"
+                                                :class="selectedPlan === 'premium' ? 'text-[#ECC15E]/80' : 'text-brand-dark/40'"
+                                            >
+                                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -2553,7 +2593,7 @@
                                 </button>
                                 
                                 <a 
-                                    href="https://wa.me/?text=Hi%20Heartgrams%2C%20I%20would%20like%20to%20create%20a%20song" 
+                                    href="https://wa.me/919585475959?text=Hi%20Heartgrams%2C%20I%20would%20like%20to%20create%20a%20song" 
                                     target="_blank" 
                                     class="w-full sm:w-auto py-2.5 sm:py-3 px-6 rounded-full font-medium text-[13px] transition-colors flex items-center justify-center gap-1.5 shadow-xs"
                                     :class="selectedPlan === 'premium' 
@@ -3328,7 +3368,7 @@
                                 </button>
                                 
                                 <a 
-                                    href="https://wa.me/?text=Hi%20Heartgrams%2C%20I%20would%20like%20to%20create%20a%20song" 
+                                    href="https://wa.me/919585475959?text=Hi%20Heartgrams%2C%20I%20would%20like%20to%20create%20a%20song" 
                                     target="_blank" 
                                     class="w-full sm:w-auto py-2.5 sm:py-3 px-5 rounded-full font-medium text-[13px] transition-colors flex items-center justify-center gap-1.5 shadow-xs"
                                     :class="selectedPlan === 'premium' 
@@ -3350,18 +3390,18 @@
 
 
     {{-- FAQ Section --}}
-    <section id="faq" class="pt-12 sm:pt-14 pb-0 relative overflow-hidden bg-brand-light">
+    <section id="faq" class="min-h-[calc(100vh-4rem)] flex flex-col justify-center py-10 sm:py-12 lg:py-16 relative overflow-hidden bg-brand-light scroll-mt-16">
         {{-- Subtle ambient glow --}}
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-rose-200/25 blur-[120px] rounded-full pointer-events-none"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] bg-rose-200/25 blur-[140px] rounded-full pointer-events-none"></div>
 
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-10 sm:mb-12 relative">
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-crimson-600 text-[10px] font-bold tracking-[0.2em] uppercase mb-4 shadow-[0_2px_10px_rgba(200,50,80,0.04)] border border-pink-100/80">
+        <div class="max-w-3xl lg:max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto">
+            <div class="text-center mb-6 sm:mb-8 relative">
+                <div class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white text-crimson-600 text-[10.5px] sm:text-xs font-bold tracking-[0.2em] uppercase mb-2.5 shadow-[0_2px_10px_rgba(200,50,80,0.04)] border border-pink-100/80">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
                     FREQUENTLY ASKED
                 </div>
                 
-                <h2 class="font-display text-3xl sm:text-4xl md:text-[44px] font-semibold text-brand-dark tracking-tight leading-tight flex items-center justify-center gap-2 flex-wrap relative">
+                <h2 class="font-display text-3xl sm:text-4xl lg:text-[42px] font-semibold text-brand-dark tracking-tight leading-tight flex items-center justify-center gap-2.5 flex-wrap relative">
                     <span class="relative inline-block">
                         {{-- Decorative spark left --}}
                         <span class="absolute -left-6 sm:-left-7 -top-2.5 sm:-top-3 text-brand-dark/50 rotate-[-15deg]">
@@ -3374,7 +3414,7 @@
                     <span class="relative inline-block text-crimson-500 font-serif italic">
                         We have answers.
                         {{-- Decorative drawn heart right --}}
-                        <span class="absolute -right-7 sm:-right-8 top-0.5 text-crimson-400">
+                        <span class="absolute -right-7 sm:-right-8 top-0 text-crimson-400">
                             <svg class="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                             </svg>
@@ -3382,48 +3422,80 @@
                     </span>
                 </h2>
                 
-                <div class="flex items-center justify-center gap-3 mt-4">
-                    <div class="h-px bg-gradient-to-r from-transparent to-pink-200/80 w-16"></div>
+                <div class="flex items-center justify-center gap-2.5 mt-2.5">
+                    <div class="h-px bg-gradient-to-r from-transparent to-pink-200/80 w-16 sm:w-24"></div>
                     <span class="text-crimson-500 text-xs">♥</span>
-                    <div class="h-px bg-gradient-to-l from-transparent to-pink-200/80 w-16"></div>
+                    <div class="h-px bg-gradient-to-l from-transparent to-pink-200/80 w-16 sm:w-24"></div>
                 </div>
             </div>
 
-            <div class="space-y-3 sm:space-y-3.5 max-w-2xl mx-auto" x-data="{ openFaq: null }">
+            <div class="space-y-3 sm:space-y-3.5 max-w-3xl lg:max-w-4xl mx-auto" x-data="{ openFaq: null }">
                 @php
                     $faqs = [
                         (object) [
-                            'question' => 'How long does it take?', 
-                            'answer' => 'Heartgrams Standard is delivered within 3–5 days, while Heartgrams Premium offers priority 1–2 days express delivery via email and WhatsApp.'
+                            'question' => 'How long does a personalised song take?', 
+                            'answer' => "Classic songs arrive on WhatsApp and email in 3-5 days. Premium songs arrive in 1-2 days. The clock starts once your story is complete and payment is confirmed, and the time you take to review your lyrics isn't counted. Need it by a certain date? Tell us when you order."
                         ],
                         (object) [
-                            'question' => 'Can I choose the genre?', 
-                            'answer' => 'Yes! You can choose from acoustic melody, romantic ballad, soulful indie, upbeat pop, classical acoustic, and more to match your story’s emotion.'
+                            'question' => 'Which languages and styles can I choose?', 
+                            'answer' => "Tamil, Malayalam, Kannada, Telugu, Hindi or English. Each language has its own lyricist. For style, pick acoustic, romantic ballad, soulful indie, upbeat pop or classical acoustic. Not sure? Tell us the mood and we'll choose."
                         ],
                         (object) [
-                            'question' => 'Will I own the rights to the song?', 
-                            'answer' => 'Yes, you receive full personal use rights forever to play, download, keep, and share with your loved ones.'
+                            'question' => 'Who owns the song, and where can I share it?', 
+                            'answer' => "You can play, download, keep and share your song anywhere personal: WhatsApp, Instagram, a wedding screen, a family video. Using it in ads, for a business or on a monetised channel needs a separate licence. Just ask us."
                         ],
                         (object) [
-                            'question' => 'What if I want changes?', 
-                            'answer' => 'We want your Heartgram to feel just right. You receive lyric options before final production, and we accommodate revisions so every line resonates.'
+                            'question' => 'Can I change the lyrics before the song is made?', 
+                            'answer' => "Yes. After our quality team checks your lyrics, we send them to you. Ask for changes and we'll send the corrected version back. We make the song only once you approve. Classic comes with one lyric option; Premium gives you more than one to choose from."
+                        ],
+                        (object) [
+                            'question' => 'How much does a personalised song cost?', 
+                            'answer' => "Heartgram Classic is ₹1,999 and Heartgram Premium is ₹2,999. Both prices include everything, with no extra fees. Premium adds deeper story shaping, more lyric options, WAV files and 1-2 day delivery."
+                        ],
+                        (object) [
+                            'question' => 'Is a real person writing my song?', 
+                            'answer' => "Yes. Each language has its own lyricist, from that language's music industry. Your lyricist reads your story and writes the lyrics, our quality team checks them, and you approve them before the song is made."
+                        ],
+                        (object) [
+                            'question' => 'How do I pay?', 
+                            'answer' => "After you send your story, we message you on WhatsApp with a payment link. We start once payment is confirmed."
                         ]
                     ];
                 @endphp
+
+                {{-- FAQPage Structured Data (Schema.org) for Google & AI search --}}
+                <script type="application/ld+json">
+                {
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        @foreach($faqs as $faq)
+                        {
+                            "@type": "Question",
+                            "name": {!! json_encode($faq->question) !!},
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": {!! json_encode($faq->answer) !!}
+                            }
+                        }{{ !$loop->last ? ',' : '' }}
+                        @endforeach
+                    ]
+                }
+                </script>
                 @foreach($faqs as $index => $faq)
                     <div 
-                        class="rounded-[1.25rem] sm:rounded-[1.4rem] border transition-all duration-300 overflow-hidden bg-white"
+                        class="rounded-xl sm:rounded-2xl border transition-all duration-300 overflow-hidden bg-white"
                         :class="openFaq === {{ $index }} 
-                            ? 'border-pink-300/90 shadow-[0_10px_28px_rgba(200,50,80,0.08)] ring-1 ring-pink-200/50' 
-                            : 'border-pink-100/80 shadow-[0_2px_12px_rgba(200,50,80,0.03)] hover:border-pink-200 hover:shadow-[0_6px_22px_rgba(200,50,80,0.06)] hover:-translate-y-0.5'"
+                            ? 'border-pink-300/90 shadow-[0_8px_24px_rgba(200,50,80,0.08)] ring-1 ring-pink-200/50' 
+                            : 'border-pink-100/80 shadow-[0_2px_8px_rgba(200,50,80,0.02)] hover:border-pink-200 hover:shadow-[0_4px_16px_rgba(200,50,80,0.05)] hover:-translate-y-0.5'"
                     >
                         <button
                             @click="openFaq = openFaq === {{ $index }} ? null : {{ $index }}"
-                            class="w-full flex items-center justify-between px-5 py-4 sm:px-6 sm:py-4.5 text-left group transition-colors cursor-pointer select-none"
+                            class="w-full flex items-center justify-between px-5 py-3.5 sm:px-6 sm:py-4 text-left group transition-colors cursor-pointer select-none"
                         >
-                            <div class="flex items-center gap-3.5 sm:gap-4 pr-3">
+                            <div class="flex items-center gap-3 sm:gap-4 pr-3">
                                 <div 
-                                    class="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-bold text-xs shrink-0 transition-all duration-300 border"
+                                    class="w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-full flex items-center justify-center font-bold text-xs sm:text-[13px] shrink-0 transition-all duration-300 border"
                                     :class="openFaq === {{ $index }} 
                                         ? 'bg-crimson-500 text-white border-crimson-500 shadow-xs' 
                                         : 'bg-pink-50 text-crimson-600 border-pink-100/80 group-hover:bg-pink-100'"
@@ -3431,7 +3503,7 @@
                                     ?
                                 </div>
                                 <span 
-                                    class="font-medium text-brand-dark text-[15px] sm:text-[16px] transition-colors leading-snug"
+                                    class="font-medium text-brand-dark text-[14.5px] sm:text-[16px] transition-colors leading-snug"
                                     :class="openFaq === {{ $index }} ? 'text-crimson-600 font-semibold' : 'group-hover:text-crimson-600'"
                                 >
                                     {{ $faq->question }}
@@ -3439,7 +3511,7 @@
                             </div>
                             
                             <div 
-                                class="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 border"
+                                class="w-6.5 h-6.5 sm:w-7 sm:h-7 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 border"
                                 :class="openFaq === {{ $index }} 
                                     ? 'bg-crimson-500 text-white border-crimson-500 rotate-45' 
                                     : 'bg-pink-50 text-crimson-500 border-pink-100/70 group-hover:bg-pink-100 group-hover:border-pink-200'"
@@ -3451,9 +3523,9 @@
                         </button>
                         
                         <div x-show="openFaq === {{ $index }}" x-collapse>
-                            <div class="px-5 pb-5 sm:px-6 sm:pb-5 pt-0.5 ml-0 sm:ml-12">
+                            <div class="px-5 pb-4 sm:px-6 sm:pb-5 pt-0 ml-0 sm:ml-11">
                                 <div class="h-px w-full bg-gradient-to-r from-pink-200/80 via-pink-100/50 to-transparent mb-3"></div>
-                                <div class="text-[14px] sm:text-[14.5px] text-brand-dark/75 leading-relaxed pr-4 font-normal">
+                                <div class="text-[13.5px] sm:text-[14.5px] text-brand-dark/75 leading-relaxed pr-3 font-normal">
                                     {{ $faq->answer }}
                                 </div>
                             </div>
@@ -3657,7 +3729,7 @@
                 </a>
 
                 {{-- Secondary WhatsApp Button --}}
-                <a href="https://wa.me/?text=Hi%20Heartgrams%2C%20I%20would%20like%20to%20create%20a%20song" target="_blank" class="w-full sm:w-auto py-4 px-8 rounded-full bg-white/[0.08] hover:bg-white/[0.18] backdrop-blur-md border border-white/30 hover:border-white/60 text-white font-medium text-[14.5px] shadow-[0_8px_25px_rgba(0,0,0,0.12)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-2.5 group">
+                <a href="https://wa.me/919585475959?text=Hi%20Heartgrams%2C%20I%20would%20like%20to%20create%20a%20song" target="_blank" class="w-full sm:w-auto py-4 px-8 rounded-full bg-white/[0.08] hover:bg-white/[0.18] backdrop-blur-md border border-white/30 hover:border-white/60 text-white font-medium text-[14.5px] shadow-[0_8px_25px_rgba(0,0,0,0.12)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-2.5 group">
                     <svg class="w-4 h-4 text-emerald-300 transition-transform duration-300 group-hover:scale-110 shrink-0" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
                     </svg>
@@ -3674,8 +3746,8 @@
                 activeCategory: 0,
                 isPlaying: false,
                 currentTitle: 'A Birthday Heartgram',
-                currentMeta: '60-second sample · original composition',
-                currentTime: '00:00 / 1:00',
+                currentMeta: '25-second preview · original composition',
+                currentTime: '00:00 / 0:25',
                 @php
                     $categoriesData = [
                         [
@@ -3694,7 +3766,7 @@
                     if (cat && cat.samples.length > 0) {
                         const sample = cat.samples[0];
                         this.currentTitle = 'A ' + cat.name + ' Heartgram';
-                        this.currentMeta = '60-second sample · original composition';
+                        this.currentMeta = '25-second preview · original composition';
                     } else {
                         this.currentTitle = 'A ' + cat.name + ' Heartgram';
                         this.currentMeta = 'Sample coming soon';

@@ -1,7 +1,7 @@
 <x-public-layout>
     <x-slot name="seoTags">
-        <title>Heartgrams Blog | Stories of Love & Music</title>
-        <meta name="description" content="Read our latest articles, gift guides, and heartwarming stories behind the songs we create.">
+        <title>Heartgrams Blog | Song Gift Ideas and Stories of Love & Music</title>
+        <meta name="description" content="Gift guides for birthdays, proposals and weddings, plus the stories behind songs we've made.">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
@@ -89,12 +89,12 @@
 
                 {{-- 2. Grand Heading --}}
                 <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-medium text-white leading-tight mb-3 sm:mb-4 tracking-tight max-w-3xl">
-                    Stories of <span class="italic text-transparent bg-clip-text bg-gradient-to-r from-[#fce5a3] via-[#e6b04e] to-[#f3d179]">love & music.</span>
+                    Song gift ideas and stories of <span class="italic text-transparent bg-clip-text bg-gradient-to-r from-[#fce5a3] via-[#e6b04e] to-[#f3d179]">love & music.</span>
                 </h1>
 
                 {{-- 3. Evocative Subtitle --}}
                 <p class="text-xs sm:text-sm md:text-base text-white/85 font-normal max-w-2xl sm:max-w-3xl mx-auto leading-relaxed mb-4">
-                    Read our latest articles, gift guides, and heartwarming stories behind the songs we create.
+                    Gift guides for birthdays, proposals and weddings, plus the stories behind songs we've made.
                 </p>
 
             </div>

@@ -19,8 +19,8 @@
                     <img src="{{ Storage::url($post->image) }}" alt="{{ $post->title }}" class="w-full h-full object-cover">
                 </div>
             @else
-                <div class="w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl sm:rounded-3xl overflow-hidden mb-8 sm:mb-12 shadow-xl bg-gradient-to-br from-pink-100 to-rose-200 flex items-center justify-center relative">
-                    <svg class="w-24 h-24 text-[#c02d4b] opacity-10 absolute" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                <div class="w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl sm:rounded-3xl overflow-hidden mb-8 sm:mb-12 shadow-xl bg-[#1f0a0e]">
+                    <img src="{{ asset('images/wedding.png') }}" alt="A couple on a terrace at dusk celebrating their engagement proposal" class="w-full h-full object-cover">
                 </div>
             @endif
 
@@ -34,9 +34,9 @@
     </div>
     
     <style>
-        .ck-content h1 { font-size: 2.25em; font-family: 'Playfair Display', serif; color: #1f111c; font-weight: 700; margin-top: 1.5em; margin-bottom: 0.5em; }
-        .ck-content h2 { font-size: 1.75em; font-family: 'Playfair Display', serif; color: #1f111c; font-weight: 700; margin-top: 1.5em; margin-bottom: 0.5em; }
-        .ck-content h3 { font-size: 1.25em; font-weight: bold; color: #1f111c; margin-top: 1.5em; margin-bottom: 0.5em; }
+        .ck-content h1 { font-size: 2.25em; font-family: 'Playfair Display', Georgia, serif; color: #1f111c; font-weight: 700; margin-top: 1.5em; margin-bottom: 0.5em; }
+        .ck-content h2 { font-size: 1.75em; font-family: 'Playfair Display', Georgia, serif; color: #1f111c; font-weight: 700; margin-top: 1.5em; margin-bottom: 0.5em; }
+        .ck-content h3 { font-size: 1.25em; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; color: #1f111c; margin-top: 1.5em; margin-bottom: 0.5em; }
         .ck-content p { color: #4b5563; margin-bottom: 1.25em; line-height: 1.8; }
         .ck-content ul { list-style-type: disc; padding-left: 1.5em; margin-bottom: 1.25em; color: #4b5563; }
         .ck-content ol { list-style-type: decimal; padding-left: 1.5em; margin-bottom: 1.25em; color: #4b5563; }

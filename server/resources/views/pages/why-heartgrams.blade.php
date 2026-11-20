@@ -26,7 +26,7 @@
                 {{-- Dynamic Title: Gold text & Brand Logo replacing Heartgrams text --}}
                 <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-medium leading-tight mb-4 sm:mb-5 drop-shadow-lg max-w-3xl flex flex-col items-center justify-center gap-2.5 sm:gap-3.5">
                     <span class="bg-gradient-to-r from-[#B8841B] via-[#DCA838] to-[#A27010] bg-clip-text text-transparent">
-                        {{ $content['hero_title'] ?? 'Why People Choose Us' }}
+                        {{ $content['hero_title'] ?? 'Why choose a personalised song from Heartgrams?' }}
                     </span>
                     
                     {{-- Logo replacing heartgram text --}}
@@ -140,7 +140,7 @@
                 {{-- Mobile Timeline Navigation Header --}}
                 <div class="flex items-center justify-between lg:hidden mb-4 px-1 select-none">
                     <span class="text-xs font-semibold text-[#e83e6a] flex items-center gap-1.5">
-                        <span class="inline-block animate-pulse">👉</span> Swipe steps 1 to 5
+                        <span class="inline-block animate-pulse">👉</span> Swipe 1 to 5
                     </span>
                     <div class="flex items-center gap-1.5" id="timelineStepPills">
                         @foreach($included as $i => $item)
@@ -283,7 +283,7 @@
                                     </span>
 
                                     {{-- Circular Node with Concentric Halo (OPAQUE to completely hide dashed line behind it) --}}
-                                    <div class="timeline-circle-node relative flex items-center justify-center mb-2 z-10">
+                                    <div class="timeline-circle-node relative flex items-center justify-center mb-3.5 z-10">
                                         {{-- Outer Opaque Pink Halo Disc --}}
                                         <div class="timeline-outer-disc w-18 h-18 sm:w-20 sm:h-20 rounded-full bg-[#fdeef2] border-2 border-[#f7ccd7] p-2 flex items-center justify-center shadow-[0_4px_16px_rgba(244,114,182,0.18)] group-hover:scale-105 group-hover:shadow-[0_8px_24px_rgba(244,114,182,0.3)]" style="background-color: #fdeef2; border-color: #f7ccd7;">
                                              {{-- Inner Dark Luxury Maroon Disc --}}
@@ -292,11 +292,6 @@
                                              </div>
                                          </div>
                                     </div>
-
-                                    {{-- Step Pill Badge (matching reference design) --}}
-                                    <span class="timeline-step-badge inline-block px-3 py-0.5 rounded-full border border-pink-300/80 bg-white/95 text-[10px] sm:text-[11px] font-bold tracking-widest text-[#e83e6a] uppercase shadow-xs mb-1.5">
-                                        STEP {{ $loop->iteration }}
-                                    </span>
 
                                     {{-- Step Title --}}
                                     <h3 class="font-serif text-[15px] sm:text-[16px] lg:text-[17px] font-bold text-gray-900 leading-snug mb-1.5 group-hover:text-maroon-900 transition-colors duration-200">
@@ -686,7 +681,7 @@
                         {{ $content['features_title'] ?? 'Crafted with heart. Built around your story.' }}
                     </h2>
                     <p class="text-base sm:text-lg text-gray-600 font-normal max-w-2xl mx-auto leading-relaxed">
-                        {{ $content['features_description'] ?? 'Every song is written from scratch, guided by real emotion, and produced to the highest musical standard.' }}
+                        {{ $content['features_description'] ?? 'Every song is written from scratch from your real memories, and every lyric passes our quality check before you see it.' }}
                     </p>
                 </div>
 
@@ -772,10 +767,10 @@
                 </p>
                 
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="{{ $content['cta_button_1_link'] }}" class="w-full sm:w-auto inline-flex justify-center items-center px-8 py-3.5 border border-transparent text-base font-bold rounded-full shadow-[0_4px_14px_0_rgba(242,110,126,0.39)] text-white bg-[#f26e7e] hover:bg-[#e45a6a] hover:shadow-[0_6px_20px_rgba(242,110,126,0.23)] transition-all duration-300">
+                    <a href="{{ (!empty($content['cta_button_1_link']) && $content['cta_button_1_link'] !== '#') ? $content['cta_button_1_link'] : url('/create-your-heartgram-song') }}" class="w-full sm:w-auto inline-flex justify-center items-center px-8 py-3.5 border border-transparent text-base font-bold rounded-full shadow-[0_4px_14px_0_rgba(242,110,126,0.39)] text-white bg-[#f26e7e] hover:bg-[#e45a6a] hover:shadow-[0_6px_20px_rgba(242,110,126,0.23)] transition-all duration-300">
                         {{ $content['cta_button_1_text'] }}
                     </a>
-                    <a href="{{ $content['cta_button_2_link'] }}" class="w-full sm:w-auto inline-flex justify-center items-center px-8 py-3.5 border border-gray-300 text-base font-bold rounded-full text-gray-700 bg-transparent hover:bg-gray-50 transition-colors">
+                    <a href="{{ (!empty($content['cta_button_2_link']) && $content['cta_button_2_link'] !== '#') ? $content['cta_button_2_link'] : 'https://wa.me/919585475959?text=Hi%20Heartgrams%2C%20I%20would%20like%20to%20create%20a%20song' }}" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex justify-center items-center px-8 py-3.5 border border-gray-300 text-base font-bold rounded-full text-gray-700 bg-transparent hover:bg-gray-50 transition-colors">
                         <svg class="w-5 h-5 mr-2 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                         </svg>

@@ -29,14 +29,14 @@ class AdminController extends Controller
     public function editWhyHeartgrams()
     {
         $content = [
-            'hero_subtitle' => \App\PageContent::get('why_heartgrams_hero_subtitle', 'WHY PEOPLE CHOOSE US'),
-            'hero_title' => \App\PageContent::get('why_heartgrams_hero_title', 'Why People Choose'),
+            'hero_subtitle' => \App\PageContent::get('why_heartgrams_hero_subtitle', ''),
+            'hero_title' => \App\PageContent::get('why_heartgrams_hero_title', 'Why choose a personalised song from Heartgrams?'),
             'hero_highlight' => \App\PageContent::get('why_heartgrams_hero_highlight', 'Heartgrams'),
-            'hero_description' => \App\PageContent::get('why_heartgrams_hero_description', 'Most gifts are opened once. A Heartgrams song can be replayed for years.'),
+            'hero_description' => \App\PageContent::get('why_heartgrams_hero_description', 'The cake gets eaten. The card goes in a drawer. The song with their name in it gets played every birthday, every anniversary, every time they miss you.'),
             
             'everything_subtitle' => \App\PageContent::get('why_heartgrams_everything_subtitle', 'EVERYTHING INCLUDED'),
             'everything_title' => \App\PageContent::get('why_heartgrams_everything_title', 'Everything included in your Heartgram.'),
-            'everything_description' => \App\PageContent::get('why_heartgrams_everything_description', 'Clear, tangible, and meaningful — here is exactly what you get.'),
+            'everything_description' => \App\PageContent::get('why_heartgrams_everything_description', "Here's exactly what you get with every song."),
             
             'corrections_subtitle' => \App\PageContent::get('why_heartgrams_corrections_subtitle', 'CORRECTIONS POLICY'),
             'corrections_title' => \App\PageContent::get('why_heartgrams_corrections_title', 'Clear corrections. No confusion.'),
@@ -56,38 +56,49 @@ class AdminController extends Controller
             
             'features_subtitle' => \App\PageContent::get('why_heartgrams_features_subtitle', 'THE HEARTGRAMS DIFFERENCE'),
             'features_title' => \App\PageContent::get('why_heartgrams_features_title', 'Crafted with heart. Built around your story.'),
-            'features_description' => \App\PageContent::get('why_heartgrams_features_description', 'Every song is written from scratch, guided by real emotion, and produced to the highest musical standard.'),
+            'features_description' => \App\PageContent::get('why_heartgrams_features_description', 'Every song is written from scratch from your real memories, and every lyric passes our quality check before you see it.'),
             
             'cta_subtitle' => \App\PageContent::get('why_heartgrams_cta_subtitle', 'READY WHEN YOU ARE'),
             'cta_title' => \App\PageContent::get('why_heartgrams_cta_title', 'Some feelings deserve more than a message.'),
             'cta_description' => \App\PageContent::get('why_heartgrams_cta_description', 'Turn your memory into a song they can keep, replay, and feel again.'),
             'cta_button_1_text' => \App\PageContent::get('why_heartgrams_cta_button_1_text', 'Start My Song Story →'),
-            'cta_button_1_link' => \App\PageContent::get('why_heartgrams_cta_button_1_link', '#'),
+            'cta_button_1_link' => \App\PageContent::get('why_heartgrams_cta_button_1_link', '/create-your-heartgram-song'),
             'cta_button_2_text' => \App\PageContent::get('why_heartgrams_cta_button_2_text', 'Chat on WhatsApp'),
-            'cta_button_2_link' => \App\PageContent::get('why_heartgrams_cta_button_2_link', '#'),
+            'cta_button_2_link' => \App\PageContent::get('why_heartgrams_cta_button_2_link', 'https://wa.me/?text=Hi%20Heartgrams%2C%20I%20would%20like%20to%20create%20a%20song'),
             'seo_tags' => \App\PageContent::get('why_heartgrams_seo_tags', ''),
         ];
 
         $defaultFeatures = [
             ['title' => 'Real stories, not templates', 'desc' => 'Every Heartgram is built from scratch using your specific memories, names, and emotions.'],
-            ['title' => 'Human-crafted lyrics', 'desc' => 'A real writer reads your story and writes lyrics that could only belong to you.'],
-            ['title' => 'Native-language warmth', 'desc' => 'Written in the language that feels natural — English, Tamil, Telugu, Malayalam, or Hindi.'],
+            ['title' => 'Human-crafted lyrics', 'desc' => 'A lyricist who writes in your language reads your story and writes lyrics that could only belong to you.'],
+            ['title' => 'Native-language warmth', 'desc' => 'Written in the language that feels natural: Tamil, Malayalam, Kannada, Telugu, Hindi or English.'],
             ['title' => 'Private story promise', 'desc' => 'Your story is used only to create your song and handled with complete confidentiality.'],
             ['title' => 'Replay value for years', 'desc' => 'Unlike flowers or chocolate, a Heartgram can be replayed on anniversaries, birthdays and quiet moments.'],
-            ['title' => 'MP3-ready delivery', 'desc' => 'MP3 and Lyrics PDF delivered via WhatsApp — easy to share instantly or save forever.'],
+            ['title' => 'MP3-ready delivery', 'desc' => 'MP3 and lyrics PDF delivered on WhatsApp and email, easy to share or keep forever.'],
         ];
 
         for ($i = 1; $i <= 6; $i++) {
-            $content["feature_{$i}_title"] = \App\PageContent::get("why_heartgrams_feature_{$i}_title", $defaultFeatures[$i-1]['title']);
-            $content["feature_{$i}_desc"] = \App\PageContent::get("why_heartgrams_feature_{$i}_desc", $defaultFeatures[$i-1]['desc']);
+            $t = \App\PageContent::get("why_heartgrams_feature_{$i}_title", $defaultFeatures[$i-1]['title']);
+            $d = \App\PageContent::get("why_heartgrams_feature_{$i}_desc", $defaultFeatures[$i-1]['desc']);
+            if ($i === 2 && str_contains($d, 'A real writer')) {
+                $d = 'A lyricist who writes in your language reads your story and writes lyrics that could only belong to you.';
+            }
+            if ($i === 3 && str_contains($d, 'English, Tamil, Telugu, Malayalam, or Hindi')) {
+                $d = 'Written in the language that feels natural: Tamil, Malayalam, Kannada, Telugu, Hindi or English.';
+            }
+            if ($i === 6 && str_contains($d, 'delivered via WhatsApp')) {
+                $d = 'MP3 and lyrics PDF delivered on WhatsApp and email, easy to share or keep forever.';
+            }
+            $content["feature_{$i}_title"] = $t;
+            $content["feature_{$i}_desc"] = $d;
         }
         
         $defaultIncluded = [
             ['title' => 'Personalized song', 'desc' => 'A complete song made from your story and emotion — not a template.'],
-            ['title' => 'Custom lyrics', 'desc' => 'Written around your memories, names, moments, and message by a real human writer.'],
+            ['title' => 'Custom lyrics', 'desc' => 'Written by a lyricist in your language, around your memories, names and message.'],
             ['title' => 'MP3 delivery', 'desc' => 'Easy to share privately on WhatsApp, email or personal message. Yours to keep forever.'],
             ['title' => 'Lyrics PDF', 'desc' => 'A clean, readable keepsake version of the lyrics — for framing, printing, or saving.'],
-            ['title' => 'Private gift page', 'desc' => 'A private page with your song, lyrics, and sender note for the recipient.'],
+            ['title' => 'Lyrics you approve', 'desc' => 'Our quality team checks every lyric, then it comes to you. Ask for changes; we make the song only after you approve.'],
         ];
 
         for ($i = 1; $i <= count($defaultIncluded); $i++) {
