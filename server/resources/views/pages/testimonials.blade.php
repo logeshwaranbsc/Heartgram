@@ -9,11 +9,15 @@
 
     @php
         try {
-            $dbTestimonials = \App\Testimonial::where('is_published', true)
-                ->orderBy('sort_order', 'asc')
-                ->orderBy('created_at', 'desc')
-                ->get();
-        } catch (\Exception $e) {
+            if (class_exists(\App\Testimonial::class)) {
+                $dbTestimonials = \App\Testimonial::where('is_published', true)
+                    ->orderBy('sort_order', 'asc')
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+            } else {
+                $dbTestimonials = collect();
+            }
+        } catch (\Throwable $e) {
             $dbTestimonials = collect();
         }
 

@@ -28,8 +28,11 @@ yarn-error.log
 /temp_docx/
 /seo_docx_extracted/
 /reference/
-test*.php
+/test*.php
+!app/Testimonial.php
+!app/Http/Controllers/Admin/TestimonialController.php
 !resources/views/pages/testimonials.blade.php
+!resources/views/admin/testimonials/**
 read_docx.*
 build_seo_*.php
 create_*.php
