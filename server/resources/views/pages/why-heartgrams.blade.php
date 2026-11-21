@@ -666,12 +666,12 @@
             </script>
         </section>
 
-        {{-- Features Grid Section --}}
-        <section class="pt-6 sm:pt-8 lg:pt-10 pb-3 sm:pb-4 lg:pb-5 bg-[#faf6f0]">
+        {{-- Features / Orbit Section --}}
+        <section class="pt-4 sm:pt-6 pb-1 sm:pb-2 bg-gradient-to-b from-[#faf6f0] via-white to-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
-                {{-- Related Section Heading --}}
-                <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14 lg:mb-18">
+                {{-- Section Heading --}}
+                <div class="text-center max-w-3xl mx-auto mb-2 sm:mb-3">
                     <div class="mb-3.5">
                         <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-pink-200/80 text-xs sm:text-sm font-bold tracking-[0.2em] text-[#a84457] uppercase shadow-sm">
                             {{ $content['features_subtitle'] ?? 'THE HEARTGRAMS DIFFERENCE' }}
@@ -684,41 +684,13 @@
                         {{ $content['features_description'] ?? 'Every song is written from scratch from your real memories, and every lyric passes our quality check before you see it.' }}
                     </p>
                 </div>
-
-                {{-- Redesigned Feature Cards Grid --}}
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                    @foreach($features as $feature)
-                        <div class="group relative bg-gradient-to-b from-white via-white to-[#fffcf9] rounded-[24px] sm:rounded-3xl p-6 sm:p-8 lg:p-8 border border-[#eedfd6] hover:border-pink-300 shadow-[0_8px_24px_rgba(74,28,34,0.04)] hover:shadow-[0_20px_40px_rgba(74,28,34,0.1)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between h-full overflow-hidden">
-                            <div>
-                                {{-- Card Header: Icon + Number Badge --}}
-                                <div class="flex items-center justify-between mb-6">
-                                    <div class="w-13 h-13 sm:w-14 sm:h-14 p-3.5 rounded-2xl bg-gradient-to-br from-[#4a1c22] via-maroon-900 to-[#6a1f29] text-white flex items-center justify-center shadow-md shadow-maroon-950/20 group-hover:scale-105 group-hover:bg-gradient-to-br group-hover:from-crimson-600 group-hover:to-maroon-800 transition-all duration-300">
-                                        {!! $feature['icon'] !!}
-                                    </div>
-                                    <span class="text-xs font-mono font-bold tracking-wider text-[#a84457] bg-rose-50/90 border border-rose-200/60 px-3 py-1 rounded-full">
-                                        0{{ $loop->iteration }}
-                                    </span>
-                                </div>
-
-                                {{-- Title --}}
-                                <h3 class="font-serif text-[20px] sm:text-[21px] lg:text-[22px] font-bold text-gray-900 mb-2.5 group-hover:text-maroon-900 transition-colors duration-200 leading-snug">
-                                    {{ $feature['title'] }}
-                                </h3>
-
-                                {{-- Description --}}
-                                <p class="text-[14px] sm:text-[14.5px] text-gray-600 leading-relaxed font-normal">
-                                    {{ $feature['description'] }}
-                                </p>
-                            </div>
-
-                            {{-- Bottom Accent Line --}}
-                            <div class="mt-6 pt-4 border-t border-[#f4e7e1] flex items-center justify-between">
-                                <div class="h-1 w-8 bg-gradient-to-r from-crimson-500 via-pink-400 to-[#e6b04e] rounded-full group-hover:w-full transition-all duration-500"></div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
             </div>
+
+            {{-- Orbit Animation Showcase --}}
+            <x-heartgrams-orbit 
+                logo-src="{{ asset('images/Gemini_Generated_Image_5e5nn25e5nn25e5n-removebg-preview.png') }}"
+                brand-src="{{ asset('images/heartgrams_wordmark.png') }}"
+            />
         </section>
 
         {{-- Corrections Policy Section --}}
