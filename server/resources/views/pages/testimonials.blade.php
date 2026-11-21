@@ -8,7 +8,16 @@
     </x-slot>
 
     @php
-        $testimonials = [
+        try {
+            $dbTestimonials = \App\Testimonial::where('is_published', true)
+                ->orderBy('sort_order', 'asc')
+                ->orderBy('created_at', 'desc')
+                ->get();
+        } catch (\Exception $e) {
+            $dbTestimonials = collect();
+        }
+
+        $defaultTestimonials = [
             // --- CATEGORY 1: VIDEOS (6 Items) ---
             [
                 'id' => 'v1',
@@ -17,6 +26,7 @@
                 'occasion' => '5th Anniversary',
                 'title' => 'I was literally in tears',
                 'text' => "He managed to put 5 years of our relationship into a single song. When the chorus hit with the date we met at the coffee shop, I completely broke down. The best gift I've ever received, hands down.",
+                'video_url' => '',
                 'media' => 'images/anniversary.png',
                 'audio' => 'audio/sample_anniversary.wav',
                 'duration' => '0:48 min',
@@ -243,6 +253,37 @@
                 'location' => 'Gurugram',
             ],
         ];
+
+        if ($dbTestimonials->isNotEmpty()) {
+            $testimonials = $dbTestimonials->map(function ($t) {
+                return [
+                    'id' => (string) $t->id,
+                    'type' => $t->type,
+                    'name' => $t->name,
+                    'occasion' => $t->occasion ?? '',
+                    'title' => $t->title ?? '',
+                    'text' => $t->text ?? '',
+                    'video_url' => $t->video_url ?? '',
+                    'media' => $t->media ?? '',
+                    'audio' => $t->audio ?? '',
+                    'duration' => $t->duration ?? '',
+                    'tag' => $t->tag ?? '',
+                    'rating' => (int) ($t->rating ?? 5),
+                    'location' => $t->location ?? '',
+                    'channel' => $t->channel ?? 'WhatsApp Message',
+                    'time' => $t->time ?? 'Verified Review',
+                    'verified' => true,
+                    'keepsake' => $t->keepsake ?? '',
+                ];
+            })->toArray();
+        } else {
+            $testimonials = $defaultTestimonials;
+        }
+
+        $allCount = count($testimonials);
+        $videoCount = count(array_filter($testimonials, fn($i) => ($i['type'] ?? '') === 'video'));
+        $textCount = count(array_filter($testimonials, fn($i) => ($i['type'] ?? '') === 'text'));
+        $imageCount = count(array_filter($testimonials, fn($i) => ($i['type'] ?? '') === 'image'));
     @endphp
 
     <div 
@@ -264,19 +305,30 @@
                 this.modalType = item.type;
                 this.modalOpen = true;
                 document.body.style.overflow = 'hidden';
-                if (item.type === 'video' && item.audio) {
-                    this.$nextTick(() => {
+                this.$nextTick(() => {
+                    if (item.type === 'video' && item.video_url) {
+                        const video = this.$refs.modalVideo;
+                        if (video) {
+                            video.currentTime = 0;
+                            video.play().catch(() => {});
+                        }
+                    } else if (item.type === 'video' && item.audio) {
                         const audio = this.$refs.modalAudio;
                         if (audio) {
                             audio.currentTime = 0;
                             audio.play().then(() => { this.isPlaying = true; }).catch(() => {});
                         }
-                    });
-                }
+                    }
+                });
             },
             closeModal() {
                 this.modalOpen = false;
                 document.body.style.overflow = 'auto';
+                const video = this.$refs.modalVideo;
+                if (video) {
+                    video.pause();
+                    video.currentTime = 0;
+                }
                 const audio = this.$refs.modalAudio;
                 if (audio) {
                     audio.pause();
@@ -378,7 +430,7 @@
                                 : 'text-brand-dark/70 hover:text-brand-dark hover:bg-pink-50/60'">
                             <span>All Stories</span>
                             <span class="text-[11px] px-2 py-0.5 rounded-full font-bold" 
-                                :class="activeCategory === 'all' ? 'bg-white/20 text-white' : 'bg-gray-100 text-brand-dark/60'">18</span>
+                                :class="activeCategory === 'all' ? 'bg-white/20 text-white' : 'bg-gray-100 text-brand-dark/60'">{{ $allCount }}</span>
                         </button>
 
                         {{-- Tab: Videos --}}
@@ -391,7 +443,7 @@
                                 : 'text-brand-dark/70 hover:text-brand-dark hover:bg-pink-50/60'">
                             <span>🎥 Videos</span>
                             <span class="text-[11px] px-2 py-0.5 rounded-full font-bold" 
-                                :class="activeCategory === 'video' ? 'bg-white/20 text-white' : 'bg-gray-100 text-brand-dark/60'">6</span>
+                                :class="activeCategory === 'video' ? 'bg-white/20 text-white' : 'bg-gray-100 text-brand-dark/60'">{{ $videoCount }}</span>
                         </button>
 
                         {{-- Tab: Texts --}}
@@ -404,7 +456,7 @@
                                 : 'text-brand-dark/70 hover:text-brand-dark hover:bg-pink-50/60'">
                             <span>💬 Texts</span>
                             <span class="text-[11px] px-2 py-0.5 rounded-full font-bold" 
-                                :class="activeCategory === 'text' ? 'bg-white/20 text-white' : 'bg-gray-100 text-brand-dark/60'">6</span>
+                                :class="activeCategory === 'text' ? 'bg-white/20 text-white' : 'bg-gray-100 text-brand-dark/60'">{{ $textCount }}</span>
                         </button>
 
                         {{-- Tab: Images --}}
@@ -417,7 +469,7 @@
                                 : 'text-brand-dark/70 hover:text-brand-dark hover:bg-pink-50/60'">
                             <span>📸 Images</span>
                             <span class="text-[11px] px-2 py-0.5 rounded-full font-bold" 
-                                :class="activeCategory === 'image' ? 'bg-white/20 text-white' : 'bg-gray-100 text-brand-dark/60'">6</span>
+                                :class="activeCategory === 'image' ? 'bg-white/20 text-white' : 'bg-gray-100 text-brand-dark/60'">{{ $imageCount }}</span>
                         </button>
                     </div>
                 </div>
@@ -440,7 +492,7 @@
                                 {{-- Media Thumbnail Container (Clean, No Badges) --}}
                                 <div class="relative h-60 sm:h-64 w-full bg-gray-100 shrink-0 overflow-hidden">
                                     <img 
-                                        src="{{ asset($t['media']) }}" 
+                                        src="{{ !empty($t['media']) ? (str_starts_with($t['media'], 'http') ? $t['media'] : asset($t['media'])) : (!empty($t['video_url']) ? preg_replace('/\.[^.\/]+$/', '.jpg', $t['video_url']) : asset('images/anniversary.png')) }}" 
                                         alt="Review from {{ $t['name'] }}" 
                                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                                     
@@ -539,7 +591,7 @@
                                 {{-- Keepsake Photo Container (Clean, No Badges) --}}
                                 <div class="relative h-60 sm:h-64 w-full bg-gray-100 shrink-0 overflow-hidden">
                                     <img 
-                                        src="{{ asset($t['media']) }}" 
+                                        src="{{ !empty($t['media']) ? (str_starts_with($t['media'], 'http') ? $t['media'] : asset($t['media'])) : asset('images/wedding.png') }}" 
                                         alt="Keepsake from {{ $t['name'] }}" 
                                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                                     
@@ -631,27 +683,43 @@
 
                 {{-- Modal Media --}}
                 <div class="relative w-full bg-black aspect-video flex items-center justify-center overflow-hidden">
-                    <template x-if="modalData">
-                        <img 
-                            :src="'{{ asset('') }}' + modalData.media" 
-                            :alt="modalData.name"
-                            class="w-full h-full object-cover">
+                    {{-- 1. Video Player when Cloudinary video_url is provided --}}
+                    <template x-if="modalType === 'video' && modalData && modalData.video_url">
+                        <video 
+                            x-ref="modalVideo" 
+                            :src="modalData.video_url" 
+                            controls 
+                            playsinline 
+                            class="w-full h-full object-contain bg-black">
+                        </video>
                     </template>
 
-                    {{-- Play / Sound Overlay for Video --}}
-                    <template x-if="modalType === 'video'">
-                        <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center gap-3">
-                            <button 
-                                @click="toggleAudio()"
-                                type="button" 
-                                class="w-16 h-16 rounded-full bg-[#c02d4b] hover:bg-[#8a1c32] text-white flex items-center justify-center shadow-xl hover:scale-110 transition-all">
-                                <svg x-show="!isPlaying" class="w-7 h-7 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                <svg x-show="isPlaying" class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                            </button>
-                            <span class="px-3.5 py-1 rounded-full bg-black/70 backdrop-blur-md text-xs font-semibold text-white">
-                                <span x-show="isPlaying">Playing Original Song Sample 🔊</span>
-                                <span x-show="!isPlaying">Click to Hear Song Sample 🎵</span>
-                            </span>
+                    {{-- 2. Fallback Image / Audio Player when no video_url --}}
+                    <template x-if="modalType !== 'video' || (!modalData?.video_url)">
+                        <div class="relative w-full h-full flex items-center justify-center">
+                            <template x-if="modalData && modalData.media">
+                                <img 
+                                    :src="modalData.media.startsWith('http') ? modalData.media : ('{{ asset('') }}' + modalData.media)" 
+                                    :alt="modalData.name"
+                                    class="w-full h-full object-cover">
+                            </template>
+
+                            {{-- Play / Sound Overlay for Audio Preview --}}
+                            <template x-if="modalType === 'video' && modalData && modalData.audio">
+                                <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center gap-3">
+                                    <button 
+                                        @click="toggleAudio()"
+                                        type="button" 
+                                        class="w-16 h-16 rounded-full bg-[#c02d4b] hover:bg-[#8a1c32] text-white flex items-center justify-center shadow-xl hover:scale-110 transition-all">
+                                        <svg x-show="!isPlaying" class="w-7 h-7 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                        <svg x-show="isPlaying" class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                    </button>
+                                    <span class="px-3.5 py-1 rounded-full bg-black/70 backdrop-blur-md text-xs font-semibold text-white">
+                                        <span x-show="isPlaying">Playing Original Song Sample 🔊</span>
+                                        <span x-show="!isPlaying">Click to Hear Song Sample 🎵</span>
+                                    </span>
+                                </div>
+                            </template>
                         </div>
                     </template>
                 </div>

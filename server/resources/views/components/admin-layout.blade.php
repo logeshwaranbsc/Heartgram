@@ -50,6 +50,11 @@
                     <svg class="{{ request()->routeIs('admin.blogs.*') ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500' }} mr-3 flex-shrink-0 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2.5 2.5 0 00-2.5-2.5H15M9 11l3 3L22 4" /></svg>
                     Blog Posts
                 </a>
+                
+                <a href="{{ route('admin.testimonials.index') }}" class="{{ request()->routeIs('admin.testimonials.*') ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900' }} group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors">
+                    <svg class="{{ request()->routeIs('admin.testimonials.*') ? 'text-[#c02d4b]' : 'text-gray-400 group-hover:text-[#c02d4b]' }} mr-3 flex-shrink-0 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    Testimonials & Reviews
+                </a>
             </nav>
             <div class="p-4 border-t border-gray-200 space-y-2">
                 <a href="{{ url('/') }}" class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">

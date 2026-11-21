@@ -91,6 +91,15 @@ Route::middleware(['auth'])->group(function () {
         'update' => 'admin.blogs.update',
         'destroy' => 'admin.blogs.destroy',
     ]);
+
+    Route::resource('admin/testimonials', \App\Http\Controllers\Admin\TestimonialController::class)->except(['show'])->names([
+        'index' => 'admin.testimonials.index',
+        'create' => 'admin.testimonials.create',
+        'store' => 'admin.testimonials.store',
+        'edit' => 'admin.testimonials.edit',
+        'update' => 'admin.testimonials.update',
+        'destroy' => 'admin.testimonials.destroy',
+    ]);
 });
 
 // Public landing page route
