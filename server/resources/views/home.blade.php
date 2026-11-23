@@ -2,7 +2,7 @@
     {{-- Hero Section --}}
     <section class="relative bg-maroon-900 text-white overflow-hidden flex items-center w-full lg:min-h-[calc(100vh-3.5rem)] lg:min-h-[calc(100dvh-3.5rem)]" style="background-image: url('{{ asset('images/hero_background.png?v=2') }}'); background-size: cover; background-position: center;">
         <div class="absolute inset-0 bg-gradient-to-b from-[#1f070c]/95 via-[#170508]/90 to-[#120306]/95 sm:bg-gradient-to-br sm:from-maroon-900/90 sm:via-maroon-900/80 sm:to-maroon-900/40"></div>
-        <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[74px] pb-6 sm:pt-24 sm:pb-8 lg:pt-[76px] lg:pb-3 xl:pt-[82px] xl:pb-4 flex flex-col justify-center h-full">
+        <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-6 sm:pt-32 sm:pb-8 lg:pt-[76px] lg:pb-3 xl:pt-[82px] xl:pb-4 flex flex-col justify-center h-full">
             <div class="grid lg:grid-cols-2 gap-8 lg:gap-10 xl:gap-14 items-center w-full min-w-0 lg:my-auto">
                 <div class="relative z-10 py-1 w-full max-w-full min-w-0">
                     {{-- Decorative stars left of headline (hidden on mobile to prevent left-side overflow) --}}
@@ -893,7 +893,7 @@
     </section>
 
     {{-- How It Works Section --}}
-    <section class="pt-8 pb-8 sm:pt-10 sm:pb-10 lg:pt-12 lg:pb-12 relative overflow-hidden bg-brand-light select-none" id="how-it-works">
+    <section class="pt-8 pb-8 sm:pt-10 sm:pb-10 lg:pt-12 lg:pb-12 relative overflow-hidden bg-brand-light select-none scroll-mt-24 sm:scroll-mt-28" id="how-it-works">
         
         <div class="max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-12 relative z-10 w-full">
             {{-- Header --}}
@@ -927,7 +927,7 @@
                 <div class="w-full relative px-0.5 sm:px-4 xl:px-0">
                     
                     {{-- Continuous Sinusoidal Wave SVG across all 5 steps --}}
-                    <svg class="absolute top-0 left-0 w-full h-[140px] xs:h-[160px] sm:h-[190px] lg:h-[230px] pointer-events-none z-0" viewBox="0 0 1000 270" preserveAspectRatio="none" fill="none">
+                    <svg class="absolute top-0 left-0 w-full h-[105px] xs:h-[125px] sm:h-[180px] lg:h-[230px] pointer-events-none z-0" viewBox="0 0 1000 270" preserveAspectRatio="none" fill="none">
                         <defs>
                             <filter id="wave-glow" x="-50%" y="-50%" width="200%" height="200%">
                                 <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur1" />
@@ -968,7 +968,7 @@
                     </svg>
 
                     {{-- 5 Steps Horizontal Wave Grid --}}
-                    <div class="grid grid-cols-5 gap-1 xs:gap-1.5 sm:gap-4 lg:gap-6 relative z-10 w-full">
+                    <div class="grid grid-cols-5 gap-0.5 xs:gap-1 sm:gap-4 lg:gap-6 relative z-10 w-full">
                         
                         {{-- Step 1 --}}
                         <div 
@@ -977,9 +977,9 @@
                             data-step="0"
                         >
                             {{-- Number --}}
-                            <div class="h-[44px] xs:h-[52px] sm:h-[70px] lg:h-[84px] flex items-center justify-center">
+                            <div class="h-[32px] xs:h-[40px] sm:h-[64px] lg:h-[84px] flex items-center justify-center">
                                 <span 
-                                    class="font-display text-[1.75rem] xs:text-[2.1rem] sm:text-[3.4rem] lg:text-[5.2rem] font-bold leading-none tracking-tight select-none transition-all duration-300 bg-clip-text text-transparent"
+                                    class="font-display text-[1.35rem] xs:text-[1.65rem] sm:text-[3.2rem] lg:text-[5.2rem] font-bold leading-none tracking-tight select-none transition-all duration-300 bg-clip-text text-transparent"
                                     :class="completedSteps >= 1 
                                         ? 'bg-gradient-to-b from-[#EA4C70] via-[#F0728F] to-[#F8AAB9] opacity-100 drop-shadow-[0_4px_16px_rgba(234,76,112,0.25)]' 
                                         : 'bg-gradient-to-b from-[#F7B6C4] via-[#FAD0D9] to-[#FDE8EE] opacity-80'"
@@ -990,10 +990,10 @@
                             
                             {{-- Icon: Heart with radiant rays --}}
                             <div 
-                                class="h-[24px] xs:h-[28px] sm:h-[30px] lg:h-[34px] flex items-center justify-center mb-0.5 sm:mb-1 text-[#9E2A4B] transition-colors duration-300 group-hover:text-crimson-600"
+                                class="h-[20px] xs:h-[24px] sm:h-[30px] lg:h-[34px] flex items-center justify-center mb-0.5 sm:mb-1 text-[#9E2A4B] transition-colors duration-300 group-hover:text-crimson-600"
                                 :class="completedSteps >= 1 ? 'text-crimson-600 opacity-100' : 'text-[#9E2A4B] opacity-80'"
                             >
-                                <svg class="w-4.5 h-4.5 xs:w-5 xs:h-5 sm:w-6.5 sm:h-6.5 lg:w-8 lg:h-8" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <svg class="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-6.5 sm:h-6.5 lg:w-8 lg:h-8" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M22 30.5c-4.2-3.3-9-7.5-9-12a5 5 0 0 1 8.5-3.5L22 15.5l.5-.5a5 5 0 0 1 8.5 3.5c0 4.5-4.8 8.7-9 12z" />
                                     <line x1="10" y1="14" x2="7" y2="12" />
                                     <line x1="7" y1="19" x2="4" y2="19" />
@@ -1005,9 +1005,9 @@
                             </div>
 
                             {{-- Node on the Wave Container --}}
-                            <div class="h-8 xs:h-9 sm:h-11 lg:h-14 w-full flex items-center justify-center relative">
+                            <div class="h-6 xs:h-7 sm:h-11 lg:h-14 w-full flex items-center justify-center relative">
                                 <div 
-                                    class="relative z-10 w-3 h-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 lg:w-4.5 lg:h-4.5 rounded-full bg-white flex items-center justify-center transition-all duration-300 transform translate-y-0"
+                                    class="relative z-10 w-2.5 h-2.5 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 lg:w-4.5 lg:h-4.5 rounded-full bg-white flex items-center justify-center transition-all duration-300 transform translate-y-0"
                                     :class="activePulseNode === 1 
                                         ? 'border-2 border-[#E11D48] ring-2 sm:ring-4 ring-[#FF4D7D]/40 shadow-[0_0_15px_rgba(255,77,125,0.8)] opacity-100 scale-110' 
                                         : (completedSteps >= 1 
@@ -1023,16 +1023,16 @@
 
                             {{-- Step Badge --}}
                             <span 
-                                class="inline-flex items-center px-1.5 xs:px-2 sm:px-2.5 lg:px-3 py-0.5 rounded-full text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] lg:text-[10.5px] tracking-[0.06em] sm:tracking-[0.14em] uppercase mb-1 sm:mb-2 transition-all duration-300 font-bold bg-[#FCE8ED] text-[#9E2A4B] border border-pink-200/60 shadow-2xs group-hover:bg-pink-100"
+                                class="whitespace-nowrap inline-flex items-center px-1 xs:px-1.5 sm:px-2.5 lg:px-3 py-0.5 rounded-full text-[7px] xs:text-[8px] sm:text-[9.5px] lg:text-[10.5px] tracking-normal sm:tracking-[0.14em] uppercase mb-1 sm:mb-2 transition-all duration-300 font-bold bg-[#FCE8ED] text-[#9E2A4B] border border-pink-200/60 shadow-2xs group-hover:bg-pink-100"
                                 :class="completedSteps >= 1 ? 'opacity-100' : 'opacity-85'"
                             >
                                 STEP 1
                             </span>
 
                             {{-- Description Text --}}
-                            <div class="min-h-[42px] xs:min-h-[48px] sm:min-h-[54px] lg:min-h-[62px] flex items-start justify-center w-full">
+                            <div class="min-h-[36px] xs:min-h-[42px] sm:min-h-[54px] lg:min-h-[62px] flex items-start justify-center w-full px-0.5">
                                 <p 
-                                    class="font-display text-[9px] xs:text-[10px] sm:text-[12px] lg:text-[14.5px] leading-[1.2] xs:leading-[1.25] sm:leading-[1.35] text-center max-w-[185px] text-[#3D141E] font-medium transition-colors duration-300 group-hover:text-black"
+                                    class="font-sans text-[7.5px] xs:text-[8.5px] sm:font-display sm:text-[12px] lg:text-[14.5px] leading-[1.2] xs:leading-[1.25] sm:leading-[1.35] text-center max-w-[185px] text-[#3D141E] font-medium transition-colors duration-300 group-hover:text-black"
                                     :class="completedSteps >= 1 ? 'opacity-100 text-[#1F050B]' : 'opacity-80 text-[#3D141E]'"
                                 >
                                     Choose your emotion or occasion.
@@ -1047,9 +1047,9 @@
                             data-step="1"
                         >
                             {{-- Number --}}
-                            <div class="h-[44px] xs:h-[52px] sm:h-[70px] lg:h-[84px] flex items-center justify-center">
+                            <div class="h-[32px] xs:h-[40px] sm:h-[64px] lg:h-[84px] flex items-center justify-center">
                                 <span 
-                                    class="font-display text-[1.75rem] xs:text-[2.1rem] sm:text-[3.4rem] lg:text-[5.2rem] font-bold leading-none tracking-tight select-none transition-all duration-300 bg-clip-text text-transparent"
+                                    class="font-display text-[1.35rem] xs:text-[1.65rem] sm:text-[3.2rem] lg:text-[5.2rem] font-bold leading-none tracking-tight select-none transition-all duration-300 bg-clip-text text-transparent"
                                     :class="completedSteps >= 2 
                                         ? 'bg-gradient-to-b from-[#EA4C70] via-[#F0728F] to-[#F8AAB9] opacity-100 drop-shadow-[0_4px_16px_rgba(234,76,112,0.25)]' 
                                         : 'bg-gradient-to-b from-[#F7B6C4] via-[#FAD0D9] to-[#FDE8EE] opacity-80'"
@@ -1060,10 +1060,10 @@
 
                             {{-- Icon: Notepad with pen & heart --}}
                             <div 
-                                class="h-[24px] xs:h-[28px] sm:h-[30px] lg:h-[34px] flex items-center justify-center mb-0.5 sm:mb-1 text-[#9E2A4B] transition-colors duration-300 group-hover:text-crimson-600"
+                                class="h-[20px] xs:h-[24px] sm:h-[30px] lg:h-[34px] flex items-center justify-center mb-0.5 sm:mb-1 text-[#9E2A4B] transition-colors duration-300 group-hover:text-crimson-600"
                                 :class="completedSteps >= 2 ? 'text-crimson-600 opacity-100' : 'text-[#9E2A4B] opacity-80'"
                             >
-                                <svg class="w-4.5 h-4.5 xs:w-5 xs:h-5 sm:w-6.5 sm:h-6.5 lg:w-8 lg:h-8" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <svg class="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-6.5 sm:h-6.5 lg:w-8 lg:h-8" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                                     <rect x="11" y="9" width="18" height="25" rx="2.5" />
                                     <line x1="15" y1="14" x2="23" y2="14" />
                                     <line x1="15" y1="18.5" x2="21" y2="18.5" />
@@ -1073,9 +1073,9 @@
                             </div>
 
                             {{-- Node on the Wave Container --}}
-                            <div class="h-8 xs:h-9 sm:h-11 lg:h-14 w-full flex items-center justify-center relative">
+                            <div class="h-6 xs:h-7 sm:h-11 lg:h-14 w-full flex items-center justify-center relative">
                                 <div 
-                                    class="relative z-10 w-3 h-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 lg:w-4.5 lg:h-4.5 rounded-full bg-white flex items-center justify-center transition-all duration-300 transform translate-y-1.5 xs:translate-y-2 sm:translate-y-3 lg:translate-y-4"
+                                    class="relative z-10 w-2.5 h-2.5 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 lg:w-4.5 lg:h-4.5 rounded-full bg-white flex items-center justify-center transition-all duration-300 transform translate-y-1 sm:translate-y-3 lg:translate-y-4"
                                     :class="activePulseNode === 2 
                                         ? 'border-2 border-[#E11D48] ring-2 sm:ring-4 ring-[#FF4D7D]/40 shadow-[0_0_15px_rgba(255,77,125,0.8)] opacity-100 scale-110' 
                                         : (completedSteps >= 2 
@@ -1091,16 +1091,16 @@
 
                             {{-- Step Badge --}}
                             <span 
-                                class="inline-flex items-center px-1.5 xs:px-2 sm:px-2.5 lg:px-3 py-0.5 rounded-full text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] lg:text-[10.5px] tracking-[0.06em] sm:tracking-[0.14em] uppercase mb-1 sm:mb-2 transition-all duration-300 font-bold bg-[#FCE8ED] text-[#9E2A4B] border border-pink-200/60 shadow-2xs group-hover:bg-pink-100"
+                                class="whitespace-nowrap inline-flex items-center px-1 xs:px-1.5 sm:px-2.5 lg:px-3 py-0.5 rounded-full text-[7px] xs:text-[8px] sm:text-[9.5px] lg:text-[10.5px] tracking-normal sm:tracking-[0.14em] uppercase mb-1 sm:mb-2 transition-all duration-300 font-bold bg-[#FCE8ED] text-[#9E2A4B] border border-pink-200/60 shadow-2xs group-hover:bg-pink-100"
                                 :class="completedSteps >= 2 ? 'opacity-100' : 'opacity-85'"
                             >
                                 STEP 2
                             </span>
 
                             {{-- Description Text --}}
-                            <div class="min-h-[42px] xs:min-h-[48px] sm:min-h-[54px] lg:min-h-[62px] flex items-start justify-center w-full">
+                            <div class="min-h-[36px] xs:min-h-[42px] sm:min-h-[54px] lg:min-h-[62px] flex items-start justify-center w-full px-0.5">
                                 <p 
-                                    class="font-display text-[9px] xs:text-[10px] sm:text-[12px] lg:text-[14.5px] leading-[1.2] xs:leading-[1.25] sm:leading-[1.35] text-center max-w-[185px] text-[#3D141E] font-medium transition-colors duration-300 group-hover:text-black"
+                                    class="font-sans text-[7.5px] xs:text-[8.5px] sm:font-display sm:text-[12px] lg:text-[14.5px] leading-[1.2] xs:leading-[1.25] sm:leading-[1.35] text-center max-w-[185px] text-[#3D141E] font-medium transition-colors duration-300 group-hover:text-black"
                                     :class="completedSteps >= 2 ? 'opacity-100 text-[#1F050B]' : 'opacity-80 text-[#3D141E]'"
                                 >
                                     Tell us your story in our short form.
@@ -1115,9 +1115,9 @@
                             data-step="2"
                         >
                             {{-- Number --}}
-                            <div class="h-[44px] xs:h-[52px] sm:h-[70px] lg:h-[84px] flex items-center justify-center">
+                            <div class="h-[32px] xs:h-[40px] sm:h-[64px] lg:h-[84px] flex items-center justify-center">
                                 <span 
-                                    class="font-display text-[1.75rem] xs:text-[2.1rem] sm:text-[3.4rem] lg:text-[5.2rem] font-bold leading-none tracking-tight select-none transition-all duration-300 bg-clip-text text-transparent"
+                                    class="font-display text-[1.35rem] xs:text-[1.65rem] sm:text-[3.2rem] lg:text-[5.2rem] font-bold leading-none tracking-tight select-none transition-all duration-300 bg-clip-text text-transparent"
                                     :class="completedSteps >= 3 
                                         ? 'bg-gradient-to-b from-[#EA4C70] via-[#F0728F] to-[#F8AAB9] opacity-100 drop-shadow-[0_4px_16px_rgba(234,76,112,0.25)]' 
                                         : 'bg-gradient-to-b from-[#F7B6C4] via-[#FAD0D9] to-[#FDE8EE] opacity-80'"
@@ -1128,10 +1128,10 @@
 
                             {{-- Icon: Musical eighth notes with sparkles --}}
                             <div 
-                                class="h-[24px] xs:h-[28px] sm:h-[30px] lg:h-[34px] flex items-center justify-center mb-0.5 sm:mb-1 text-[#9E2A4B] transition-colors duration-300 group-hover:text-crimson-600"
+                                class="h-[20px] xs:h-[24px] sm:h-[30px] lg:h-[34px] flex items-center justify-center mb-0.5 sm:mb-1 text-[#9E2A4B] transition-colors duration-300 group-hover:text-crimson-600"
                                 :class="completedSteps >= 3 ? 'text-crimson-600 opacity-100' : 'text-[#9E2A4B] opacity-80'"
                             >
-                                <svg class="w-4.5 h-4.5 xs:w-5 xs:h-5 sm:w-6.5 sm:h-6.5 lg:w-8 lg:h-8" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <svg class="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-6.5 sm:h-6.5 lg:w-8 lg:h-8" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                                     <ellipse cx="18" cy="28.5" rx="3.2" ry="2.2" transform="rotate(-15 18 28.5)" fill="currentColor" stroke="none" />
                                     <ellipse cx="27" cy="24.5" rx="3.2" ry="2.2" transform="rotate(-15 27 24.5)" fill="currentColor" stroke="none" />
                                     <line x1="20.8" y1="27.5" x2="20.8" y2="14" />
@@ -1144,9 +1144,9 @@
                             </div>
 
                             {{-- Node on the Wave Container --}}
-                            <div class="h-8 xs:h-9 sm:h-11 lg:h-14 w-full flex items-center justify-center relative">
+                            <div class="h-6 xs:h-7 sm:h-11 lg:h-14 w-full flex items-center justify-center relative">
                                 <div 
-                                    class="relative z-10 w-3 h-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 lg:w-4.5 lg:h-4.5 rounded-full bg-white flex items-center justify-center transition-all duration-300 transform -translate-y-1.5 xs:-translate-y-2 sm:-translate-y-3 lg:-translate-y-4"
+                                    class="relative z-10 w-2.5 h-2.5 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 lg:w-4.5 lg:h-4.5 rounded-full bg-white flex items-center justify-center transition-all duration-300 transform -translate-y-1 sm:-translate-y-3 lg:-translate-y-4"
                                     :class="activePulseNode === 3 
                                         ? 'border-2 border-[#E11D48] ring-2 sm:ring-4 ring-[#FF4D7D]/40 shadow-[0_0_15px_rgba(255,77,125,0.8)] opacity-100 scale-110' 
                                         : (completedSteps >= 3 
@@ -1162,16 +1162,16 @@
 
                             {{-- Step Badge --}}
                             <span 
-                                class="inline-flex items-center px-1.5 xs:px-2 sm:px-2.5 lg:px-3 py-0.5 rounded-full text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] lg:text-[10.5px] tracking-[0.06em] sm:tracking-[0.14em] uppercase mb-1 sm:mb-2 transition-all duration-300 font-bold bg-[#FCE8ED] text-[#9E2A4B] border border-pink-200/60 shadow-2xs group-hover:bg-pink-100"
+                                class="whitespace-nowrap inline-flex items-center px-1 xs:px-1.5 sm:px-2.5 lg:px-3 py-0.5 rounded-full text-[7px] xs:text-[8px] sm:text-[9.5px] lg:text-[10.5px] tracking-normal sm:tracking-[0.14em] uppercase mb-1 sm:mb-2 transition-all duration-300 font-bold bg-[#FCE8ED] text-[#9E2A4B] border border-pink-200/60 shadow-2xs group-hover:bg-pink-100"
                                 :class="completedSteps >= 3 ? 'opacity-100' : 'opacity-85'"
                             >
                                 STEP 3
                             </span>
 
                             {{-- Description Text --}}
-                            <div class="min-h-[42px] xs:min-h-[48px] sm:min-h-[54px] lg:min-h-[62px] flex items-start justify-center w-full">
+                            <div class="min-h-[36px] xs:min-h-[42px] sm:min-h-[54px] lg:min-h-[62px] flex items-start justify-center w-full px-0.5">
                                 <p 
-                                    class="font-display text-[9px] xs:text-[10px] sm:text-[12px] lg:text-[14.5px] leading-[1.2] xs:leading-[1.25] sm:leading-[1.35] text-center max-w-[195px] text-[#3D141E] font-medium transition-colors duration-300 group-hover:text-black"
+                                    class="font-sans text-[7.5px] xs:text-[8.5px] sm:font-display sm:text-[12px] lg:text-[14.5px] leading-[1.2] xs:leading-[1.25] sm:leading-[1.35] text-center max-w-[195px] text-[#3D141E] font-medium transition-colors duration-300 group-hover:text-black"
                                     :class="completedSteps >= 3 ? 'opacity-100 text-[#1F050B]' : 'opacity-80 text-[#3D141E]'"
                                 >
                                     A lyricist writes it. You approve it.
@@ -1186,9 +1186,9 @@
                             data-step="3"
                         >
                             {{-- Number --}}
-                            <div class="h-[44px] xs:h-[52px] sm:h-[70px] lg:h-[84px] flex items-center justify-center">
+                            <div class="h-[32px] xs:h-[40px] sm:h-[64px] lg:h-[84px] flex items-center justify-center">
                                 <span 
-                                    class="font-display text-[1.75rem] xs:text-[2.1rem] sm:text-[3.4rem] lg:text-[5.2rem] font-bold leading-none tracking-tight select-none transition-all duration-300 bg-clip-text text-transparent"
+                                    class="font-display text-[1.35rem] xs:text-[1.65rem] sm:text-[3.2rem] lg:text-[5.2rem] font-bold leading-none tracking-tight select-none transition-all duration-300 bg-clip-text text-transparent"
                                     :class="completedSteps >= 4 
                                         ? 'bg-gradient-to-b from-[#EA4C70] via-[#F0728F] to-[#F8AAB9] opacity-100 drop-shadow-[0_4px_16px_rgba(234,76,112,0.25)]' 
                                         : 'bg-gradient-to-b from-[#F7B6C4] via-[#FAD0D9] to-[#FDE8EE] opacity-80'"
@@ -1199,10 +1199,10 @@
 
                             {{-- Icon: Mail delivery envelope with speed lines & heart --}}
                             <div 
-                                class="h-[24px] xs:h-[28px] sm:h-[30px] lg:h-[34px] flex items-center justify-center mb-0.5 sm:mb-1 text-[#9E2A4B] transition-colors duration-300 group-hover:text-crimson-600"
+                                class="h-[20px] xs:h-[24px] sm:h-[30px] lg:h-[34px] flex items-center justify-center mb-0.5 sm:mb-1 text-[#9E2A4B] transition-colors duration-300 group-hover:text-crimson-600"
                                 :class="completedSteps >= 4 ? 'text-crimson-600 opacity-100' : 'text-[#9E2A4B] opacity-80'"
                             >
-                                <svg class="w-4.5 h-4.5 xs:w-5 xs:h-5 sm:w-6.5 sm:h-6.5 lg:w-8 lg:h-8" viewBox="0 0 48 44" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <svg class="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-6.5 sm:h-6.5 lg:w-8 lg:h-8" viewBox="0 0 48 44" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                                     <line x1="7" y1="17" x2="12" y2="17" />
                                     <line x1="5" y1="22" x2="11" y2="22" />
                                     <line x1="7" y1="27" x2="12" y2="27" />
@@ -1213,9 +1213,9 @@
                             </div>
 
                             {{-- Node on the Wave Container --}}
-                            <div class="h-8 xs:h-9 sm:h-11 lg:h-14 w-full flex items-center justify-center relative">
+                            <div class="h-6 xs:h-7 sm:h-11 lg:h-14 w-full flex items-center justify-center relative">
                                 <div 
-                                    class="relative z-10 w-3 h-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 lg:w-4.5 lg:h-4.5 rounded-full bg-white flex items-center justify-center transition-all duration-300 transform translate-y-1.5 xs:translate-y-2 sm:translate-y-3 lg:translate-y-4"
+                                    class="relative z-10 w-2.5 h-2.5 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 lg:w-4.5 lg:h-4.5 rounded-full bg-white flex items-center justify-center transition-all duration-300 transform translate-y-1 sm:translate-y-3 lg:translate-y-4"
                                     :class="activePulseNode === 4 
                                         ? 'border-2 border-[#E11D48] ring-2 sm:ring-4 ring-[#FF4D7D]/40 shadow-[0_0_15px_rgba(255,77,125,0.8)] opacity-100 scale-110' 
                                         : (completedSteps >= 4 
@@ -1231,16 +1231,16 @@
 
                             {{-- Step Badge --}}
                             <span 
-                                class="inline-flex items-center px-1.5 xs:px-2 sm:px-2.5 lg:px-3 py-0.5 rounded-full text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] lg:text-[10.5px] tracking-[0.06em] sm:tracking-[0.14em] uppercase mb-1 sm:mb-2 transition-all duration-300 font-bold bg-[#FCE8ED] text-[#9E2A4B] border border-pink-200/60 shadow-2xs group-hover:bg-pink-100"
+                                class="whitespace-nowrap inline-flex items-center px-1 xs:px-1.5 sm:px-2.5 lg:px-3 py-0.5 rounded-full text-[7px] xs:text-[8px] sm:text-[9.5px] lg:text-[10.5px] tracking-normal sm:tracking-[0.14em] uppercase mb-1 sm:mb-2 transition-all duration-300 font-bold bg-[#FCE8ED] text-[#9E2A4B] border border-pink-200/60 shadow-2xs group-hover:bg-pink-100"
                                 :class="completedSteps >= 4 ? 'opacity-100' : 'opacity-85'"
                             >
                                 STEP 4
                             </span>
 
                             {{-- Description Text --}}
-                            <div class="min-h-[42px] xs:min-h-[48px] sm:min-h-[54px] lg:min-h-[62px] flex items-start justify-center w-full">
+                            <div class="min-h-[36px] xs:min-h-[42px] sm:min-h-[54px] lg:min-h-[62px] flex items-start justify-center w-full px-0.5">
                                 <p 
-                                    class="font-display text-[9px] xs:text-[10px] sm:text-[12px] lg:text-[14.5px] leading-[1.2] xs:leading-[1.25] sm:leading-[1.35] text-center max-w-[195px] text-[#3D141E] font-medium transition-colors duration-300 group-hover:text-black"
+                                    class="font-sans text-[7.5px] xs:text-[8.5px] sm:font-display sm:text-[12px] lg:text-[14.5px] leading-[1.2] xs:leading-[1.25] sm:leading-[1.35] text-center max-w-[195px] text-[#3D141E] font-medium transition-colors duration-300 group-hover:text-black"
                                     :class="completedSteps >= 4 ? 'opacity-100 text-[#1F050B]' : 'opacity-80 text-[#3D141E]'"
                                 >
                                     Song + lyrics PDF in 3-5 days.
@@ -1255,9 +1255,9 @@
                             data-step="4"
                         >
                             {{-- Number --}}
-                            <div class="h-[44px] xs:h-[52px] sm:h-[70px] lg:h-[84px] flex items-center justify-center">
+                            <div class="h-[32px] xs:h-[40px] sm:h-[64px] lg:h-[84px] flex items-center justify-center">
                                 <span 
-                                    class="font-display text-[1.75rem] xs:text-[2.1rem] sm:text-[3.4rem] lg:text-[5.2rem] font-bold leading-none tracking-tight select-none transition-all duration-300 bg-clip-text text-transparent"
+                                    class="font-display text-[1.35rem] xs:text-[1.65rem] sm:text-[3.2rem] lg:text-[5.2rem] font-bold leading-none tracking-tight select-none transition-all duration-300 bg-clip-text text-transparent"
                                     :class="completedSteps >= 5 
                                         ? 'bg-gradient-to-b from-[#EA4C70] via-[#F0728F] to-[#F8AAB9] opacity-100 drop-shadow-[0_4px_16px_rgba(234,76,112,0.25)]' 
                                         : 'bg-gradient-to-b from-[#F7B6C4] via-[#FAD0D9] to-[#FDE8EE] opacity-80'"
@@ -1268,10 +1268,10 @@
 
                             {{-- Icon: Party popper with celebration hearts --}}
                             <div 
-                                class="h-[24px] xs:h-[28px] sm:h-[30px] lg:h-[34px] flex items-center justify-center mb-0.5 sm:mb-1 text-[#9E2A4B] transition-colors duration-300 group-hover:text-crimson-600"
+                                class="h-[20px] xs:h-[24px] sm:h-[30px] lg:h-[34px] flex items-center justify-center mb-0.5 sm:mb-1 text-[#9E2A4B] transition-colors duration-300 group-hover:text-crimson-600"
                                 :class="completedSteps >= 5 ? 'text-crimson-600 opacity-100' : 'text-[#9E2A4B] opacity-80'"
                             >
-                                <svg class="w-4.5 h-4.5 xs:w-5 xs:h-5 sm:w-6.5 sm:h-6.5 lg:w-8 lg:h-8" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <svg class="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-6.5 sm:h-6.5 lg:w-8 lg:h-8" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M14 32l13-5.5-5.5-13-7.5 18.5z" />
                                     <line x1="17" y1="24.5" x2="21.5" y2="26.5" />
                                     <line x1="15.5" y1="28" x2="20" y2="30" />
@@ -1284,9 +1284,9 @@
                             </div>
 
                             {{-- Node on the Wave Container --}}
-                            <div class="h-8 xs:h-9 sm:h-11 lg:h-14 w-full flex items-center justify-center relative">
+                            <div class="h-6 xs:h-7 sm:h-11 lg:h-14 w-full flex items-center justify-center relative">
                                 <div 
-                                    class="relative z-10 w-3 h-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 lg:w-4.5 lg:h-4.5 rounded-full bg-white flex items-center justify-center transition-all duration-300 transform translate-y-0"
+                                    class="relative z-10 w-2.5 h-2.5 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 lg:w-4.5 lg:h-4.5 rounded-full bg-white flex items-center justify-center transition-all duration-300 transform translate-y-0"
                                     :class="activePulseNode === 5 
                                         ? 'border-2 border-[#E11D48] ring-2 sm:ring-4 ring-[#FF4D7D]/40 shadow-[0_0_15px_rgba(255,77,125,0.8)] opacity-100 scale-110' 
                                         : (completedSteps >= 5 
@@ -1302,16 +1302,16 @@
 
                             {{-- Step Badge --}}
                             <span 
-                                class="inline-flex items-center px-1.5 xs:px-2 sm:px-2.5 lg:px-3 py-0.5 rounded-full text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] lg:text-[10.5px] tracking-[0.06em] sm:tracking-[0.14em] uppercase mb-1 sm:mb-2 transition-all duration-300 font-bold bg-[#FCE8ED] text-[#9E2A4B] border border-pink-200/60 shadow-2xs group-hover:bg-pink-100"
+                                class="whitespace-nowrap inline-flex items-center px-1 xs:px-1.5 sm:px-2.5 lg:px-3 py-0.5 rounded-full text-[7px] xs:text-[8px] sm:text-[9.5px] lg:text-[10.5px] tracking-normal sm:tracking-[0.14em] uppercase mb-1 sm:mb-2 transition-all duration-300 font-bold bg-[#FCE8ED] text-[#9E2A4B] border border-pink-200/60 shadow-2xs group-hover:bg-pink-100"
                                 :class="completedSteps >= 5 ? 'opacity-100' : 'opacity-85'"
                             >
                                 STEP 5
                             </span>
 
                             {{-- Description Text --}}
-                            <div class="min-h-[42px] xs:min-h-[48px] sm:min-h-[54px] lg:min-h-[62px] flex items-start justify-center w-full">
+                            <div class="min-h-[36px] xs:min-h-[42px] sm:min-h-[54px] lg:min-h-[62px] flex items-start justify-center w-full px-0.5">
                                 <p 
-                                    class="font-display text-[9px] xs:text-[10px] sm:text-[12px] lg:text-[14.5px] leading-[1.2] xs:leading-[1.25] sm:leading-[1.35] text-center max-w-[185px] text-[#3D141E] font-medium transition-colors duration-300 group-hover:text-black"
+                                    class="font-sans text-[7.5px] xs:text-[8.5px] sm:font-display sm:text-[12px] lg:text-[14.5px] leading-[1.2] xs:leading-[1.25] sm:leading-[1.35] text-center max-w-[195px] text-[#3D141E] font-medium transition-colors duration-300 group-hover:text-black"
                                     :class="completedSteps >= 5 ? 'opacity-100 text-[#1F050B]' : 'opacity-80 text-[#3D141E]'"
                                 >
                                     Play it for them. Watch their face.
@@ -1393,19 +1393,19 @@
 
                                 // High-speed, energetic looping timeline (Fast & responsive):
                                 const stages = [
-                                    { type: 'enter', fromL: 0, toL: nodeLengths[0], duration: 250 },
-                                    { type: 'cross', step: 1, length: nodeLengths[0], duration: 180 },
-                                    { type: 'move', fromL: nodeLengths[0], toL: nodeLengths[1], duration: 360 },
-                                    { type: 'cross', step: 2, length: nodeLengths[1], duration: 180 },
-                                    { type: 'move', fromL: nodeLengths[1], toL: nodeLengths[2], duration: 360 },
-                                    { type: 'cross', step: 3, length: nodeLengths[2], duration: 180 },
-                                    { type: 'move', fromL: nodeLengths[2], toL: nodeLengths[3], duration: 360 },
-                                    { type: 'cross', step: 4, length: nodeLengths[3], duration: 180 },
-                                    { type: 'move', fromL: nodeLengths[3], toL: nodeLengths[4], duration: 360 },
-                                    { type: 'cross', step: 5, length: nodeLengths[4], duration: 250 },
-                                    { type: 'exit', fromL: nodeLengths[4], toL: totalLength, duration: 250 },
-                                    { type: 'hold', duration: 2200 }, // Hold all 5 steps illuminated for 2.2s
-                                    { type: 'reset', duration: 200 }  // Quick smooth reset
+                                    { type: 'enter', fromL: 0, toL: nodeLengths[0], duration: 160 },
+                                    { type: 'cross', step: 1, length: nodeLengths[0], duration: 140 },
+                                    { type: 'move', fromL: nodeLengths[0], toL: nodeLengths[1], duration: 220 },
+                                    { type: 'cross', step: 2, length: nodeLengths[1], duration: 140 },
+                                    { type: 'move', fromL: nodeLengths[1], toL: nodeLengths[2], duration: 220 },
+                                    { type: 'cross', step: 3, length: nodeLengths[2], duration: 140 },
+                                    { type: 'move', fromL: nodeLengths[2], toL: nodeLengths[3], duration: 220 },
+                                    { type: 'cross', step: 4, length: nodeLengths[3], duration: 140 },
+                                    { type: 'move', fromL: nodeLengths[3], toL: nodeLengths[4], duration: 220 },
+                                    { type: 'cross', step: 5, length: nodeLengths[4], duration: 180 },
+                                    { type: 'exit', fromL: nodeLengths[4], toL: totalLength, duration: 160 },
+                                    { type: 'hold', duration: 1600 }, // Hold all 5 steps illuminated for 1.6s
+                                    { type: 'reset', duration: 150 }  // Quick smooth reset
                                 ];
 
                                 const totalDuration = stages.reduce((acc, s) => acc + s.duration, 0);
