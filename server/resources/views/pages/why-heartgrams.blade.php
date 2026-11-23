@@ -23,16 +23,33 @@
             <div class="absolute inset-0 bg-gradient-to-b from-[#240a0e]/80 via-[#1a060b]/85 to-[#120306]/95 z-10 pointer-events-none"></div>
 
             <div class="relative z-20 max-w-4xl mx-auto flex flex-col items-center">
-                {{-- Dynamic Title: Gold text & Brand Logo replacing Heartgrams text --}}
+                {{-- Subtitle badge if set --}}
+                @if(!empty($content['hero_subtitle']))
+                    <div class="mb-3 sm:mb-4">
+                        <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs font-bold tracking-[0.2em] text-[#e6b04e] uppercase shadow-sm">
+                            {{ $content['hero_subtitle'] }}
+                        </span>
+                    </div>
+                @endif
+
+                {{-- Dynamic Title: Gold text & Brand Logo or Yellow Italic Highlight --}}
                 <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-medium leading-tight mb-4 sm:mb-5 drop-shadow-lg max-w-3xl flex flex-col items-center justify-center gap-2.5 sm:gap-3.5">
                     <span class="bg-gradient-to-r from-[#B8841B] via-[#DCA838] to-[#A27010] bg-clip-text text-transparent">
                         {{ $content['hero_title'] ?? 'Why choose a personalised song from Heartgrams?' }}
                     </span>
                     
-                    {{-- Logo replacing heartgram text --}}
-                    <div class="inline-flex items-center justify-center bg-white/95 backdrop-blur-md px-5 sm:px-7 py-2 sm:py-2.5 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.3)] border border-white/60 hover:scale-105 transition-all duration-300">
-                        <img src="{{ asset('images/logo.png') }}" alt="Heartgrams" class="h-6 sm:h-7 md:h-8 w-auto drop-shadow-sm">
-                    </div>
+                    @if(!empty($content['hero_highlight']))
+                        @if(strtolower(trim($content['hero_highlight'])) === 'heartgrams' || strtolower(trim($content['hero_highlight'])) === 'heartgram')
+                            {{-- Logo replacing heartgram text --}}
+                            <div class="inline-flex items-center justify-center bg-white/95 backdrop-blur-md px-5 sm:px-7 py-2 sm:py-2.5 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.3)] border border-white/60 hover:scale-105 transition-all duration-300">
+                                <img src="{{ asset('images/logo.png') }}" alt="Heartgrams" class="h-6 sm:h-7 md:h-8 w-auto drop-shadow-sm">
+                            </div>
+                        @else
+                            <span class="text-[#e6b04e] italic font-serif text-2xl sm:text-3xl md:text-4xl">
+                                {{ $content['hero_highlight'] }}
+                            </span>
+                        @endif
+                    @endif
                 </h1>
                 
                 {{-- Dynamic Description --}}
@@ -690,6 +707,7 @@
             <x-heartgrams-orbit 
                 logo-src="{{ asset('images/Gemini_Generated_Image_5e5nn25e5nn25e5n-removebg-preview.png') }}"
                 brand-src="{{ asset('images/heartgrams_wordmark.png') }}"
+                :items="array_column($features, 'title')"
             />
         </section>
 

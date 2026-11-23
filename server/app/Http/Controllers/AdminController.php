@@ -160,10 +160,10 @@ class AdminController extends Controller
         }
 
         foreach ($keys as $key) {
-            if ($request->has($key)) {
+            if ($request->exists($key)) {
                 \App\PageContent::updateOrCreate(
                     ['key' => $key],
-                    ['value' => $request->input($key)]
+                    ['value' => $request->input($key, '') ?? '']
                 );
             }
         }

@@ -13,7 +13,11 @@ class PageContent extends Model
      */
     public static function get($key, $default = null)
     {
-        // Temporarily bypass the database to prevent hanging while MySQL is down.
-        return $default;
+        try {
+            $record = static::where('key', $key)->first();
+            return $record !== null ? $record->value : $default;
+        } catch (\Throwable $e) {
+            return $default;
+        }
     }
 }
