@@ -228,7 +228,7 @@
                         <div class="text-xs font-bold tracking-wider text-gray-500 uppercase mb-4">FOR HEARTFELT PERSONAL GIFTS</div>
                         <h3 class="font-serif text-3xl text-[#500c19] mb-4">Heartgrams Classic</h3>
                         <div class="flex items-baseline gap-2 mb-1">
-                            <span class="text-5xl font-serif text-[#500c19]">₹1,999</span>
+                            <span class="text-5xl font-serif text-[#500c19]">₹{{ \App\PageContent::get('plan_classic_price', '1,999') }}</span>
                         </div>
                         <p class="text-sm text-gray-500 mb-6 pb-6 border-b border-gray-100">all-inclusive · no hidden fees</p>
                         
@@ -254,7 +254,7 @@
                         <div class="text-xs font-bold tracking-wider text-[#d86a77] uppercase mb-4">FOR DEEPER EMOTIONAL STORIES</div>
                         <h3 class="font-serif text-3xl text-white mb-4">Heartgrams Signature</h3>
                         <div class="flex items-baseline gap-2 mb-1">
-                            <span class="text-5xl font-serif text-white">₹2,999</span>
+                            <span class="text-5xl font-serif text-white">₹{{ \App\PageContent::get('plan_premium_price', '2,999') }}</span>
                         </div>
                         <p class="text-sm text-gray-300 mb-6 pb-6 border-b border-white/10">all-inclusive · no hidden fees</p>
                         

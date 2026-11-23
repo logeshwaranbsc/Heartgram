@@ -297,23 +297,23 @@
                                         <span x-show="selectedPlan === 'classic'" class="w-2.5 h-2.5 rounded-full bg-[#c02d4b]"></span>
                                     </div>
                                     <div>
-                                        <div class="font-display font-bold text-[15px] leading-tight">Heartgram Classic</div>
+                                        <div class="font-display font-bold text-[15px] leading-tight">{{ \App\PageContent::get('plan_classic_name', 'Heartgram Classic') }}</div>
                                         <div 
                                             class="text-[11.5px] leading-tight mt-1 transition-colors"
                                             :class="selectedPlan === 'classic' ? 'text-white/90' : (selectedPlan === 'premium' ? 'text-pink-200/70' : 'text-brand-dark/60')"
                                         >
-                                            Acoustic Melody · 3–5 days
+                                            {{ \App\PageContent::get('plan_classic_delivery', 'Acoustic Melody · 3–5 days') }}
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="text-right shrink-0 pl-2">
-                                    <span class="font-display font-bold text-lg sm:text-xl block leading-tight">₹1,999</span>
+                                    <span class="font-display font-bold text-lg sm:text-xl block leading-tight">₹{{ \App\PageContent::get('plan_classic_price', '1,999') }}</span>
                                     <span 
                                         class="text-[9.5px] uppercase tracking-wider font-semibold opacity-75 block"
                                         :class="selectedPlan === 'classic' ? 'text-white/90' : (selectedPlan === 'premium' ? 'text-pink-200/70' : 'text-brand-dark/50')"
                                     >
-                                        all-inclusive
+                                        {{ \App\PageContent::get('plan_classic_tagline', 'all-inclusive') }}
                                     </span>
                                 </div>
                             </button>
@@ -340,30 +340,30 @@
                                     </div>
                                     <div>
                                         <div class="font-display font-bold text-[15px] leading-tight flex items-center gap-2">
-                                            <span>Heartgram Premium</span>
+                                            <span>{{ \App\PageContent::get('plan_premium_name', 'Heartgram Premium') }}</span>
                                             <span 
                                                 class="text-[9px] px-2 py-0.5 rounded-full font-extrabold uppercase tracking-wider shrink-0"
                                                 :class="selectedPlan === 'premium' ? 'bg-[#241002] text-[#ECC15E]' : 'bg-[#DCA838]/20 text-[#B8841B]'"
                                             >
-                                                ★ RECOMMENDED
+                                                ★ {{ \App\PageContent::get('plan_premium_badge', 'RECOMMENDED') }}
                                             </span>
                                         </div>
                                         <div 
                                             class="text-[11.5px] leading-tight mt-1 transition-colors"
                                             :class="selectedPlan === 'premium' ? 'text-[#241002]/85' : 'text-brand-dark/60'"
                                         >
-                                            Priority queue · 1–2 days express
+                                            {{ \App\PageContent::get('plan_premium_delivery', 'Priority queue · 1–2 days express') }}
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="text-right shrink-0 pl-2">
-                                    <span class="font-display font-bold text-lg sm:text-xl block leading-tight">₹2,999</span>
+                                    <span class="font-display font-bold text-lg sm:text-xl block leading-tight">₹{{ \App\PageContent::get('plan_premium_price', '2,999') }}</span>
                                     <span 
                                         class="text-[9.5px] uppercase tracking-wider font-semibold block"
                                         :class="selectedPlan === 'premium' ? 'text-[#241002]/75' : 'text-brand-dark/50'"
                                     >
-                                        all-inclusive
+                                        {{ \App\PageContent::get('plan_premium_tagline', 'all-inclusive') }}
                                     </span>
                                 </div>
                             </button>

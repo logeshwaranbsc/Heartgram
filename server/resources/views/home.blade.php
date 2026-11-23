@@ -2148,16 +2148,16 @@
                     >
                         <div>
                             <div class="flex items-center justify-between mb-1">
-                                <span class="text-[9px] font-bold tracking-[0.15em] text-brand-dark/40 uppercase block">FOR HEARTFELT PERSONAL GIFTS</span>
+                                <span class="text-[9px] font-bold tracking-[0.15em] text-brand-dark/40 uppercase block">{{ \App\PageContent::get('plan_classic_subtitle', 'FOR HEARTFELT PERSONAL GIFTS') }}</span>
                                 <span x-show="selectedPlan === 'classic'" class="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-[#c02d4b] bg-pink-50 border border-pink-200/80 px-2.5 py-0.5 rounded-full">
                                     <span class="w-1.5 h-1.5 rounded-full bg-crimson-500"></span> Selected
                                 </span>
                             </div>
-                            <h3 class="font-serif text-2xl lg:text-[26px] font-medium text-brand-dark leading-tight mb-2">Heartgram Classic</h3>
+                            <h3 class="font-serif text-2xl lg:text-[26px] font-medium text-brand-dark leading-tight mb-2">{{ \App\PageContent::get('plan_classic_name', 'Heartgram Classic') }}</h3>
                             
                             <div class="flex items-baseline gap-2 mb-2.5">
-                                <span class="text-3xl lg:text-4xl font-display font-bold text-brand-dark">₹1,999</span>
-                                <span class="text-[11px] text-brand-dark/50 font-medium">all-inclusive · no hidden fees</span>
+                                <span class="text-3xl lg:text-4xl font-display font-bold text-brand-dark">₹{{ \App\PageContent::get('plan_classic_price', '1,999') }}</span>
+                                <span class="text-[11px] text-brand-dark/50 font-medium">{{ \App\PageContent::get('plan_classic_tagline', 'all-inclusive · no hidden fees') }}</span>
                             </div>
 
                             <div class="bg-brand-light/80 border border-pink-100/70 rounded-full px-3 py-1 mb-3.5 inline-block text-[10px] font-semibold text-brand-dark/70 self-start">
@@ -2170,7 +2170,7 @@
                                 <li class="flex items-center gap-2.5"><span class="text-brand-pink font-bold text-sm">✓</span> Full vocals with an acoustic feel</li>
                                 <li class="flex items-center gap-2.5"><span class="text-brand-pink font-bold text-sm">✓</span> High-quality MP3 format only</li>
                                 <li class="flex items-center gap-2.5"><span class="text-brand-pink font-bold text-sm">✓</span> Keepsake Lyric PDF via WhatsApp</li>
-                                <li class="flex items-center gap-2.5"><span class="text-brand-pink font-bold text-sm">✓</span> 3–5 days delivery time</li>
+                                <li class="flex items-center gap-2.5"><span class="text-brand-pink font-bold text-sm">✓</span> {{ \App\PageContent::get('plan_classic_delivery', '3–5 days delivery time') }}</li>
                             </ul>
                         </div>
                         
@@ -2179,7 +2179,7 @@
                             @click.stop="selectPlan('classic')"
                             class="w-full py-3 rounded-full bg-gradient-to-r from-brand-pink to-[#E11D48] text-white font-semibold text-[13px] hover:brightness-105 transition-all flex items-center justify-center gap-1.5 shadow-md shadow-brand-pink/25 hover:shadow-lg hover:shadow-brand-pink/35 group-hover:scale-[1.01] cursor-pointer"
                         >
-                            <span>Heartgram Classic</span> <span class="transition-transform group-hover:translate-x-1">→</span>
+                            <span>{{ \App\PageContent::get('plan_classic_name', 'Heartgram Classic') }}</span> <span class="transition-transform group-hover:translate-x-1">→</span>
                         </button>
                     </div>
 
@@ -2199,21 +2199,21 @@
                         
                         {{-- Most Recommended Badge (Radiant Gold) --}}
                         <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#D99A26] via-[#FFE37E] to-[#C98B1B] text-[#241002] text-[9.5px] font-black tracking-[0.18em] px-4 py-1.5 rounded-full uppercase shadow-[0_4px_16px_rgba(217,154,38,0.45)] border border-[#FFE898]/80 z-20 whitespace-nowrap">
-                            MOST RECOMMENDED
+                            {{ \App\PageContent::get('plan_premium_badge', 'MOST RECOMMENDED') }}
                         </div>
                         
                         <div class="relative z-10">
                             <div class="flex items-center justify-between mb-1">
-                                <span class="text-[9px] font-bold tracking-[0.18em] text-amber-200/90 uppercase block">FOR DEEPER EMOTIONAL STORIES</span>
+                                <span class="text-[9px] font-bold tracking-[0.18em] text-amber-200/90 uppercase block">{{ \App\PageContent::get('plan_premium_subtitle', 'FOR DEEPER EMOTIONAL STORIES') }}</span>
                                 <span x-show="selectedPlan === 'premium'" class="inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-wider text-[#241002] bg-gradient-to-r from-[#FFE37E] to-[#D99A26] px-2.5 py-0.5 rounded-full shadow-xs border border-[#FFE898]/60">
                                     ★ Selected
                                 </span>
                             </div>
-                            <h3 class="font-serif text-2xl lg:text-[26px] font-medium text-white leading-tight mb-2">Heartgram Premium</h3>
+                            <h3 class="font-serif text-2xl lg:text-[26px] font-medium text-white leading-tight mb-2">{{ \App\PageContent::get('plan_premium_name', 'Heartgram Premium') }}</h3>
                             
                             <div class="flex items-baseline gap-2 mb-2.5">
-                                <span class="text-3xl lg:text-4xl font-display font-bold text-white">₹2,999</span>
-                                <span class="text-[11px] text-pink-200/70 font-medium">all-inclusive <span class="text-[#F5C247] font-bold">·</span> no hidden fees</span>
+                                <span class="text-3xl lg:text-4xl font-display font-bold text-white">₹{{ \App\PageContent::get('plan_premium_price', '2,999') }}</span>
+                                <span class="text-[11px] text-pink-200/70 font-medium">{{ \App\PageContent::get('plan_premium_tagline', 'all-inclusive · no hidden fees') }}</span>
                             </div>
 
                             <div class="bg-white/[0.06] border border-white/10 backdrop-blur-sm rounded-full px-3 py-1 mb-3.5 inline-block text-[10px] font-semibold text-white/95 self-start">
@@ -2243,7 +2243,7 @@
                                 </li>
                                 <li class="flex items-center gap-2.5">
                                     <span class="w-2 h-2 rounded-full bg-gradient-to-br from-[#FFE37E] to-[#D99A26] shadow-[0_0_8px_rgba(255,227,126,0.85)] shrink-0"></span>
-                                    <span>1–2 days express delivery</span>
+                                    <span>{{ \App\PageContent::get('plan_premium_delivery', '1–2 days express delivery') }}</span>
                                 </li>
                             </ul>
                         </div>
@@ -2253,7 +2253,7 @@
                             @click.stop="selectPlan('premium')"
                             class="relative z-10 w-full py-3 rounded-full bg-gradient-to-r from-[#D99A26] via-[#FFE37E] to-[#C98B1B] text-[#241002] font-black text-[13.5px] hover:brightness-105 transition-all flex items-center justify-center gap-1.5 shadow-lg shadow-[#D99A26]/40 hover:shadow-xl hover:shadow-[#D99A26]/50 group-hover:scale-[1.01] border border-[#FFE898]/80 cursor-pointer"
                         >
-                            <span>Heartgram Premium</span> <span class="transition-transform group-hover:translate-x-1">→</span>
+                            <span>{{ \App\PageContent::get('plan_premium_name', 'Heartgram Premium') }}</span> <span class="transition-transform group-hover:translate-x-1">→</span>
                         </button>
                     </div>
                 </div>
@@ -2298,8 +2298,8 @@
                         </span>
                     </h2>
                     <p class="text-xs sm:text-[13px] text-brand-dark/70 font-medium max-w-md mx-auto transition-colors duration-300">
-                        <span x-show="selectedPlan === 'classic'">Personalised song from your story · Acoustic melody & lyrics · ₹1,999</span>
-                        <span x-show="selectedPlan === 'premium'">Front of the queue · MP3 and WAV files · Express 1–2 days · ₹2,999</span>
+                        <span x-show="selectedPlan === 'classic'">Personalised song from your story · Acoustic melody & lyrics · ₹{{ \App\PageContent::get('plan_classic_price', '1,999') }}</span>
+                        <span x-show="selectedPlan === 'premium'">Front of the queue · MP3 and WAV files · Express 1–2 days · ₹{{ \App\PageContent::get('plan_premium_price', '2,999') }}</span>
                     </p>
                 </div>
 
@@ -2452,7 +2452,7 @@
                                         </div>
 
                                         <div class="text-right shrink-0 pl-2">
-                                            <span class="font-display font-bold text-base sm:text-lg block leading-tight">₹1,999</span>
+                                            <span class="font-display font-bold text-base sm:text-lg block leading-tight">₹{{ \App\PageContent::get('plan_classic_price', '1,999') }}</span>
                                             <span 
                                                 class="text-[9px] uppercase tracking-wider font-semibold opacity-75 block"
                                                 :class="selectedPlan === 'classic' ? 'text-white/90' : (selectedPlan === 'premium' ? 'text-pink-200/70' : 'text-brand-dark/50')"
@@ -2503,7 +2503,7 @@
                                         </div>
 
                                         <div class="text-right shrink-0 pl-2">
-                                            <span class="font-display font-bold text-base sm:text-lg block leading-tight">₹2,999</span>
+                                            <span class="font-display font-bold text-base sm:text-lg block leading-tight">₹{{ \App\PageContent::get('plan_premium_price', '2,999') }}</span>
                                             <span 
                                                 class="text-[9px] uppercase tracking-wider font-semibold block"
                                                 :class="selectedPlan === 'premium' ? 'text-[#241002]/75' : 'text-brand-dark/50'"

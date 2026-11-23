@@ -6,6 +6,14 @@
             <svg class="mr-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
             Back to Leads
         </a>
+        <form action="{{ route('admin.leads.destroy', $lead->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to permanently delete this lead from {{ addslashes($lead->name) }}? This cannot be undone.');">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="inline-flex items-center px-3 py-1.5 border border-red-200 text-xs font-semibold rounded-lg text-red-600 bg-red-50 hover:bg-red-100 hover:text-red-700 transition-colors shadow-2xs">
+                <svg class="mr-1.5 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                Delete Lead
+            </button>
+        </form>
     </div>
 
     <div class="bg-white shadow-sm border border-gray-200 rounded-xl overflow-hidden max-w-4xl">
@@ -30,9 +38,43 @@
                     </dd>
                 </div>
                 <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500">Chosen Plan</dt>
+                    <dd class="mt-1 text-sm text-gray-900">
+                        @if($lead->plan)
+                            @if(strtolower($lead->plan) === 'premium')
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-800 border border-purple-200">
+                                    <svg class="w-3.5 h-3.5 text-purple-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.98 2.98 0 0113 13a2.99 2.99 0 01-.88 2.12z" clip-rule="evenodd"/></svg>
+                                    Heartgram Premium
+                                </span>
+                            @elseif(strtolower($lead->plan) === 'classic')
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-200">
+                                    <svg class="w-3.5 h-3.5 text-amber-600" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                    Heartgram Classic
+                                </span>
+                            @else
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-pink-100 text-pink-800 border border-pink-200">
+                                    Heartgram {{ $lead->plan }}
+                                </span>
+                            @endif
+                        @else
+                            <span class="text-gray-400 font-normal">Not specified</span>
+                        @endif
+                    </dd>
+                </div>
+                <div class="sm:col-span-1">
                     <dt class="text-sm font-medium text-gray-500">Submitted On</dt>
                     <dd class="mt-1 text-sm text-gray-900">{{ $lead->created_at->format('F j, Y, g:i a') }}</dd>
                 </div>
+                @if($lead->song_language)
+                    <div class="sm:col-span-1">
+                        <dt class="text-sm font-medium text-gray-500">Song Language</dt>
+                        <dd class="mt-1 text-sm font-semibold text-gray-900">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 border border-gray-200">
+                                {{ $lead->song_language }}
+                            </span>
+                        </dd>
+                    </div>
+                @endif
                 
                 <div class="sm:col-span-1">
                     <dt class="text-sm font-medium text-gray-500">Name</dt>

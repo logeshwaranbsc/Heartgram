@@ -62,6 +62,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/admin/leads', [\App\Http\Controllers\AdminController::class, 'leads'])->name('admin.leads');
     Route::get('/admin/leads/{id}', [\App\Http\Controllers\AdminController::class, 'showLead'])->name('admin.leads.show');
+    Route::delete('/admin/leads/{id}', [\App\Http\Controllers\AdminController::class, 'destroyLead'])->name('admin.leads.destroy');
+    Route::get('/admin/plans', [\App\Http\Controllers\Admin\PlanController::class, 'index'])->name('admin.plans.index');
+    Route::post('/admin/plans', [\App\Http\Controllers\Admin\PlanController::class, 'update'])->name('admin.plans.update');
     Route::get('/admin/pages/why-heartgrams', [\App\Http\Controllers\AdminController::class, 'editWhyHeartgrams'])->name('admin.pages.why-heartgrams');
     Route::post('/admin/pages/why-heartgrams', [\App\Http\Controllers\AdminController::class, 'updateWhyHeartgrams'])->name('admin.pages.why-heartgrams.update');
 

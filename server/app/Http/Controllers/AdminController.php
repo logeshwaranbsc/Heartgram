@@ -26,6 +26,27 @@ class AdminController extends Controller
         return view('admin.show-lead', compact('lead'));
     }
 
+    public function destroyLead($id)
+    {
+        $lead = \App\Lead::findOrFail($id);
+
+        // Clean up any uploaded attachment files from disk
+        if (!empty($lead->attachments)) {
+            foreach ($lead->attachments as $att) {
+                if (!empty($att['url'])) {
+                    $parsedPath = parse_url($att['url'], PHP_URL_PATH);
+                    $rel = ltrim(str_replace('/storage/', '', $parsedPath), '/');
+                    @unlink(public_path('storage/' . $rel));
+                    @unlink(storage_path('app/public/' . $rel));
+                }
+            }
+        }
+
+        $lead->delete();
+
+        return redirect()->route('admin.leads')->with('success', 'Lead from ' . $lead->name . ' was deleted successfully.');
+    }
+
     public function editWhyHeartgrams()
     {
         $content = [

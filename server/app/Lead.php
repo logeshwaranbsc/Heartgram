@@ -65,4 +65,69 @@ class Lead extends Model
 
         return $attachments;
     }
+
+    /**
+     * Get the selected plan (e.g. 'Classic', 'Premium', 'Signature')
+     */
+    public function getPlanAttribute()
+    {
+        if (!empty($this->attributes['tier'])) {
+            return ucfirst($this->attributes['tier']);
+        }
+        if (!empty($this->attributes['plan'])) {
+            return ucfirst($this->attributes['plan']);
+        }
+
+        if (empty($this->story_or_message)) {
+            return null;
+        }
+
+        // Matches patterns like: [Plan: Heartgram Classic] or [Plan: Classic] or [Plan: Heartgram Premium]
+        if (preg_match('/\[Plan:\s*(?:Heartgram\s*)?([a-zA-Z0-9_\-\s]+?)\]/i', $this->story_or_message, $matches)) {
+            return ucfirst(trim($matches[1]));
+        }
+
+        return null;
+    }
+
+    /**
+     * Get the chosen song language if present (e.g. 'English', 'Tamil', 'Kannada')
+     */
+    public function getSongLanguageAttribute()
+    {
+        if (empty($this->story_or_message)) {
+            return null;
+        }
+
+        if (preg_match('/\[Song Language:\s*([^\]]+)\]/i', $this->story_or_message, $matches)) {
+            return trim($matches[1]);
+        }
+
+        return null;
+    }
+
+    /**
+     * Get a clean text preview of the story/message, omitting decorative separator lines.
+     */
+    public function getSummaryTextAttribute()
+    {
+        if (empty($this->story_or_message)) {
+            return '-';
+        }
+
+        $lines = preg_split('/\r\n|\r|\n/', $this->story_or_message);
+        $cleanLines = [];
+
+        foreach ($lines as $line) {
+            $trimmed = trim($line);
+            // Skip decorative separator lines and upload URLs
+            if (empty($trimmed) || str_starts_with($trimmed, '═') || str_starts_with($trimmed, '• ') || str_starts_with($trimmed, 'Consent granted')) {
+                continue;
+            }
+            $cleanLines[] = $trimmed;
+        }
+
+        $fullText = implode(' · ', $cleanLines);
+        return \Illuminate\Support\Str::limit($fullText, 120);
+    }
 }
