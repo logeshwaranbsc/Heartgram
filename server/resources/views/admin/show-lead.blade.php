@@ -78,6 +78,73 @@
                     <dt class="text-sm font-medium text-gray-500">Message / Story</dt>
                     <dd class="mt-2 text-sm text-gray-900 bg-gray-50 rounded-lg p-4 whitespace-pre-wrap border border-gray-100">{{ $lead->story_or_message ?? 'No message provided.' }}</dd>
                 </div>
+
+                @if(!empty($lead->attachments) && count($lead->attachments) > 0)
+                    <div class="sm:col-span-2 pt-4 border-t border-gray-200">
+                        <dt class="text-sm font-semibold text-gray-900 flex items-center gap-2 mb-3">
+                            <svg class="w-4 h-4 text-brand-pink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                            </svg>
+                            <span>Uploaded Story Materials ({{ count($lead->attachments) }})</span>
+                        </dt>
+                        <dd class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                            @foreach($lead->attachments as $file)
+                                <div class="bg-gray-50 border border-gray-200 rounded-xl p-3 flex flex-col justify-between hover:border-brand-pink/50 hover:shadow-xs transition">
+                                    @if($file['is_image'])
+                                        <div class="h-36 w-full rounded-lg overflow-hidden bg-gray-100 mb-2 relative group border border-gray-100">
+                                            <img src="{{ $file['url'] }}" alt="{{ $file['name'] }}" class="w-full h-full object-cover">
+                                            <a href="{{ $file['url'] }}" target="_blank" class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white text-xs font-semibold gap-1.5 backdrop-blur-xs">
+                                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                                </svg>
+                                                Open Image
+                                            </a>
+                                        </div>
+                                    @elseif($file['is_audio'])
+                                        <div class="mb-2 p-2.5 bg-pink-50/60 border border-pink-100 rounded-lg">
+                                            <div class="text-xs font-semibold text-brand-pink mb-1.5 flex items-center gap-1.5">
+                                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+                                                </svg>
+                                                Audio Recording
+                                            </div>
+                                            <audio controls class="w-full h-8" preload="metadata">
+                                                <source src="{{ $file['url'] }}">
+                                                Audio playback not supported.
+                                            </audio>
+                                        </div>
+                                    @elseif($file['is_video'])
+                                        <div class="mb-2 rounded-lg overflow-hidden bg-black max-h-40">
+                                            <video controls class="w-full h-36 object-contain" preload="metadata">
+                                                <source src="{{ $file['url'] }}">
+                                            </video>
+                                        </div>
+                                    @else
+                                        <div class="h-28 w-full rounded-lg bg-gray-100 flex flex-col items-center justify-center mb-2 text-gray-400 border border-gray-200">
+                                            <svg class="w-8 h-8 text-gray-400 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                            </svg>
+                                            <span class="text-[11px] uppercase font-bold text-gray-500">{{ $file['extension'] ?: 'File' }}</span>
+                                        </div>
+                                    @endif
+
+                                    <div class="flex items-center justify-between text-xs mt-auto pt-2 border-t border-gray-100">
+                                        <span class="truncate font-medium text-gray-700 max-w-[170px]" title="{{ $file['name'] }}">
+                                            {{ $file['name'] }}
+                                        </span>
+                                        <a href="{{ $file['url'] }}" target="_blank" download="{{ $file['name'] }}" class="text-brand-pink hover:text-pink-700 font-semibold flex items-center gap-1">
+                                            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                            </svg>
+                                            Download
+                                        </a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </dd>
+                    </div>
+                @endif
             </dl>
         </div>
     </div>

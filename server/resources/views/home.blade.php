@@ -1980,6 +1980,8 @@
             manualCategoryOverride: null,
             storyMode: 'guided',
             uploadedFilesCount: 0,
+            isDragging: false,
+            uploadedFileNames: [],
 
             get activeOccasionName() {
                 if (this.isCustomOccasion && this.customOccasion.trim()) {
@@ -2029,6 +2031,19 @@
             handleFileChange(event) {
                 if (event.target && event.target.files) {
                     this.uploadedFilesCount = event.target.files.length;
+                    this.uploadedFileNames = Array.from(event.target.files).map(f => f.name);
+                }
+            },
+
+            handleFileDrop(event) {
+                this.isDragging = false;
+                if (event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files.length) {
+                    const input = this.$refs.attachmentInput;
+                    if (input) {
+                        input.files = event.dataTransfer.files;
+                        this.uploadedFilesCount = event.dataTransfer.files.length;
+                        this.uploadedFileNames = Array.from(event.dataTransfer.files).map(f => f.name);
+                    }
                 }
             },
 
@@ -3412,15 +3427,19 @@
 
                                 <label class="block border-2 border-dashed rounded-xl p-4 text-center cursor-pointer transition-all hover:opacity-90"
                                     :class="selectedPlan === 'premium' 
-                                        ? 'border-white/20 bg-white/[0.04] hover:bg-white/[0.08] hover:border-[#ECC15E]/50 text-white/80' 
-                                        : 'border-pink-200 bg-pink-50/40 hover:bg-pink-50 hover:border-[#c02d4b]/50 text-brand-dark/80'"
+                                        ? (isDragging ? 'border-[#ECC15E] bg-white/[0.12] text-white' : 'border-white/20 bg-white/[0.04] hover:bg-white/[0.08] hover:border-[#ECC15E]/50 text-white/80')
+                                        : (isDragging ? 'border-[#c02d4b] bg-pink-100/60 text-brand-dark' : 'border-pink-200 bg-pink-50/40 hover:bg-pink-50 hover:border-[#c02d4b]/50 text-brand-dark/80')"
+                                    @dragover.prevent="isDragging = true"
+                                    @dragleave.prevent="isDragging = false"
+                                    @drop.prevent="handleFileDrop($event)"
                                 >
                                     <input 
                                         type="file" 
                                         name="attachments[]" 
+                                        x-ref="attachmentInput"
                                         multiple 
                                         @change="handleFileChange($event)"
-                                        accept="image/*,video/*,.pdf,.doc,.docx,.txt"
+                                        accept="image/*,video/*,audio/*,.mp3,.m4a,.opus,.ogg,.wav,.pdf,.doc,.docx,.txt"
                                         class="hidden"
                                     >
                                     <div class="flex flex-col items-center justify-center gap-1.5 py-1">
@@ -3428,10 +3447,20 @@
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                                         </svg>
                                         <div class="text-[12px] font-semibold">
-                                            <span x-show="uploadedFilesCount === 0">Click to upload photos, documents or videos</span>
+                                            <span x-show="uploadedFilesCount === 0">Click or drag to upload photos, documents, audio or videos</span>
                                             <span x-show="uploadedFilesCount > 0" class="text-emerald-500 font-bold" x-text="uploadedFilesCount + ' file(s) ready to send'"></span>
                                         </div>
-                                        <span class="text-[10px] opacity-60">PNG, JPG, MP4, PDF, DOCX up to 30MB each</span>
+                                        <span class="text-[10px] opacity-60">PNG, JPG, MP4, PDF, DOCX, MP3 up to 30MB each</span>
+                                        <template x-if="uploadedFileNames && uploadedFileNames.length > 0">
+                                            <div class="mt-2 flex flex-wrap justify-center gap-1.5 max-w-md mx-auto">
+                                                <template x-for="(fname, i) in uploadedFileNames.slice(0, 3)" :key="i">
+                                                    <span class="inline-flex items-center text-[10px] px-2 py-0.5 rounded-full border truncate max-w-[140px]"
+                                                        :class="selectedPlan === 'premium' ? 'bg-white/10 border-white/20 text-white' : 'bg-white border-pink-200 text-brand-dark'"
+                                                        x-text="fname"></span>
+                                                </template>
+                                                <span x-show="uploadedFileNames.length > 3" class="text-[10px] px-1.5 py-0.5 opacity-70" x-text="'+' + (uploadedFileNames.length - 3) + ' more'"></span>
+                                            </div>
+                                        </template>
                                     </div>
                                 </label>
                             </div>

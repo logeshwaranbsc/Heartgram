@@ -32,6 +32,8 @@
             isCustomOccasion: false,
             manualCategoryOverride: null,
             uploadedFilesCount: 0,
+            isDragging: false,
+            uploadedFileNames: [],
             occasionsList: @js($occasions),
 
             get activeOccasionName() {
@@ -82,6 +84,19 @@
             handleFileChange(event) {
                 if (event.target && event.target.files) {
                     this.uploadedFilesCount = event.target.files.length;
+                    this.uploadedFileNames = Array.from(event.target.files).map(f => f.name);
+                }
+            },
+
+            handleFileDrop(event) {
+                this.isDragging = false;
+                if (event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files.length) {
+                    const input = this.$refs.attachmentInput;
+                    if (input) {
+                        input.files = event.dataTransfer.files;
+                        this.uploadedFilesCount = event.dataTransfer.files.length;
+                        this.uploadedFileNames = Array.from(event.dataTransfer.files).map(f => f.name);
+                    }
                 }
             },
 
@@ -1236,12 +1251,16 @@
 
                             <label class="block border-2 border-dashed rounded-xl p-5 text-center cursor-pointer transition-all hover:opacity-90"
                                 :class="selectedPlan === 'premium' 
-                                    ? 'border-white/20 bg-white/[0.04] hover:bg-white/[0.08] hover:border-[#ECC15E]/50 text-white/80' 
-                                    : 'border-pink-200 bg-white hover:bg-pink-50 hover:border-[#c02d4b]/50 text-brand-dark/80'"
+                                    ? (isDragging ? 'border-[#ECC15E] bg-white/[0.12] text-white' : 'border-white/20 bg-white/[0.04] hover:bg-white/[0.08] hover:border-[#ECC15E]/50 text-white/80')
+                                    : (isDragging ? 'border-[#c02d4b] bg-pink-100/60 text-brand-dark' : 'border-pink-200 bg-white hover:bg-pink-50 hover:border-[#c02d4b]/50 text-brand-dark/80')"
+                                @dragover.prevent="isDragging = true"
+                                @dragleave.prevent="isDragging = false"
+                                @drop.prevent="handleFileDrop($event)"
                             >
                                 <input 
                                     type="file" 
                                     name="attachments[]" 
+                                    x-ref="attachmentInput"
                                     multiple 
                                     @change="handleFileChange($event)"
                                     accept="image/*,video/*,audio/*,.mp3,.m4a,.opus,.ogg,.wav,.pdf,.doc,.docx,.txt"
@@ -1256,6 +1275,16 @@
                                         <span x-show="uploadedFilesCount > 0" class="text-emerald-500 font-bold" x-text="uploadedFilesCount + ' file(s) selected'"></span>
                                     </div>
                                     <span class="text-[10.5px] opacity-60">Photos, videos, voice notes (MP3, M4A, OPUS), PDF or Word · up to 30 MB each</span>
+                                    <template x-if="uploadedFileNames && uploadedFileNames.length > 0">
+                                        <div class="mt-2 flex flex-wrap justify-center gap-1.5 max-w-md mx-auto">
+                                            <template x-for="(fname, i) in uploadedFileNames.slice(0, 3)" :key="i">
+                                                <span class="inline-flex items-center text-[10.5px] px-2.5 py-0.5 rounded-full border truncate max-w-[150px]"
+                                                    :class="selectedPlan === 'premium' ? 'bg-white/10 border-white/20 text-white' : 'bg-gray-100 border-gray-200 text-brand-dark'"
+                                                    x-text="fname"></span>
+                                            </template>
+                                            <span x-show="uploadedFileNames.length > 3" class="text-[10.5px] px-1.5 py-0.5 opacity-70" x-text="'+' + (uploadedFileNames.length - 3) + ' more'"></span>
+                                        </div>
+                                    </template>
                                 </div>
                             </label>
                         </div>

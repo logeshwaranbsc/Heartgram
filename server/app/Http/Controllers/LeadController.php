@@ -74,11 +74,36 @@ class LeadController extends Controller
         // Uploaded Attachments
         if ($request->hasFile('attachments')) {
             $uploadedList = [];
+
+            // Target directories for web accessible storage across development & production
+            $webPublicDir = public_path('storage/lead_attachments');
+            $altPublicDir = base_path('../public_html/storage/lead_attachments');
+
+            if (!file_exists($webPublicDir)) {
+                @mkdir($webPublicDir, 0755, true);
+            }
+            if (!file_exists($altPublicDir)) {
+                @mkdir($altPublicDir, 0755, true);
+            }
+
             foreach ($request->file('attachments') as $file) {
-                if ($file->isValid()) {
+                if ($file && $file->isValid()) {
                     $origName = $file->getClientOriginalName();
-                    $filename = time() . '_' . uniqid() . '_' . preg_replace('/[^a-zA-Z0-9._-]/', '_', $origName);
+                    $cleanOrig = preg_replace('/[^a-zA-Z0-9._-]/', '_', $origName);
+                    $filename = time() . '_' . uniqid() . '_' . $cleanOrig;
+
+                    // Store via Laravel 'public' disk
                     $path = $file->storeAs('lead_attachments', $filename, 'public');
+
+                    // Sync copy to public_html/storage for direct web server access
+                    $storedDiskPath = storage_path('app/public/' . $path);
+                    if (file_exists($storedDiskPath)) {
+                        @copy($storedDiskPath, $webPublicDir . DIRECTORY_SEPARATOR . $filename);
+                        if (realpath($webPublicDir) !== realpath($altPublicDir) && file_exists(dirname($altPublicDir))) {
+                            @copy($storedDiskPath, $altPublicDir . DIRECTORY_SEPARATOR . $filename);
+                        }
+                    }
+
                     $fileUrl = asset('storage/' . $path);
                     $uploadedList[] = "• {$origName} -> {$fileUrl}";
                 }
