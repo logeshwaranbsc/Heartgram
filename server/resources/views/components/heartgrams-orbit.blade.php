@@ -121,22 +121,40 @@
                 border: 2px dashed #e08aa8; border-radius: 12px; color: #c0527a; font: 600 .9rem system-ui, sans-serif;
             }
 
-            @media (max-width: 992px) {
+            @media (max-width: 992px) and (min-width: 641px) {
                 .hg__wrap { grid-template-columns: 1fr; gap: 1.5rem; justify-items: center; }
-                .hg__orbit { max-width: 600px; aspect-ratio: 1030 / 680; }
+                .hg__orbit { max-width: 580px; aspect-ratio: 1030 / 680; }
                 .hg__brand { justify-content: center; padding: 0; }
                 .hg__divider { display: none; }
                 .hg__brand-text { font-size: clamp(2.4rem, 8vw, 3.6rem); }
+                .hg__core { width: clamp(170px, 30cqw, 220px); }
+                .hg__pill {
+                    font-size: clamp(12px, 1.9cqw, 15px);
+                    padding: 0.5rem 1rem;
+                    min-height: 40px;
+                }
             }
             @media (max-width: 640px) {
-                .hg { padding: 0.75rem 0.5rem; }
-                .hg__orbit { aspect-ratio: 1 / 0.95; }
-                .hg__pill {
-                    font-size: clamp(12px, 3.2cqw, 15px);
-                    padding: 0.45rem 0.95rem;
-                    min-height: 42px;
+                .hg { padding: 0.5rem 0.25rem; }
+                .hg__wrap { grid-template-columns: 1fr; gap: 1rem; justify-items: center; }
+                .hg__orbit { width: 100%; max-width: 380px; aspect-ratio: 1 / 1.05; }
+                .hg__brand { justify-content: center; padding: 0; }
+                .hg__divider { display: none; }
+                .hg__brand-text { font-size: clamp(2rem, 9vw, 2.8rem); }
+                .hg__core {
+                    width: clamp(100px, 28cqw, 120px);
+                    filter: drop-shadow(0 8px 20px rgba(255, 40, 100, 0.28));
                 }
-                .hg__core { width: clamp(160px, 36cqw, 240px); }
+                .hg__pill {
+                    white-space: normal;
+                    max-width: 100px;
+                    min-height: 32px;
+                    font-size: clamp(10.5px, 2.7cqw, 12px);
+                    line-height: 1.15;
+                    padding: 0.35rem 0.6rem;
+                    border-radius: 9999px;
+                    box-shadow: 0 4px 14px rgba(230, 120, 150, 0.16);
+                }
             }
         </style>
     @endpush
@@ -156,9 +174,20 @@
 
                     const measure = () => {
                         const r = box.getBoundingClientRect();
-                        // Snug radii tailored to frame the enlarged central logo closely, exactly like the design
-                        rx = r.width * 0.33;      // horizontal radius
-                        ry = r.height * 0.36;     // vertical radius
+                        const isMobile = window.matchMedia('(max-width: 640px)').matches;
+                        const isTablet = window.matchMedia('(max-width: 992px)').matches;
+                        
+                        if (isMobile) {
+                            // Mobile: comfortable clearance from central logo without overflowing viewport
+                            rx = r.width * 0.36;
+                            ry = r.height * 0.38;
+                        } else if (isTablet) {
+                            rx = r.width * 0.34;
+                            ry = r.height * 0.36;
+                        } else {
+                            rx = r.width * 0.33;
+                            ry = r.height * 0.36;
+                        }
                     };
                     const place = () => pills.forEach((el, i) => {
                         const a = angle + i * step - Math.PI / 2;   // pill 0 sits at the top
