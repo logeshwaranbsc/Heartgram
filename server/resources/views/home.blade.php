@@ -1544,7 +1544,22 @@
 
     {{-- Testimonials Samples Section (Matching Made for Every Occasion Dark Aesthetic - Screen Adaptable) --}}
     @php
-        $sampleTestimonials = [
+        try {
+            if (!isset($testimonials) || (is_object($testimonials) && method_exists($testimonials, 'isEmpty') && $testimonials->isEmpty())) {
+                if (class_exists(\App\Testimonial::class)) {
+                    $testimonials = \App\Testimonial::where('is_published', true)
+                        ->orderBy('sort_order', 'asc')
+                        ->orderBy('created_at', 'desc')
+                        ->get();
+                } else {
+                    $testimonials = collect();
+                }
+            }
+        } catch (\Throwable $e) {
+            $testimonials = collect();
+        }
+
+        $defaultTestimonials = [
             // Video 1
             [
                 'id' => 'v1',
@@ -1555,8 +1570,11 @@
                 'location' => 'Mumbai',
                 'title' => 'I was literally in tears',
                 'text' => "He managed to put 5 years of our relationship into a single song. When the chorus hit with the date we met at the coffee shop, I completely broke down. The best gift I've ever received.",
+                'video_url' => '',
                 'media' => 'images/anniversary.png',
+                'media_url' => asset('images/anniversary.png'),
                 'audio' => 'audio/sample_anniversary.wav',
+                'audio_url' => asset('audio/sample_anniversary.wav'),
                 'duration' => '0:48 min',
             ],
             // Video 2
@@ -1569,8 +1587,11 @@
                 'location' => 'Bengaluru',
                 'title' => 'She said YES before the song ended',
                 'text' => "I played the song through a portable speaker as the sun set in Goa. As soon as she realized the lyrics were about our Goa trips and inside jokes, she cried tears of joy and said yes!",
+                'video_url' => '',
                 'media' => 'images/wedding.png',
+                'media_url' => asset('images/wedding.png'),
                 'audio' => 'audio/sample_proposal.wav',
+                'audio_url' => asset('audio/sample_proposal.wav'),
                 'duration' => '1:12 min',
             ],
             // Image 1
@@ -1583,7 +1604,12 @@
                 'location' => 'Jaipur',
                 'title' => 'Centerpiece of our new home',
                 'text' => "We framed the custom lyrics with the scannable Spotify-style code on our bedside table. Whenever we walk past it, we scan it and smile. It's the centerpiece of our home now.",
+                'video_url' => '',
                 'media' => 'images/wedding.png',
+                'media_url' => asset('images/wedding.png'),
+                'audio' => '',
+                'audio_url' => '',
+                'duration' => '',
             ],
             // Image 2
             [
@@ -1595,9 +1621,70 @@
                 'location' => 'Amritsar',
                 'title' => 'Top tier luxury unboxing presentation',
                 'text' => "The unboxing presentation was top-tier luxury. The ribbon, the personalized letter, and the instant play audio chip inside the card. She opened it and couldn't stop hugging me.",
+                'video_url' => '',
                 'media' => 'images/gift_box.png',
+                'media_url' => asset('images/gift_box.png'),
+                'audio' => '',
+                'audio_url' => '',
+                'duration' => '',
             ],
         ];
+
+        if (isset($testimonials) && $testimonials->isNotEmpty()) {
+            $sampleTestimonials = $testimonials->map(function ($t) {
+                $mediaUrl = $t->media_url ?? null;
+                if (empty($mediaUrl) && !empty($t->media)) {
+                    $mediaUrl = (str_starts_with($t->media, 'http://') || str_starts_with($t->media, 'https://'))
+                        ? $t->media 
+                        : asset($t->media);
+                }
+                if (empty($mediaUrl)) {
+                    $mediaUrl = asset('images/anniversary.png');
+                }
+
+                $audioUrl = '';
+                if (!empty($t->audio)) {
+                    $audioUrl = (str_starts_with($t->audio, 'http://') || str_starts_with($t->audio, 'https://'))
+                        ? $t->audio 
+                        : asset($t->audio);
+                }
+
+                $badge = $t->tag;
+                if (empty($badge)) {
+                    if ($t->type === 'image' && !empty($t->keepsake)) {
+                        $badge = $t->keepsake;
+                    } elseif ($t->type === 'video') {
+                        $badge = 'Video Reaction 🎥';
+                    } elseif ($t->type === 'image') {
+                        $badge = 'Keepsake Plaque 🖼️';
+                    } else {
+                        $badge = 'Customer Review 💬';
+                    }
+                }
+
+                return [
+                    'id' => (string) $t->id,
+                    'type' => $t->type ?? 'video',
+                    'badge' => $badge,
+                    'name' => $t->name ?? '',
+                    'occasion' => $t->occasion ?? '',
+                    'location' => $t->location ?? '',
+                    'title' => $t->title ?? '',
+                    'text' => $t->text ?? '',
+                    'video_url' => $t->video_url ?? '',
+                    'media' => $t->media ?? '',
+                    'media_url' => $mediaUrl,
+                    'audio' => $t->audio ?? '',
+                    'audio_url' => $audioUrl,
+                    'duration' => $t->duration ?? '',
+                    'tag' => $t->tag ?? '',
+                    'rating' => (int) ($t->rating ?? 5),
+                    'keepsake' => $t->keepsake ?? '',
+                ];
+            })->toArray();
+        } else {
+            $sampleTestimonials = $defaultTestimonials;
+        }
     @endphp
 
     <section 
@@ -1612,11 +1699,21 @@
                 this.modalOpen = true;
                 this.isPlaying = false;
                 document.body.style.overflow = 'hidden';
+                this.$nextTick(() => {
+                    if (item.type === 'video' && item.video_url && this.$refs.modalVideo) {
+                        this.$refs.modalVideo.currentTime = 0;
+                        this.$refs.modalVideo.play().catch(() => {});
+                    }
+                });
             },
             closeModal() {
                 if (this.$refs.testimonialAudio) {
                     this.$refs.testimonialAudio.pause();
                     this.$refs.testimonialAudio.currentTime = 0;
+                }
+                if (this.$refs.modalVideo) {
+                    this.$refs.modalVideo.pause();
+                    this.$refs.modalVideo.currentTime = 0;
                 }
                 this.modalOpen = false;
                 this.modalData = null;
@@ -1684,7 +1781,7 @@
                         {{-- Media Thumbnail --}}
                         <div class="relative overflow-hidden bg-black/40 w-full" style="height: clamp(120px, 20vh, 175px);">
                             <img 
-                                src="{{ asset($item['media']) }}" 
+                                src="{{ $item['media_url'] ?? (str_starts_with($item['media'] ?? '', 'http') ? $item['media'] : asset($item['media'] ?? 'images/anniversary.png')) }}" 
                                 alt="{{ $item['name'] }}" 
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                             >
@@ -1706,9 +1803,11 @@
 
                             @if($item['type'] === 'video')
                                 {{-- Duration pill --}}
-                                <div class="absolute top-2.5 right-2.5 z-10 px-2 py-0.5 rounded-full bg-black/75 backdrop-blur-md text-white/90 text-[10px] font-medium border border-white/10">
-                                    {{ $item['duration'] }}
-                                </div>
+                                @if(!empty($item['duration']))
+                                    <div class="absolute top-2.5 right-2.5 z-10 px-2 py-0.5 rounded-full bg-black/75 backdrop-blur-md text-white/90 text-[10px] font-medium border border-white/10">
+                                        {{ $item['duration'] }}
+                                    </div>
+                                @endif
 
                                 {{-- Centered Play Button Overlay --}}
                                 <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -1734,7 +1833,7 @@
                                     <h4 class="text-xs sm:text-[13px] font-bold text-white group-hover:text-pink-200 transition-colors flex items-center gap-1 truncate">
                                         {{ $item['name'] }}
                                     </h4>
-                                    <p class="text-[10px] sm:text-[11px] text-pink-200/70 truncate">{{ $item['occasion'] }} • {{ $item['location'] }}</p>
+                                    <p class="text-[10px] sm:text-[11px] text-pink-200/70 truncate">{{ $item['occasion'] }}{{ !empty($item['location']) ? ' • ' . $item['location'] : '' }}</p>
                                 </div>
                             </div>
                             <span class="w-6 h-6 rounded-full bg-white/5 border border-white/10 group-hover:border-pink-400/50 group-hover:bg-pink-500/20 text-pink-300 flex items-center justify-center text-xs group-hover:translate-x-0.5 transition-all shrink-0">
@@ -1794,48 +1893,62 @@
 
                 {{-- Modal Media --}}
                 <div class="relative w-full bg-black aspect-video flex items-center justify-center overflow-hidden">
-                    <template x-if="modalData">
-                        <img 
-                            :src="'{{ asset('') }}' + modalData.media" 
-                            :alt="modalData.name"
-                            class="w-full h-full object-cover"
-                        >
+                    {{-- 1. Video Player when Cloudinary / direct video_url is provided --}}
+                    <template x-if="modalData && modalData.type === 'video' && modalData.video_url">
+                        <video 
+                            x-ref="modalVideo" 
+                            :src="modalData.video_url" 
+                            controls 
+                            playsinline 
+                            class="w-full h-full object-contain bg-black"
+                        ></video>
                     </template>
 
-                    {{-- Play / Audio Overlay for Video --}}
-                    <template x-if="modalData && modalData.type === 'video'">
-                        <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center gap-3">
-                            <button 
-                                @click="toggleAudio()"
-                                type="button" 
-                                class="w-16 h-16 rounded-full bg-crimson-600 hover:bg-crimson-500 text-white flex items-center justify-center shadow-2xl hover:scale-110 transition-all"
+                    {{-- 2. Fallback Image / Audio Player when no video_url --}}
+                    <template x-if="modalData && (modalData.type !== 'video' || !modalData.video_url)">
+                        <div class="relative w-full h-full flex items-center justify-center">
+                            <img 
+                                :src="modalData.media_url || (modalData.media && modalData.media.startsWith('http') ? modalData.media : '{{ asset('') }}' + (modalData.media || 'images/anniversary.png'))" 
+                                :alt="modalData.name"
+                                class="w-full h-full object-cover"
                             >
-                                <svg x-show="!isPlaying" class="w-7 h-7 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                <svg x-show="isPlaying" class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                            </button>
-                            <span class="px-3.5 py-1 rounded-full bg-black/70 backdrop-blur-md text-xs font-semibold text-white">
-                                <span x-show="isPlaying">Playing Original Song Sample 🔊</span>
-                                <span x-show="!isPlaying">Click to Play Song Sample 🎵</span>
-                            </span>
+
+                            {{-- Play / Audio Overlay for Video or audio sample --}}
+                            <template x-if="modalData && (modalData.type === 'video' || modalData.audio_url || modalData.audio)">
+                                <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center gap-3">
+                                    <button 
+                                        @click="toggleAudio()"
+                                        type="button" 
+                                        class="w-16 h-16 rounded-full bg-crimson-600 hover:bg-crimson-500 text-white flex items-center justify-center shadow-2xl hover:scale-110 transition-all"
+                                    >
+                                        <svg x-show="!isPlaying" class="w-7 h-7 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                        <svg x-show="isPlaying" class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                    </button>
+                                    <span class="px-3.5 py-1 rounded-full bg-black/70 backdrop-blur-md text-xs font-semibold text-white">
+                                        <span x-show="isPlaying">Playing Original Song Sample 🔊</span>
+                                        <span x-show="!isPlaying">Click to Play Song Sample 🎵</span>
+                                    </span>
+                                </div>
+                            </template>
                         </div>
                     </template>
                 </div>
 
                 {{-- Audio Player --}}
-                <audio x-ref="testimonialAudio" :src="modalData && modalData.audio ? '{{ asset('') }}' + modalData.audio : ''" @ended="isPlaying = false"></audio>
+                <audio x-ref="testimonialAudio" :src="modalData ? (modalData.audio_url || (modalData.audio ? (modalData.audio.startsWith('http') ? modalData.audio : '{{ asset('') }}' + modalData.audio) : '')) : ''" @ended="isPlaying = false"></audio>
 
                 {{-- Modal Details --}}
                 <div class="p-6 sm:p-7 overflow-y-auto text-white">
                     <template x-if="modalData">
                         <div>
                             <div class="flex items-center justify-between mb-2">
-                                <span class="text-xs font-bold uppercase tracking-wider text-pink-300 bg-pink-900/40 px-3 py-1 rounded-full border border-pink-500/20" x-text="modalData.occasion"></span>
+                                <span class="text-xs font-bold uppercase tracking-wider text-pink-300 bg-pink-900/40 px-3 py-1 rounded-full border border-pink-500/20" x-text="modalData.occasion || modalData.badge"></span>
                                 <span class="text-xs text-white/60" x-text="modalData.location"></span>
                             </div>
 
                             <h3 class="font-serif text-2xl font-bold text-white mb-2" x-text="modalData.title || modalData.name"></h3>
 
-                            <p class="text-sm sm:text-base text-white/80 leading-relaxed italic mb-6 font-serif" x-text="'&ldquo;' + modalData.text + '&rdquo;'"></p>
+                            <p class="text-sm sm:text-base text-white/80 leading-relaxed italic mb-6 font-serif" x-show="modalData.text" x-text="'&ldquo;' + modalData.text + '&rdquo;'"></p>
 
                             <div class="flex items-center justify-between pt-4 border-t border-white/10">
                                 <div>
