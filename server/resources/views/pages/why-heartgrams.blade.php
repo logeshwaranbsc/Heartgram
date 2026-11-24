@@ -154,10 +154,10 @@
                     </p>
                 </div>
 
-                {{-- Mobile Timeline Navigation Header --}}
-                <div class="flex items-center justify-between lg:hidden mb-4 px-1 select-none">
+                {{-- Mobile Timeline Navigation Header (Hidden since all 5 steps now fit smoothly on mobile) --}}
+                <div class="hidden lg:hidden mb-4 px-1 select-none">
                     <span class="text-xs font-semibold text-[#e83e6a] flex items-center gap-1.5">
-                        <span class="inline-block animate-pulse">👉</span> Swipe 1 to 5
+                        <span class="inline-block animate-pulse">👉</span> Steps 1 to 5
                     </span>
                     <div class="flex items-center gap-1.5" id="timelineStepPills">
                         @foreach($included as $i => $item)
@@ -235,9 +235,9 @@
                     }
                 </style>
 
-                {{-- Wavy Timeline Track (Horizontally scrollable on mobile/tablet, full-width on desktop) --}}
-                <div id="wavy-scroll-wrapper" class="overflow-x-auto no-scrollbar touch-pan-x snap-x snap-mandatory -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0 scroll-smooth pb-4">
-                    <div id="wavy-timeline-container" class="relative min-w-[850px] lg:min-w-0 lg:w-full pt-4 pb-4">
+                {{-- Wavy Timeline Track: Responsive on all screens matching Home Page --}}
+                <div id="wavy-scroll-wrapper" class="w-full relative pb-2 sm:pb-4">
+                    <div id="wavy-timeline-container" class="relative w-full pt-1 sm:pt-4 pb-2 sm:pb-4">
                         {{-- Base SVG curve (behind nodes, z-0) --}}
                         <svg id="wavy-timeline-svg" class="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible" xmlns="http://www.w3.org/2000/svg">
                             {{-- The smooth dashed curve --}}
@@ -265,58 +265,58 @@
                             </defs>
 
                             {{-- Glowing Wave Trail (Follows behind particle) --}}
-                            <path id="wavy-trail" d="" stroke="#FF206E" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0" filter="url(#why-trail-glow)" vector-effect="non-scaling-stroke" />
+                            <path id="wavy-trail" d="" stroke="#FF206E" stroke-width="3" stroke-linecap="round" fill="none" opacity="0" filter="url(#why-trail-glow)" vector-effect="non-scaling-stroke" />
 
                             {{-- Moving Glowing Particle Group (Matching Home Page design) --}}
                             <g id="wavy-particle-group" class="pointer-events-none transition-opacity duration-300" style="opacity: 0;">
-                                <circle cx="0" cy="0" r="16" fill="#FF4D7D" opacity="0.35" filter="url(#why-trail-glow)" />
-                                <circle cx="0" cy="0" r="8" fill="#FF4D7D" opacity="0.75" />
-                                <circle cx="0" cy="0" r="3.5" fill="#FFFFFF" stroke="#E11D48" stroke-width="1.5" />
-                                <path d="M 0,-6 L 0,6 M -6,0 L 6,0" stroke="#FFFFFF" stroke-width="1.4" opacity="0.95" />
+                                <circle cx="0" cy="0" r="14" fill="#FF4D7D" opacity="0.35" filter="url(#why-trail-glow)" />
+                                <circle cx="0" cy="0" r="7" fill="#FF4D7D" opacity="0.75" />
+                                <circle cx="0" cy="0" r="3" fill="#FFFFFF" stroke="#E11D48" stroke-width="1.5" />
+                                <path d="M 0,-5 L 0,5 M -5,0 L 5,0" stroke="#FFFFFF" stroke-width="1.2" opacity="0.95" />
                             </g>
                         </svg>
 
                         {{-- The 5 Steps Grid --}}
-                        <div class="grid grid-cols-5 gap-4 lg:gap-5 items-start relative z-10 max-w-6xl mx-auto">
+                        <div class="grid grid-cols-5 gap-0.5 xs:gap-1 sm:gap-4 lg:gap-5 items-start relative z-10 max-w-6xl mx-auto w-full">
                             @foreach($included as $index => $item)
                                 @php
                                     $offsets = [
                                         0 => 'mt-0',
-                                        1 => 'mt-20',
-                                        2 => 'mt-3',
-                                        3 => 'mt-24',
-                                        4 => 'mt-4',
+                                        1 => 'mt-3 sm:mt-12 lg:mt-20',
+                                        2 => 'mt-0.5 sm:mt-2 lg:mt-3',
+                                        3 => 'mt-4 sm:mt-14 lg:mt-24',
+                                        4 => 'mt-1 sm:mt-3 lg:mt-4',
                                     ];
                                     $offsetClass = $offsets[$index] ?? 'mt-0';
                                 @endphp
                                 <div 
-                                    class="timeline-step-column flex flex-col items-center text-center group {{ $offsetClass }} snap-center cursor-pointer" 
+                                    class="timeline-step-column flex flex-col items-center text-center group {{ $offsetClass }} snap-center cursor-pointer px-0.5 sm:px-1" 
                                     data-index="{{ $index }}"
                                     onclick="scrollToTimelineStep({{ $index }})"
                                 >
-                                    {{-- Large Watermark Number (matching reference design) --}}
-                                    <span class="timeline-step-num font-serif text-3xl sm:text-4xl lg:text-5xl font-bold leading-none select-none block mb-1">
+                                    {{-- Large Watermark Number (matching Home Page responsive scale) --}}
+                                    <span class="timeline-step-num font-serif text-[1.3rem] xs:text-[1.55rem] sm:text-4xl lg:text-5xl font-bold leading-none select-none block mb-0.5 sm:mb-1">
                                         0{{ $loop->iteration }}
                                     </span>
 
-                                    {{-- Circular Node with Concentric Halo (OPAQUE to completely hide dashed line behind it) --}}
-                                    <div class="timeline-circle-node relative flex items-center justify-center mb-3.5 z-10">
+                                    {{-- Circular Node with Concentric Halo (Responsive & Scaled for Mobile) --}}
+                                    <div class="timeline-circle-node relative flex items-center justify-center mb-1 sm:mb-3.5 z-10">
                                         {{-- Outer Opaque Pink Halo Disc --}}
-                                        <div class="timeline-outer-disc w-18 h-18 sm:w-20 sm:h-20 rounded-full bg-[#fdeef2] border-2 border-[#f7ccd7] p-2 flex items-center justify-center shadow-[0_4px_16px_rgba(244,114,182,0.18)] group-hover:scale-105 group-hover:shadow-[0_8px_24px_rgba(244,114,182,0.3)]" style="background-color: #fdeef2; border-color: #f7ccd7;">
+                                        <div class="timeline-outer-disc w-7 h-7 xs:w-8 xs:h-8 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-full bg-[#fdeef2] border sm:border-2 border-[#f7ccd7] p-0.5 sm:p-2 flex items-center justify-center shadow-[0_2px_8px_rgba(244,114,182,0.18)] sm:shadow-[0_4px_16px_rgba(244,114,182,0.18)] group-hover:scale-105 group-hover:shadow-[0_8px_24px_rgba(244,114,182,0.3)]" style="background-color: #fdeef2; border-color: #f7ccd7;">
                                              {{-- Inner Dark Luxury Maroon Disc --}}
-                                             <div class="timeline-inner-disc w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-[#4a101d] via-[#350712] to-[#20030a] flex items-center justify-center text-white shadow-md shadow-maroon-950/30 [&>svg]:w-5 [&>svg]:h-5 sm:[&>svg]:w-6 sm:[&>svg]:h-6" style="background: linear-gradient(135deg, #4a101d 0%, #350712 50%, #20030a 100%); color: #ffffff;">
+                                             <div class="timeline-inner-disc w-5.5 h-5.5 xs:w-6.5 xs:h-6.5 sm:w-11 sm:h-11 lg:w-14 lg:h-14 rounded-full bg-gradient-to-br from-[#4a101d] via-[#350712] to-[#20030a] flex items-center justify-center text-white shadow-md shadow-maroon-950/30 [&>svg]:w-2.5 [&>svg]:h-2.5 xs:[&>svg]:w-3 xs:[&>svg]:h-3 sm:[&>svg]:w-5 sm:[&>svg]:h-5 lg:[&>svg]:w-6 lg:[&>svg]:h-6" style="background: linear-gradient(135deg, #4a101d 0%, #350712 50%, #20030a 100%); color: #ffffff;">
                                                  {!! $item['icon'] !!}
                                              </div>
                                          </div>
                                     </div>
 
                                     {{-- Step Title --}}
-                                    <h3 class="font-serif text-[15px] sm:text-[16px] lg:text-[17px] font-bold text-gray-900 leading-snug mb-1.5 group-hover:text-maroon-900 transition-colors duration-200">
+                                    <h3 class="font-serif text-[7.5px] xs:text-[8.5px] sm:text-[15px] lg:text-[17px] font-bold text-gray-900 leading-tight mb-0.5 sm:mb-1.5 group-hover:text-maroon-900 transition-colors duration-200">
                                         {{ $item['title'] }}
                                     </h3>
 
                                     {{-- Step Description --}}
-                                    <p class="text-[12px] lg:text-[12.5px] text-gray-600 leading-relaxed font-normal max-w-[170px] mx-auto">
+                                    <p class="font-sans text-[6.5px] xs:text-[7.5px] sm:font-sans sm:text-[12px] lg:text-[12.5px] text-gray-600 leading-[1.2] xs:leading-[1.25] sm:leading-relaxed font-normal max-w-[170px] mx-auto px-0.5">
                                         {{ $item['description'] }}
                                     </p>
                                 </div>
@@ -340,19 +340,19 @@
                     function buildStages() {
                         if (nodeLengths.length < 5) return;
                         stages = [
-                            { type: 'enter', fromL: 0, toL: nodeLengths[0], duration: 600 },
-                            { type: 'cross', step: 0, length: nodeLengths[0], duration: 450 },
-                            { type: 'move', fromL: nodeLengths[0], toL: nodeLengths[1], duration: 950 },
-                            { type: 'cross', step: 1, length: nodeLengths[1], duration: 450 },
-                            { type: 'move', fromL: nodeLengths[1], toL: nodeLengths[2], duration: 950 },
-                            { type: 'cross', step: 2, length: nodeLengths[2], duration: 450 },
-                            { type: 'move', fromL: nodeLengths[2], toL: nodeLengths[3], duration: 950 },
-                            { type: 'cross', step: 3, length: nodeLengths[3], duration: 450 },
-                            { type: 'move', fromL: nodeLengths[3], toL: nodeLengths[4], duration: 950 },
-                            { type: 'cross', step: 4, length: nodeLengths[4], duration: 550 },
-                            { type: 'exit', fromL: nodeLengths[4], toL: totalLength, duration: 600 },
-                            { type: 'hold', duration: 5000 }, // Finished: hold all steps illuminated for 5 seconds before next iteration
-                            { type: 'reset', duration: 350 }
+                            { type: 'enter', fromL: 0, toL: nodeLengths[0], duration: 160 },
+                            { type: 'cross', step: 0, length: nodeLengths[0], duration: 140 },
+                            { type: 'move', fromL: nodeLengths[0], toL: nodeLengths[1], duration: 220 },
+                            { type: 'cross', step: 1, length: nodeLengths[1], duration: 140 },
+                            { type: 'move', fromL: nodeLengths[1], toL: nodeLengths[2], duration: 220 },
+                            { type: 'cross', step: 2, length: nodeLengths[2], duration: 140 },
+                            { type: 'move', fromL: nodeLengths[2], toL: nodeLengths[3], duration: 220 },
+                            { type: 'cross', step: 3, length: nodeLengths[3], duration: 140 },
+                            { type: 'move', fromL: nodeLengths[3], toL: nodeLengths[4], duration: 220 },
+                            { type: 'cross', step: 4, length: nodeLengths[4], duration: 180 },
+                            { type: 'exit', fromL: nodeLengths[4], toL: totalLength, duration: 160 },
+                            { type: 'hold', duration: 1600 }, // Finished: hold all steps illuminated for 1.6s
+                            { type: 'reset', duration: 150 }
                         ];
                         totalLoopDuration = stages.reduce((acc, s) => acc + s.duration, 0);
                     }
@@ -377,10 +377,13 @@
                             };
                         });
 
+                        const isMobile = window.innerWidth < 640;
+                        const leadPad = isMobile ? Math.min(24, pts[0].x * 0.7) : 85;
+
                         // Lead-in from left and lead-out to right
-                        const startX = Math.max(8, pts[0].x - 85);
+                        const startX = Math.max(4, pts[0].x - leadPad);
                         const startY = pts[0].y;
-                        const endX = Math.min(container.scrollWidth - 8, pts[pts.length - 1].x + 85);
+                        const endX = Math.min(container.scrollWidth - 4, pts[pts.length - 1].x + leadPad);
                         const endY = pts[pts.length - 1].y;
 
                         const dxIn = pts[0].x - startX;
@@ -400,7 +403,8 @@
                             // Exact midpoint on cubic bezier curve at t = 0.5
                             const midX = (p0.x + p1.x) / 2;
                             const midY = (p0.y + p1.y) / 2;
-                            dotsHtml += `<circle cx="${midX}" cy="${midY}" r="3" fill="#f472b6" opacity="0.85" />`;
+                            const dotR = isMobile ? '2' : '3';
+                            dotsHtml += `<circle cx="${midX}" cy="${midY}" r="${dotR}" fill="#f472b6" opacity="0.85" />`;
                         }
 
                         const dxOut = endX - pts[pts.length - 1].x;
@@ -410,8 +414,8 @@
                         trailPath.setAttribute('d', d);
                         if (dotsGroup) dotsGroup.innerHTML = dotsHtml;
 
-                        // Position floating notes and heart relative to the curve
-                        if (decorGroup && pts.length >= 4) {
+                        // Position floating notes and heart relative to the curve (Desktop only to prevent mobile clutter)
+                        if (decorGroup && pts.length >= 4 && !isMobile) {
                             const n12x = pts[1].x + (pts[2].x - pts[1].x) * 0.45;
                             const n12y = Math.min(pts[1].y, pts[2].y) - 30;
 
@@ -442,6 +446,8 @@
                                 </g>
                                 ${lastDecor}
                             `;
+                        } else if (decorGroup) {
+                            decorGroup.innerHTML = '';
                         }
 
                         // Calculate total length and node positions along path
