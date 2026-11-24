@@ -103,6 +103,18 @@ Route::middleware(['auth'])->group(function () {
         'update' => 'admin.testimonials.update',
         'destroy' => 'admin.testimonials.destroy',
     ]);
+
+    // Occasion Showcase Songs (Cloudinary Audio)
+    Route::post('admin/occasion-songs/seed', [\App\Http\Controllers\Admin\OccasionSongController::class, 'seedDefaults'])->name('admin.occasion-songs.seed');
+    Route::post('admin/occasion-songs/{id}/quick-audio', [\App\Http\Controllers\Admin\OccasionSongController::class, 'quickAudioUpdate'])->name('admin.occasion-songs.quick-audio');
+    Route::resource('admin/occasion-songs', \App\Http\Controllers\Admin\OccasionSongController::class)->except(['show'])->names([
+        'index' => 'admin.occasion-songs.index',
+        'create' => 'admin.occasion-songs.create',
+        'store' => 'admin.occasion-songs.store',
+        'edit' => 'admin.occasion-songs.edit',
+        'update' => 'admin.occasion-songs.update',
+        'destroy' => 'admin.occasion-songs.destroy',
+    ]);
 });
 
 // Public landing page route

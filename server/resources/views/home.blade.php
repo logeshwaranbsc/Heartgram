@@ -229,36 +229,111 @@
 
                     <div class="flex flex-col gap-1.5 py-1.5">
                         @php
+                            $previewAudioSources = [
+                                'love' => asset('audio/sample_love.wav'),
+                                'apology' => asset('audio/sample_apology.wav'),
+                                'birthday' => asset('audio/sample_birthday.wav'),
+                                'proposal' => asset('audio/sample_proposal.wav'),
+                                'anniversary' => asset('audio/sample_anniversary.wav'),
+                            ];
+
+                            $previewTitles = [
+                                'love' => 'A Love Heartgram',
+                                'apology' => 'An Apology Heartgram',
+                                'birthday' => 'A Birthday Heartgram',
+                                'proposal' => 'A Proposal Heartgram',
+                                'anniversary' => 'An Anniversary Heartgram',
+                            ];
+
+                            $previewTags = [
+                                'love' => 'Soft acoustic <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Tamil <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> 20-second sample <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Original composition',
+                                'apology' => 'Soft acoustic <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Hindi <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> 25-second preview <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Original composition',
+                                'birthday' => 'Upbeat pop <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> English <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> 10-second sample <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Original composition',
+                                'proposal' => 'Piano & Strings <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Malayalam <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> 19-second sample <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Original composition',
+                                'anniversary' => 'Acoustic Romance <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Malayalam <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> 18-second sample <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Original composition',
+                            ];
+
+                            $previewSubtitles = [
+                                'love' => 'Songs that speak from the heart',
+                                'apology' => 'Heartfelt apologies in music',
+                                'birthday' => 'Make birthdays unforgettable',
+                                'proposal' => 'The perfect way to propose',
+                                'anniversary' => 'Celebrate the years together',
+                            ];
+
+                            // Safely load dynamic audio and metadata uploaded in Admin Panel
+                            try {
+                                if (\Illuminate\Support\Facades\Schema::hasTable('occasion_songs')) {
+                                    $dbOccasions = \App\OccasionSong::where('is_active', true)->get()->keyBy('occasion_id');
+                                    $keyMapping = [
+                                        'love' => ['love', 'love-and-romance'],
+                                        'apology' => ['apology'],
+                                        'birthday' => ['birthday'],
+                                        'proposal' => ['proposal'],
+                                        'anniversary' => ['anniversary'],
+                                    ];
+
+                                    foreach ($keyMapping as $previewKey => $possibleIds) {
+                                        foreach ($possibleIds as $id) {
+                                            if (isset($dbOccasions[$id])) {
+                                                $dbItem = $dbOccasions[$id];
+                                                if (!empty($dbItem->audio)) {
+                                                    $previewAudioSources[$previewKey] = $dbItem->audio;
+                                                }
+                                                if (!empty($dbItem->title)) {
+                                                    $prefix = in_array($previewKey, ['apology', 'anniversary']) ? 'An ' : 'A ';
+                                                    $previewTitles[$previewKey] = $prefix . $dbItem->title . ' Heartgram';
+                                                }
+                                                if (!empty($dbItem->subtitle)) {
+                                                    $previewSubtitles[$previewKey] = $dbItem->subtitle;
+                                                }
+                                                if (!empty($dbItem->language)) {
+                                                    $lang = e($dbItem->language);
+                                                    $previewTags[$previewKey] = preg_replace(
+                                                        '/(Tamil|Hindi|English|Malayalam|Telugu|Kannada)/i',
+                                                        $lang,
+                                                        $previewTags[$previewKey]
+                                                    );
+                                                }
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                            } catch (\Throwable $e) {
+                                // Gracefully fallback to static defaults if database or table not ready
+                            }
+
                             $previewCats = [
                                 'love' => [
                                     'icon' => '<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>', 
                                     'activeIcon' => '<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>', 
                                     'title' => 'Love', 
-                                    'desc' => 'Songs that speak from the heart'
+                                    'desc' => $previewSubtitles['love'] ?? 'Songs that speak from the heart'
                                 ],
                                 'apology' => [
                                     'icon' => '<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>', 
                                     'activeIcon' => '<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>', 
                                     'title' => 'Apology', 
-                                    'desc' => 'Heartfelt apologies in music'
+                                    'desc' => $previewSubtitles['apology'] ?? 'Heartfelt apologies in music'
                                 ],
                                 'birthday' => [
                                     'icon' => '<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M20 10V8h-4V4h-2v4h-4V4H8v4H4v2c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2v5c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-5c1.1 0 2-.9 2-2v-2c0-1.1-.9-2-2-2zm-9 9H9v-3h2v3zm4 0h-2v-3h2v3zm2-7H5v-2h14v2z"/></svg>', 
                                     'activeIcon' => '<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M20 10V8h-4V4h-2v4h-4V4H8v4H4v2c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2v5c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-5c1.1 0 2-.9 2-2v-2c0-1.1-.9-2-2-2zm-9 9H9v-3h2v3zm4 0h-2v-3h2v3zm2-7H5v-2h14v2z"/></svg>', 
                                     'title' => 'Birthday', 
-                                    'desc' => 'Make birthdays unforgettable'
+                                    'desc' => $previewSubtitles['birthday'] ?? 'Make birthdays unforgettable'
                                 ],
                                 'proposal' => [
                                     'icon' => '<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>', 
                                     'activeIcon' => '<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>', 
                                     'title' => 'Proposal', 
-                                    'desc' => 'The perfect way to propose'
+                                    'desc' => $previewSubtitles['proposal'] ?? 'The perfect way to propose'
                                 ],
                                 'anniversary' => [
                                     'icon' => '<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"/></svg>', 
                                     'activeIcon' => '<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"/></svg>', 
                                     'title' => 'Anniversary', 
-                                    'desc' => 'Celebrate the years together'
+                                    'desc' => $previewSubtitles['anniversary'] ?? 'Celebrate the years together'
                                 ],
                             ];
                         @endphp
@@ -360,17 +435,14 @@
                                 </div>
                             </div>
 
-                            <h3 id="preview-title" class="font-display text-[1.75rem] xs:text-[2rem] sm:text-[2.25rem] md:text-[2.5rem] text-maroon-900 mb-1 leading-tight">An Apology Heartgram</h3>
+                            <h3 id="preview-title" class="font-display text-[1.75rem] xs:text-[2rem] sm:text-[2.25rem] md:text-[2.5rem] text-maroon-900 mb-1 leading-tight">{{ $previewTitles['apology'] }}</h3>
                             <p id="preview-tags" class="text-maroon-800/60 text-xs sm:text-sm mb-3 flex items-center gap-2 sm:gap-2.5 flex-wrap font-medium">
-                                Soft acoustic 
-                                <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Hindi 
-                                <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> 25-second preview 
-                                <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Original composition
+                                {!! $previewTags['apology'] !!}
                             </p>
 
                             {{-- Player Bar with Reduced Height Music Line --}}
                             <div class="bg-white/90 backdrop-blur-md rounded-t-2xl py-2 px-3 sm:px-4 flex items-center gap-3 sm:gap-4 shadow-sm border border-white border-b-red-100/60">
-                                <audio id="previewAudio" preload="auto" src="{{ asset('audio/sample_apology.wav') }}"></audio>
+                                <audio id="previewAudio" preload="auto" src="{{ $previewAudioSources['apology'] }}"></audio>
                                 <button id="previewPlayBtn" type="button" aria-label="Play sample" class="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-crimson-500 to-maroon-700 text-white flex items-center justify-center shadow-md shadow-crimson-500/25 hover:scale-105 active:scale-95 transition cursor-pointer">
                                     <svg id="previewPlayIcon" class="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                     <svg id="previewPauseIcon" class="w-4 h-4 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
@@ -417,43 +489,43 @@
             <script>
                 const previewData = {
                     love: {
-                        title: "A Love Heartgram",
-                        tags: 'Soft acoustic <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Tamil <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> 20-second sample <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Original composition',
+                        title: @json($previewTitles['love']),
+                        tags: @json($previewTags['love']),
                         time: "0:20",
                         quote: '<span class="font-semibold text-maroon-900">You are my everything,</span> my today and all of my tomorrows.'
                     },
                     apology: {
-                        title: "An Apology Heartgram",
-                        tags: 'Soft acoustic <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Hindi <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> 25-second preview <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Original composition',
+                        title: @json($previewTitles['apology']),
+                        tags: @json($previewTags['apology']),
                         time: "0:25",
                         quote: '<span class="font-semibold text-maroon-900">I\'m sorry</span> for the times I was wrong,<br>You mean the world, and I want to make it right.'
                     },
                     birthday: {
-                        title: "A Birthday Heartgram",
-                        tags: 'Upbeat pop <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> English <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> 10-second sample <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Original composition',
+                        title: @json($previewTitles['birthday']),
+                        tags: @json($previewTags['birthday']),
                         time: "0:10",
                         quote: '<span class="font-semibold text-maroon-900">Happy Birthday,</span> to the one who makes every day brighter.'
                     },
                     proposal: {
-                        title: "A Proposal Heartgram",
-                        tags: 'Piano & Strings <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Malayalam <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> 19-second sample <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Original composition',
+                        title: @json($previewTitles['proposal']),
+                        tags: @json($previewTags['proposal']),
                         time: "0:19",
                         quote: '<span class="font-semibold text-maroon-900">Will you</span> be mine forever? Let\'s write our own story.'
                     },
                     anniversary: {
-                        title: "An Anniversary Heartgram",
-                        tags: 'Acoustic Romance <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Malayalam <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> 18-second sample <span class="w-1 h-1 rounded-full bg-maroon-900/20"></span> Original composition',
+                        title: @json($previewTitles['anniversary']),
+                        tags: @json($previewTags['anniversary']),
                         time: "0:18",
                         quote: '<span class="font-semibold text-maroon-900">Through every season,</span> I would choose you all over again.'
                     }
                 };
 
                 const categoryAudioMap = {
-                    love: "{{ asset('audio/sample_love.wav') }}",
-                    apology: "{{ asset('audio/sample_apology.wav') }}",
-                    birthday: "{{ asset('audio/sample_birthday.wav') }}",
-                    proposal: "{{ asset('audio/sample_proposal.wav') }}",
-                    anniversary: "{{ asset('audio/sample_anniversary.wav') }}"
+                    love: @json($previewAudioSources['love']),
+                    apology: @json($previewAudioSources['apology']),
+                    birthday: @json($previewAudioSources['birthday']),
+                    proposal: @json($previewAudioSources['proposal']),
+                    anniversary: @json($previewAudioSources['anniversary'])
                 };
 
                 function setPreviewActive(catId) {
@@ -464,7 +536,7 @@
                         document.getElementById('preview-quote').innerHTML = previewData[catId].quote;
                     }
 
-                    // Update audio track
+                    // Update audio track with admin-uploaded Cloudinary or fallback audio
                     const previewAudioEl = document.getElementById('previewAudio');
                     const previewTimeEl = document.getElementById('preview-time');
                     if (previewAudioEl && categoryAudioMap[catId]) {
@@ -472,9 +544,22 @@
                         previewAudioEl.pause();
                         previewAudioEl.src = categoryAudioMap[catId];
                         previewAudioEl.currentTime = 0;
-                        if (previewTimeEl) {
-                            previewTimeEl.textContent = '0:00 / ' + (previewData[catId] ? previewData[catId].time : '0:20');
+
+                        // Dynamically update duration display when metadata loads
+                        const onLoadedMeta = () => {
+                            if (previewTimeEl && !isNaN(previewAudioEl.duration) && previewAudioEl.duration > 0) {
+                                const durMin = Math.floor(previewAudioEl.duration / 60);
+                                const durSec = Math.floor(previewAudioEl.duration % 60);
+                                previewTimeEl.textContent = `0:00 / ${durMin}:${durSec < 10 ? '0' : ''}${durSec}`;
+                            }
+                            previewAudioEl.removeEventListener('loadedmetadata', onLoadedMeta);
+                        };
+                        previewAudioEl.addEventListener('loadedmetadata', onLoadedMeta);
+
+                        if (previewTimeEl && previewData[catId]) {
+                            previewTimeEl.textContent = '0:00 / ' + previewData[catId].time;
                         }
+
                         if (wasPlaying) {
                             previewAudioEl.play().catch(e => console.warn(e));
                         }
@@ -4366,6 +4451,8 @@
                 previewAudio.addEventListener('loadedmetadata', updatePreviewDuration);
                 previewAudio.addEventListener('durationchange', updatePreviewDuration);
                 previewAudio.addEventListener('canplay', updatePreviewDuration);
+                previewAudio.addEventListener('play', () => setPreviewPlayState(true));
+                previewAudio.addEventListener('pause', () => setPreviewPlayState(false));
 
                 previewAudio.addEventListener('timeupdate', () => {
                     if (!previewAudio.duration || isNaN(previewAudio.duration)) return;

@@ -666,6 +666,60 @@
                 'audio' => asset('audio/sample_apology.wav'),
             ],
         ];
+
+        // Safely merge dynamic database occasion songs (e.g. Cloudinary audio URLs) if table exists
+        try {
+            if (\Illuminate\Support\Facades\Schema::hasTable('occasion_songs')) {
+                $dbSongs = \App\OccasionSong::where('is_active', true)->get()->keyBy('occasion_id');
+                if ($dbSongs->isNotEmpty()) {
+                    foreach ($leftOccasions as &$occ) {
+                        if (isset($dbSongs[$occ['id']])) {
+                            $dbItem = $dbSongs[$occ['id']];
+                            if (!empty($dbItem->audio)) {
+                                $occ['audio'] = $dbItem->audio;
+                            }
+                            if (!empty($dbItem->title)) {
+                                $occ['title'] = $dbItem->title;
+                            }
+                            if (!empty($dbItem->subtitle)) {
+                                $occ['subtitle'] = $dbItem->subtitle;
+                            }
+                            if (!empty($dbItem->image)) {
+                                $occ['image'] = $dbItem->image;
+                            }
+                            if (!empty($dbItem->language)) {
+                                $occ['language'] = $dbItem->language;
+                            }
+                        }
+                    }
+                    unset($occ);
+
+                    foreach ($rightOccasions as &$occ) {
+                        if (isset($dbSongs[$occ['id']])) {
+                            $dbItem = $dbSongs[$occ['id']];
+                            if (!empty($dbItem->audio)) {
+                                $occ['audio'] = $dbItem->audio;
+                            }
+                            if (!empty($dbItem->title)) {
+                                $occ['title'] = $dbItem->title;
+                            }
+                            if (!empty($dbItem->subtitle)) {
+                                $occ['subtitle'] = $dbItem->subtitle;
+                            }
+                            if (!empty($dbItem->image)) {
+                                $occ['image'] = $dbItem->image;
+                            }
+                            if (!empty($dbItem->language)) {
+                                $occ['language'] = $dbItem->language;
+                            }
+                        }
+                    }
+                    unset($occ);
+                }
+            }
+        } catch (\Throwable $e) {
+            // Silently fallback to static defaults if database or table is not ready
+        }
     @endphp
 
     <div x-data="occasionsPage()" class="min-h-screen text-ink-900 overflow-x-hidden relative selection:bg-brand-pink/20 selection:text-brand-dark">
