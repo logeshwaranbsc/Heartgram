@@ -32,6 +32,7 @@ INSERT INTO `page_contents` (`key`, `value`, `created_at`, `updated_at`) VALUES
 ('home_hero_badge_4', 'Delivered on WhatsApp & email', NOW(), NOW()),
 ('home_hero_bg_image', '/images/hero_background.png?v=2', NOW(), NOW()),
 ('home_hero_album_art', '/images/album_art_amma.png', NOW(), NOW()),
+('home_hero_audio', '/audio/sample_amma.wav', NOW(), NOW()),
 ('home_hero_player_title_1', 'For Amma,', NOW(), NOW()),
 ('home_hero_player_title_2', 'on her 60th.', NOW(), NOW()),
 
@@ -40,6 +41,7 @@ INSERT INTO `page_contents` (`key`, `value`, `created_at`, `updated_at`) VALUES
 ('home_preview_title', 'Hear our Heartgrams.', NOW(), NOW()),
 ('home_preview_description', 'Pick a feeling, press play, and hear what a Heartgram sounds like — before you tell us a single memory.', NOW(), NOW()),
 ('home_preview_btn_text', 'Explore all categories', NOW(), NOW()),
+('home_preview_btn_link', '/occasions', NOW(), NOW()),
 
 -- 3. Occasions Section Banner
 ('home_occasions_badge', 'MADE FOR EVERY OCCASION', NOW(), NOW()),

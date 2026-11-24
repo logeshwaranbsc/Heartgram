@@ -217,6 +217,41 @@
                                 </div>
                             </div>
                         </div>
+
+                        {{-- Hero Floating Card Song / Audio --}}
+                        <div class="p-4 border border-gray-200 rounded-xl bg-gray-50 md:col-span-2">
+                            <label class="block text-xs font-bold text-gray-800 uppercase mb-1">Hero Music Player Audio Song (For Amma, on her 60th)</label>
+                            <p class="text-[11px] text-gray-500 mb-3">Upload a local audio file (MP3, WAV, M4A) or paste a Cloudinary/external audio URL.</p>
+
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
+                                <div>
+                                    <label class="block text-[11px] font-semibold text-gray-700 mb-1">Upload Local Audio File</label>
+                                    <input type="file" name="home_hero_audio_file" accept="audio/*" class="block w-full text-xs text-gray-600 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-pink-50 file:text-[#c02d4b] hover:file:bg-pink-100 cursor-pointer">
+                                </div>
+                                <div>
+                                    <label class="block text-[11px] font-semibold text-gray-700 mb-1">Or Cloudinary / Audio URL</label>
+                                    <input type="text" name="home_hero_audio" placeholder="https://res.cloudinary.com/... or /audio/sample_amma.wav" value="{{ $content['home_hero_audio'] }}" class="w-full text-xs border-gray-300 rounded-lg shadow-2xs">
+                                </div>
+                            </div>
+
+                            @if(!empty($content['home_hero_audio']))
+                                <div class="mt-3 pt-3 border-t border-gray-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                                        <span class="text-[11px] text-gray-600 font-mono truncate max-w-md">Current audio: {{ $content['home_hero_audio'] }}</span>
+                                    </div>
+                                    @php
+                                        $heroAudioPreview = $content['home_hero_audio'];
+                                        if (!str_starts_with($heroAudioPreview, 'http') && !str_starts_with($heroAudioPreview, '/')) {
+                                            $heroAudioPreview = asset($heroAudioPreview);
+                                        } elseif (str_starts_with($heroAudioPreview, '/')) {
+                                            $heroAudioPreview = asset(ltrim($heroAudioPreview, '/'));
+                                        }
+                                    @endphp
+                                    <audio controls class="h-8 max-w-xs" src="{{ $heroAudioPreview }}"></audio>
+                                </div>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
@@ -244,9 +279,15 @@
                     <textarea name="home_preview_description" rows="2" class="w-full text-sm border-gray-300 rounded-lg shadow-2xs">{{ $content['home_preview_description'] }}</textarea>
                 </div>
 
-                <div>
-                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Explore Button Text</label>
-                    <input type="text" name="home_preview_btn_text" value="{{ $content['home_preview_btn_text'] }}" class="w-full max-w-sm text-sm border-gray-300 rounded-lg shadow-2xs">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Explore Button Text</label>
+                        <input type="text" name="home_preview_btn_text" value="{{ $content['home_preview_btn_text'] }}" class="w-full text-sm border-gray-300 rounded-lg shadow-2xs">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Explore Button Link (e.g. /occasions)</label>
+                        <input type="text" name="home_preview_btn_link" value="{{ $content['home_preview_btn_link'] ?? '/occasions' }}" class="w-full text-sm border-gray-300 rounded-lg shadow-2xs">
+                    </div>
                 </div>
 
                 <div class="p-4 bg-pink-50/60 border border-pink-200 rounded-xl">

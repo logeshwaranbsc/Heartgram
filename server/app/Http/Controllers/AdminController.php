@@ -214,6 +214,7 @@ class AdminController extends Controller
             'home_hero_badge_4' => \App\PageContent::get('home_hero_badge_4', 'Delivered on WhatsApp & email'),
             'home_hero_bg_image' => \App\PageContent::get('home_hero_bg_image', '/images/hero_background.png?v=2'),
             'home_hero_album_art' => \App\PageContent::get('home_hero_album_art', '/images/album_art_amma.png'),
+            'home_hero_audio' => \App\PageContent::get('home_hero_audio', '/audio/sample_amma.wav'),
             'home_hero_player_title_1' => \App\PageContent::get('home_hero_player_title_1', 'For Amma,'),
             'home_hero_player_title_2' => \App\PageContent::get('home_hero_player_title_2', 'on her 60th.'),
 
@@ -222,6 +223,7 @@ class AdminController extends Controller
             'home_preview_title' => \App\PageContent::get('home_preview_title', 'Hear our Heartgrams.'),
             'home_preview_description' => \App\PageContent::get('home_preview_description', 'Pick a feeling, press play, and hear what a Heartgram sounds like — before you tell us a single memory.'),
             'home_preview_btn_text' => \App\PageContent::get('home_preview_btn_text', 'Explore all categories'),
+            'home_preview_btn_link' => \App\PageContent::get('home_preview_btn_link', '/occasions'),
 
             // 3. Occasions Section Banner
             'home_occasions_badge' => \App\PageContent::get('home_occasions_badge', 'MADE FOR EVERY OCCASION'),
@@ -351,6 +353,7 @@ class AdminController extends Controller
             'home_preview_title',
             'home_preview_description',
             'home_preview_btn_text',
+            'home_preview_btn_link',
 
             // Occasions Banner
             'home_occasions_badge',
@@ -459,6 +462,24 @@ class AdminController extends Controller
         $uploadDirectory = public_path('uploads/home');
         if (!file_exists($uploadDirectory)) {
             @mkdir($uploadDirectory, 0755, true);
+        }
+
+        // 3. Hero Audio Song File or Cloudinary URL
+        if ($request->hasFile('home_hero_audio_file')) {
+            $audioFile = $request->file('home_hero_audio_file');
+            $ext = $audioFile->getClientOriginalExtension();
+            $audioName = 'hero_song_' . time() . '_' . uniqid() . '.' . $ext;
+            $audioFile->move($uploadDirectory, $audioName);
+
+            \App\PageContent::updateOrCreate(
+                ['key' => 'home_hero_audio'],
+                ['value' => '/uploads/home/' . $audioName]
+            );
+        } elseif ($request->filled('home_hero_audio')) {
+            \App\PageContent::updateOrCreate(
+                ['key' => 'home_hero_audio'],
+                ['value' => trim($request->input('home_hero_audio'))]
+            );
         }
 
         foreach ($imageFields as $imgKey) {

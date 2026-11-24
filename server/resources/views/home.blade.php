@@ -94,9 +94,17 @@
                         </div>
                     </div>
 
+                    @php
+                        $heroSongAudio = \App\PageContent::get('home_hero_audio', '/audio/sample_amma.wav');
+                        $heroSongAudioUrl = str_starts_with($heroSongAudio, 'http') ? $heroSongAudio : asset(ltrim($heroSongAudio, '/'));
+                        $heroSongArt = \App\PageContent::get('home_hero_album_art', 'images/album_art_amma.png');
+                        $heroSongArtUrl = str_starts_with($heroSongArt, 'http') ? $heroSongArt : asset(ltrim($heroSongArt, '/'));
+                        $heroSongT1 = \App\PageContent::get('home_hero_player_title_1', 'For Amma,');
+                        $heroSongT2 = \App\PageContent::get('home_hero_player_title_2', 'on her 60th.');
+                    @endphp
                     {{-- Main Player --}}
                     <div class="hero-player-card relative w-full max-w-[18.5rem] lg:max-w-[19.5rem] xl:max-w-[21.5rem] 2xl:max-w-[23rem] bg-gradient-to-br from-brand-dark to-brand-black rounded-[1.6rem] xl:rounded-[1.85rem] p-3.5 sm:p-4 xl:p-4.5 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/5 z-10 backdrop-blur-md">
-                        <audio id="heroAudio" src="{{ asset('audio/sample_amma.wav') }}" preload="auto"></audio>
+                        <audio id="heroAudio" src="{{ $heroSongAudioUrl }}" preload="auto"></audio>
                         
                         {{-- Album Art --}}
                         <div class="relative w-full aspect-[4/3] rounded-[1.2rem] sm:rounded-[1.3rem] xl:rounded-[1.45rem] overflow-hidden mb-3 xl:mb-3.5 shadow-inner bg-black/40">
@@ -385,7 +393,7 @@
                     </div>
 
                     {{-- Bottom button --}}
-                    <button class="w-full mt-3 py-2.5 px-3.5 rounded-xl bg-black/20 hover:bg-black/30 border border-white/5 flex items-center justify-between transition group">
+                    <a href="{{ \App\PageContent::get('home_preview_btn_link', route('occasions')) }}" class="w-full mt-3 py-2.5 px-3.5 rounded-xl bg-black/20 hover:bg-black/30 border border-white/5 flex items-center justify-between transition group cursor-pointer">
                         <div class="flex items-center gap-2.5">
                             <div class="grid grid-cols-2 gap-[2px] opacity-40">
                                 <div class="w-1.5 h-1.5 rounded-full border border-white"></div>
@@ -396,7 +404,7 @@
                             <span class="text-xs font-medium text-white/90">{{ \App\PageContent::get('home_preview_btn_text', 'Explore all categories') }}</span>
                         </div>
                         <svg class="w-3.5 h-3.5 text-white/40 group-hover:text-white transition transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                    </button>
+                    </a>
                 </div>
 
                 {{-- Right Column: Contents (Heading + Preview Player) --}}
@@ -4129,11 +4137,11 @@
 
             const heroTracks = [
                 {
-                    title1: "For Amma,",
-                    title2: "on her 60th.",
-                    image: "{{ asset('images/album_art_amma.png') }}",
-                    audio: "{{ asset('audio/sample_amma.wav') }}",
-                    alt: "For Amma, on her 60th"
+                    title1: @json($heroSongT1),
+                    title2: @json($heroSongT2),
+                    image: @json($heroSongArtUrl),
+                    audio: @json($heroSongAudioUrl),
+                    alt: @json($heroSongT1 . ' ' . $heroSongT2)
                 },
                 {
                     title1: "25 Years of Us,",
