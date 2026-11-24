@@ -720,6 +720,8 @@
         } catch (\Throwable $e) {
             // Silently fallback to static defaults if database or table is not ready
         }
+
+        $allOccasions = array_values(array_merge($leftOccasions, $rightOccasions));
     @endphp
 
     <div x-data="occasionsPage()" class="min-h-screen text-ink-900 overflow-x-hidden relative selection:bg-brand-pink/20 selection:text-brand-dark">
@@ -929,8 +931,251 @@
                     <circle id="waveTargetNode" cx="-100" cy="-100" r="4.5" fill="#E11D48" stroke="#FFFFFF" stroke-width="1.5" filter="url(#homeWaveGlow)" />
                 </svg>
 
-                {{-- Grid Container for Left / Center / Right --}}
-                <div class="grid grid-cols-12 gap-1 sm:gap-2.5 lg:gap-4 items-center relative z-20">
+                {{-- ============================================================ --}}
+                {{-- MOBILE VIEW: Overlapping Stacked Cards Carousel (< lg) --}}
+                {{-- ============================================================ --}}
+                <div class="block lg:hidden w-full relative z-20 py-2">
+                    {{-- 1. Mobile Branding Header (Logo & Dynamic Title) --}}
+                    <div class="flex flex-col items-center justify-center text-center relative py-1 mb-3 select-none">
+                        <div class="relative flex items-center justify-center mb-1">
+                            <span class="absolute -top-2 -left-6 text-[#FF4D7D] text-xs -rotate-12 animate-pulse-slow pointer-events-none">♥</span>
+                            <span class="absolute top-1/2 -left-8 -translate-y-1/2 text-[#FF758C] text-xs animate-spin-slow pointer-events-none">✦</span>
+                            <span class="absolute top-1/2 -right-8 -translate-y-1/2 text-[#FF758C] text-xs animate-spin-slow pointer-events-none">✦</span>
+                            <span class="absolute -top-2 -right-6 text-[#FF4D7D] text-xs rotate-12 animate-pulse-slow pointer-events-none">♥</span>
+
+                            <div 
+                                class="relative z-30 w-[54px] h-[54px] flex items-center justify-center drop-shadow-[0_4px_14px_rgba(255,42,109,0.32)] transition-transform duration-300 cursor-pointer"
+                                :class="isPlaying ? 'scale-105' : ''"
+                                @click="toggleGlobalPlay()"
+                                title="Click to play / pause active song"
+                            >
+                                <img 
+                                    src="{{ asset('images/logo_badge.png') }}" 
+                                    alt="Heartgrams Logo" 
+                                    class="w-full h-full object-contain"
+                                >
+                            </div>
+                        </div>
+
+                        <div class="relative z-20 w-[110px] mb-1 cursor-pointer" @click="window.location.href = '{{ url('/') }}'">
+                            <img 
+                                src="{{ asset('images/logo_text.png') }}" 
+                                alt="Heartgrams" 
+                                class="w-full h-auto object-contain mx-auto"
+                            >
+                        </div>
+
+                    </div>
+
+                    {{-- 2. Fast Category Jump Pills Strip --}}
+                    <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar touch-pan-x px-2 pb-2 mb-3 max-w-[380px] mx-auto">
+                        <button 
+                            type="button" 
+                            @click="activeCategory = 'all'" 
+                            :class="activeCategory === 'all' ? 'bg-[#FF206E] text-white shadow-sm' : 'bg-white/80 text-gray-600 border border-pink-100'"
+                            class="px-3 py-1 rounded-full text-[11px] font-bold whitespace-nowrap shrink-0 transition-colors"
+                        >
+                            All (14)
+                        </button>
+                        <button 
+                            type="button" 
+                            @click="jumpToOccasion('birthday')" 
+                            :class="currentAudioId === 'birthday' ? 'bg-[#FF206E] text-white shadow-sm' : 'bg-white/80 text-gray-600 border border-pink-100'"
+                            class="px-3 py-1 rounded-full text-[11px] font-bold whitespace-nowrap shrink-0 transition-colors"
+                        >
+                            Birthday
+                        </button>
+                        <button 
+                            type="button" 
+                            @click="jumpToOccasion('proposal')" 
+                            :class="currentAudioId === 'proposal' ? 'bg-[#FF206E] text-white shadow-sm' : 'bg-white/80 text-gray-600 border border-pink-100'"
+                            class="px-3 py-1 rounded-full text-[11px] font-bold whitespace-nowrap shrink-0 transition-colors"
+                        >
+                            Proposal
+                        </button>
+                        <button 
+                            type="button" 
+                            @click="jumpToOccasion('anniversary')" 
+                            :class="currentAudioId === 'anniversary' ? 'bg-[#FF206E] text-white shadow-sm' : 'bg-white/80 text-gray-600 border border-pink-100'"
+                            class="px-3 py-1 rounded-full text-[11px] font-bold whitespace-nowrap shrink-0 transition-colors"
+                        >
+                            Anniversary
+                        </button>
+                        <button 
+                            type="button" 
+                            @click="jumpToOccasion('love-and-romance')" 
+                            :class="currentAudioId === 'love-and-romance' ? 'bg-[#FF206E] text-white shadow-sm' : 'bg-white/80 text-gray-600 border border-pink-100'"
+                            class="px-3 py-1 rounded-full text-[11px] font-bold whitespace-nowrap shrink-0 transition-colors"
+                        >
+                            Love &amp; Romance
+                        </button>
+                        <button 
+                            type="button" 
+                            @click="jumpToOccasion('wedding')" 
+                            :class="currentAudioId === 'wedding' ? 'bg-[#FF206E] text-white shadow-sm' : 'bg-white/80 text-gray-600 border border-pink-100'"
+                            class="px-3 py-1 rounded-full text-[11px] font-bold whitespace-nowrap shrink-0 transition-colors"
+                        >
+                            Wedding
+                        </button>
+                        <button 
+                            type="button" 
+                            @click="jumpToOccasion('apology')" 
+                            :class="currentAudioId === 'apology' ? 'bg-[#FF206E] text-white shadow-sm' : 'bg-white/80 text-gray-600 border border-pink-100'"
+                            class="px-3 py-1 rounded-full text-[11px] font-bold whitespace-nowrap shrink-0 transition-colors"
+                        >
+                            Apology
+                        </button>
+                    </div>
+
+                    {{-- 3. THE OVERLAPPING STACKED CARDS CONTAINER --}}
+                    {{-- Exactly matching the user's reference design with 3D stacked cards deck at bottom --}}
+                    <div 
+                        class="relative w-full max-w-[340px] xs:max-w-[360px] mx-auto min-h-[460px] pb-10 select-none"
+                        @touchstart="handleTouchStart($event)"
+                        @touchend="handleTouchEnd($event)"
+                    >
+                        {{-- 3D Stack Peek Visual Layers beneath (for depth effect matching screenshot) --}}
+                        <div class="absolute inset-x-3 bottom-5 h-20 rounded-3xl bg-pink-100/70 border border-pink-200/60 shadow-sm transform translate-y-6 scale-[0.91] pointer-events-none z-0"></div>
+                        <div class="absolute inset-x-2 bottom-6 h-20 rounded-3xl bg-white/80 border border-pink-200/80 shadow-md transform translate-y-3 scale-[0.96] pointer-events-none z-10"></div>
+
+                        @foreach($allOccasions as $i => $occ)
+                            <div 
+                                id="mobile-stack-card-{{ $occ['id'] }}"
+                                x-show="Math.abs(currentStackIndex - {{ $i }}) <= 2 || (currentStackIndex === {{ count($allOccasions) - 1 }} && {{ $i }} === 0) || (currentStackIndex === 0 && {{ $i }} === {{ count($allOccasions) - 1 }})"
+                                class="absolute inset-0 bg-white rounded-3xl p-5 sm:p-6 border border-pink-200/80 shadow-[0_14px_40px_rgba(255,42,109,0.12)] flex flex-col justify-between overflow-hidden transition-all duration-300 ease-out"
+                                :style="getStackCardStyle({{ $i }})"
+                            >
+                                {{-- Giant Faint Watermark Number in Background (e.g. 01, 02) --}}
+                                <span class="absolute top-1 right-3 text-7xl sm:text-8xl font-serif font-black text-pink-900/[0.04] select-none pointer-events-none">
+                                    {{ sprintf('%02d', $i + 1) }}
+                                </span>
+
+                                <div>
+                                    {{-- Card Top Row: Squircle Thumbnail & Golden/Pink Pill Badge --}}
+                                    <div class="flex items-center justify-between gap-3 relative z-10 mb-3">
+                                        {{-- Squircle Icon / Photo in Light Background (Matching reference icon) --}}
+                                        <div class="w-12 h-12 rounded-2xl bg-pink-50 border border-pink-200/80 p-0.5 shadow-sm flex items-center justify-center overflow-hidden shrink-0">
+                                            <img src="{{ $occ['image'] }}" alt="{{ $occ['title'] }}" class="w-full h-full object-cover rounded-[14px]">
+                                        </div>
+
+                                        {{-- Pill Badge matching reference (PILLAR 01 • STEP 1) --}}
+                                        <div class="px-3.5 py-1 rounded-full bg-amber-50/90 border border-amber-200/90 text-amber-800 text-[10px] sm:text-[11px] font-bold tracking-wider uppercase shadow-sm">
+                                            <span>OCCASION {{ sprintf('%02d', $i + 1) }} • {{ strtoupper($occ['language'] ?? 'ENGLISH') }}</span>
+                                        </div>
+                                    </div>
+
+                                    {{-- Occasion Title & Subtitle --}}
+                                    <div class="relative z-10">
+                                        <h3 class="font-serif text-2xl sm:text-[1.7rem] font-bold text-gray-900 mb-1 tracking-tight">
+                                            {{ $occ['title'] }}
+                                        </h3>
+                                        <p class="text-xs sm:text-[13px] text-gray-500 font-medium mb-3.5 leading-snug">
+                                            {{ $occ['subtitle'] }}
+                                        </p>
+                                    </div>
+
+                                    {{-- Highlight Callout Box with Amber Left Accent Border (Exact Match to Reference Box!) --}}
+                                    <div class="relative z-10 bg-gray-50/90 border-l-[3.5px] border-amber-500 rounded-r-xl p-3 mb-3.5 text-xs text-gray-700 leading-relaxed shadow-sm">
+                                        <strong class="text-gray-900 font-bold block mb-0.5">Personalized Story Song:</strong>
+                                        Written by real lyricists around your memories in {{ $occ['language'] ?? 'your language' }}, composed from your story.
+                                    </div>
+
+                                    {{-- Key Deliverables / Features Pills (Matching Reference Pills) --}}
+                                    <div class="relative z-10 mb-3">
+                                        <div class="text-[9.5px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">Key Focus &amp; Deliverables</div>
+                                        <div class="flex flex-wrap gap-1.5">
+                                            <span class="px-2.5 py-1 rounded-full bg-white border border-gray-200/90 text-gray-700 text-[10.5px] font-medium shadow-sm">Custom Lyrics</span>
+                                            <span class="px-2.5 py-1 rounded-full bg-white border border-gray-200/90 text-gray-700 text-[10.5px] font-medium shadow-sm">Studio Mastered MP3</span>
+                                            <span class="px-2.5 py-1 rounded-full bg-white border border-gray-200/90 text-gray-700 text-[10.5px] font-medium shadow-sm">Lyrics Keepsake PDF</span>
+                                            <span class="px-2.5 py-1 rounded-full bg-white border border-gray-200/90 text-gray-700 text-[10.5px] font-medium shadow-sm">WhatsApp Delivery</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- Card Bottom: Audio Player Row & Primary CTA Button --}}
+                                <div class="relative z-10 pt-2 border-t border-gray-100 flex flex-col gap-2.5">
+                                    {{-- Interactive Audio Player Strip --}}
+                                    <div class="bg-pink-50/70 rounded-xl px-3 py-2 border border-pink-200/70 flex items-center justify-between gap-3">
+                                        <div class="flex items-center gap-2.5 min-w-0">
+                                            {{-- Play / Pause Button with Pulsing Glow --}}
+                                            <button 
+                                                type="button" 
+                                                @click.stop="togglePlay('{{ $occ['id'] }}', '{{ $occ['title'] }}', '{{ $occ['language'] }}', '{{ $occ['image'] }}', '{{ $occ['audio'] }}', '{{ addslashes($occ['subtitle']) }}', '{{ addslashes($occ['uppercase']) }}')"
+                                                class="w-8 h-8 rounded-full bg-gradient-to-r from-[#FF206E] to-[#E11D48] text-white flex items-center justify-center shadow-md shadow-[#FF206E]/30 shrink-0 active:scale-95 transition-transform"
+                                                aria-label="Play sample song"
+                                            >
+                                                <template x-if="!(currentAudioId === '{{ $occ['id'] }}' && isPlaying)">
+                                                    <svg class="w-3 h-3 ml-0.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                                </template>
+                                                <template x-if="currentAudioId === '{{ $occ['id'] }}' && isPlaying">
+                                                    <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                                </template>
+                                            </button>
+                                            <div class="min-w-0">
+                                                <div class="text-[10px] font-bold text-gray-800 uppercase tracking-wider flex items-center gap-1.5">
+                                                    <span>Sample Track</span>
+                                                    <span x-show="currentAudioId === '{{ $occ['id'] }}' && isPlaying" class="w-1.5 h-1.5 rounded-full bg-[#FF206E] animate-ping"></span>
+                                                </div>
+                                                <div class="text-[10.5px] text-gray-500 tabular-nums" x-text="currentAudioId === '{{ $occ['id'] }}' ? (currentTimeFormatted + ' / ' + durationFormatted) : 'Tap play to listen'"></div>
+                                            </div>
+                                        </div>
+
+                                        {{-- Mini Equalizer Bars when Playing --}}
+                                        <div x-show="currentAudioId === '{{ $occ['id'] }}' && isPlaying" class="flex items-center gap-0.5 h-3 shrink-0 pr-1">
+                                            <span class="w-0.5 bg-[#FF2A6D] rounded-full animate-bounce h-2"></span>
+                                            <span class="w-0.5 bg-[#FF2A6D] rounded-full animate-bounce h-3.5" style="animation-delay: 0.15s"></span>
+                                            <span class="w-0.5 bg-[#FF2A6D] rounded-full animate-bounce h-2" style="animation-delay: 0.3s"></span>
+                                        </div>
+                                    </div>
+
+                                    {{-- Primary Action Button --}}
+                                    <a 
+                                        :href="'{{ Route::has('create-song') ? route('create-song') : url('/create-your-heartgram-song') }}?occasion=' + encodeURIComponent('{{ $occ['title'] }}')"
+                                        class="w-full py-2.5 rounded-full bg-gradient-to-r from-[#FF206E] to-[#E11D48] hover:from-[#E11D48] hover:to-[#B81D4C] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-md shadow-[#FF206E]/30 active:scale-95 transition-all select-none"
+                                    >
+                                        <span>Create {{ $occ['title'] }} Song</span>
+                                        <span class="text-sm">→</span>
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    {{-- 4. Bottom Stack Navigation Controls (Swipe & Arrows) --}}
+                    <div class="flex items-center justify-between max-w-[340px] xs:max-w-[360px] mx-auto px-3 mt-2 select-none">
+                        <button 
+                            type="button" 
+                            @click="goToPrevCard()" 
+                            class="w-10 h-10 rounded-full bg-white border border-pink-200/80 shadow-sm flex items-center justify-center text-gray-700 hover:bg-pink-50 active:scale-95 transition-all cursor-pointer"
+                            aria-label="Previous occasion"
+                        >
+                            <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                        </button>
+
+                        <div class="flex flex-col items-center">
+                            <div class="flex items-center gap-1.5">
+                                <span class="text-xs font-bold text-gray-800 font-mono tracking-wider" x-text="String(currentStackIndex + 1).padStart(2, '0')"></span>
+                                <span class="text-xs text-gray-400">/</span>
+                                <span class="text-xs font-semibold text-gray-500 font-mono" x-text="String(allOccasions.length).padStart(2, '0')"></span>
+                            </div>
+                            <span class="text-[10px] text-pink-600 font-medium">← Swipe to slide →</span>
+                        </div>
+
+                        <button 
+                            type="button" 
+                            @click="goToNextCard()" 
+                            class="w-10 h-10 rounded-full bg-white border border-pink-200/80 shadow-sm flex items-center justify-center text-gray-700 hover:bg-pink-50 active:scale-95 transition-all cursor-pointer"
+                            aria-label="Next occasion"
+                        >
+                            <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                {{-- ============================================================ --}}
+                {{-- DESKTOP VIEW: 3 Columns Grid with Interactive SVG Wave (>= lg) --}}
+                {{-- ============================================================ --}}
+                <div class="hidden lg:grid grid-cols-12 gap-4 items-center relative z-20">
                     {{-- LEFT COLUMN: 7 Occasions --}}
                     <div class="col-span-4 flex flex-col gap-1.5 sm:gap-2.5 lg:gap-3.5 justify-between order-1 w-full py-1 sm:py-3 lg:py-5">
                         @foreach($leftOccasions as $occ)
@@ -1238,6 +1483,10 @@
     <script>
         function occasionsPage() {
             return {
+                allOccasions: @json($allOccasions),
+                currentStackIndex: 0,
+                touchStartX: 0,
+                touchStartY: 0,
                 searchQuery: '',
                 activeCategory: 'all',
                 currentAudioId: 'birthday', // Default selected track
@@ -1260,6 +1509,80 @@
                 audioProgress: 0,
                 currentTimeFormatted: '0:00',
                 durationFormatted: '0:00',
+
+                getStackCardStyle(i) {
+                    const total = this.allOccasions.length;
+                    const diff = (i - this.currentStackIndex + total) % total;
+
+                    if (diff === 0) {
+                        return 'z-index: 30; transform: translateY(0px) scale(1); opacity: 1; pointer-events: auto;';
+                    } else if (diff === 1) {
+                        return 'z-index: 20; transform: translateY(12px) scale(0.96); opacity: 0.90; pointer-events: none;';
+                    } else if (diff === 2) {
+                        return 'z-index: 10; transform: translateY(24px) scale(0.92); opacity: 0.65; pointer-events: none;';
+                    } else {
+                        return 'z-index: 0; transform: translateY(36px) scale(0.88); opacity: 0; pointer-events: none;';
+                    }
+                },
+
+                goToNextCard() {
+                    const next = (this.currentStackIndex + 1) % this.allOccasions.length;
+                    this.setCardIndex(next);
+                },
+
+                goToPrevCard() {
+                    const prev = (this.currentStackIndex - 1 + this.allOccasions.length) % this.allOccasions.length;
+                    this.setCardIndex(prev);
+                },
+
+                jumpToOccasion(id) {
+                    const idx = this.allOccasions.findIndex(o => o.id === id);
+                    if (idx !== -1) {
+                        this.setCardIndex(idx);
+                    }
+                },
+
+                setCardIndex(idx) {
+                    this.currentStackIndex = idx;
+                    const occ = this.allOccasions[idx];
+                    if (occ) {
+                        this.currentAudioId = occ.id;
+                        this.currentOccasionName = occ.title;
+                        this.currentOccasionSubtitle = occ.subtitle;
+                        this.currentOccasionUpper = occ.uppercase || occ.title.toUpperCase();
+                        this.currentTrackLanguage = occ.language || 'English';
+                        this.currentTrackImg = occ.image;
+                        this.currentTrackAudio = occ.audio;
+
+                        if (this.audioEl) {
+                            this.audioEl.src = occ.audio;
+                            this.audioEl.load();
+                            this.audioEl.play().catch(e => console.log('Playback gesture:', e));
+                        }
+                        this.triggerCardPop(occ.id);
+                    }
+                },
+
+                handleTouchStart(e) {
+                    if (!e.changedTouches || !e.changedTouches[0]) return;
+                    this.touchStartX = e.changedTouches[0].screenX;
+                    this.touchStartY = e.changedTouches[0].screenY;
+                },
+
+                handleTouchEnd(e) {
+                    if (!e.changedTouches || !e.changedTouches[0]) return;
+                    const endX = e.changedTouches[0].screenX;
+                    const endY = e.changedTouches[0].screenY;
+                    const diffX = this.touchStartX - endX;
+                    const diffY = this.touchStartY - endY;
+                    if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY)) {
+                        if (diffX > 0) {
+                            this.goToNextCard();
+                        } else {
+                            this.goToPrevCard();
+                        }
+                    }
+                },
 
                 triggerCardPop(id) {
                     this.activePoppingCardId = null;
@@ -1428,6 +1751,17 @@
                     if (!waveBase || !mainArea || !logoBadge) return;
 
                     const renderFrame = () => {
+                        if (window.innerWidth < 1024) {
+                            if (waveBase && waveBase.getAttribute('d')) {
+                                waveBase.setAttribute('d', '');
+                                if (waveTrail) waveTrail.setAttribute('d', '');
+                                if (particleGroup) particleGroup.style.opacity = '0';
+                                if (targetNode) targetNode.setAttribute('opacity', '0');
+                            }
+                            this.animFrameId = requestAnimationFrame(renderFrame);
+                            return;
+                        }
+
                         // Smooth particle movement along the path
                         const speed = this.isPlaying ? 0.007 : 0.0035;
                         this.particleProgress += speed * this.particleDirection;

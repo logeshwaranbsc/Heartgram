@@ -1688,14 +1688,6 @@
                     }
                 })();
             </script>
-
-            {{-- Bottom Pill --}}
-            <div class="mt-3.5 sm:mt-8 flex justify-center z-20 relative px-2">
-                <div class="px-3.5 py-1 sm:px-6 sm:py-2 rounded-full bg-pink-100/70 text-maroon-900 font-medium text-[10.5px] xs:text-[11.5px] sm:text-[13.5px] flex items-center gap-1.5 sm:gap-2 shadow-[0_2px_12px_rgba(200,50,100,0.06)] border border-pink-200/80 backdrop-blur-md">
-                    <span class="text-crimson-500 text-xs sm:text-sm leading-none">✨</span> 
-                    <span class="whitespace-nowrap">We make it easy. You hold on to it <span class="text-crimson-600 font-serif italic">forever.</span></span>
-                </div>
-            </div>
         </div>
     </section>
 
