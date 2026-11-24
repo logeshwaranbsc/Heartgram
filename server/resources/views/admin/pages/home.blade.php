@@ -24,42 +24,6 @@
         </div>
     @endif
 
-    {{-- SQL Copy Card Banner --}}
-    <div x-data="{ showSql: false }" class="mb-6 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-xl p-4 shadow-2xs">
-        <div class="flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-amber-100 border border-amber-300 flex items-center justify-center text-amber-700 font-bold text-sm">
-                    💾
-                </div>
-                <div>
-                    <h3 class="text-sm font-bold text-amber-900">Database SQL Query (phpMyAdmin)</h3>
-                    <p class="text-xs text-amber-800">You can run the initial SQL query in your database to populate the table with all default texts.</p>
-                </div>
-            </div>
-            <button type="button" @click="showSql = !showSql" class="px-3 py-1.5 bg-amber-600 hover:bg-amber-700 text-white rounded-lg text-xs font-semibold transition">
-                <span x-text="showSql ? 'Hide SQL' : 'View SQL Query'"></span>
-            </button>
-        </div>
-        
-        <div x-show="showSql" x-cloak class="mt-4 pt-3 border-t border-amber-200">
-            <p class="text-xs text-gray-700 mb-2 font-medium">Copy and execute this in phpMyAdmin or your MySQL CLI:</p>
-            <div class="relative">
-                <textarea id="sqlQueryBox" readonly rows="7" class="w-full text-xs font-mono bg-gray-900 text-emerald-300 p-3 rounded-lg border border-gray-700">CREATE TABLE IF NOT EXISTS `page_contents` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `key` varchar(191) NOT NULL,
-  `value` longtext NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `page_contents_key_unique` (`key`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;</textarea>
-                <button type="button" onclick="navigator.clipboard.writeText(document.getElementById('sqlQueryBox').value); alert('SQL copied to clipboard!');" class="absolute top-2 right-2 px-2.5 py-1 bg-white/20 hover:bg-white/30 text-white rounded text-[11px] font-medium backdrop-blur-sm transition">
-                    Copy SQL
-                </button>
-            </div>
-        </div>
-    </div>
-
     {{-- Main Editor with Alpine Tabs --}}
     <div class="bg-white shadow-sm border border-gray-200 rounded-xl overflow-hidden" x-data="{ activeTab: 'hero' }">
         
