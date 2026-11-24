@@ -65,6 +65,10 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/admin/leads/{id}', [\App\Http\Controllers\AdminController::class, 'destroyLead'])->name('admin.leads.destroy');
     Route::get('/admin/plans', [\App\Http\Controllers\Admin\PlanController::class, 'index'])->name('admin.plans.index');
     Route::post('/admin/plans', [\App\Http\Controllers\Admin\PlanController::class, 'update'])->name('admin.plans.update');
+    // Home Page CMS Content
+    Route::get('/admin/pages/home', [\App\Http\Controllers\AdminController::class, 'editHome'])->name('admin.pages.home');
+    Route::post('/admin/pages/home', [\App\Http\Controllers\AdminController::class, 'updateHome'])->name('admin.pages.home.update');
+
     Route::get('/admin/pages/why-heartgrams', [\App\Http\Controllers\AdminController::class, 'editWhyHeartgrams'])->name('admin.pages.why-heartgrams');
     Route::post('/admin/pages/why-heartgrams', [\App\Http\Controllers\AdminController::class, 'updateWhyHeartgrams'])->name('admin.pages.why-heartgrams.update');
 

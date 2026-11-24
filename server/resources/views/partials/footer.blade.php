@@ -1,6 +1,9 @@
 @php
-    $email = 'hello@heartgrams.in';
-    $whatsappUrl = 'https://wa.me/919585475959?text=Hi%20Heartgrams%2C%20I%20would%20like%20to%20create%20a%20song';
+    $email = \App\PageContent::get('home_footer_email', 'hello@heartgrams.in');
+    $whatsappNum = \App\PageContent::get('home_footer_whatsapp', '+91 95854 75959');
+    $whatsappDigits = preg_replace('/[^0-9]/', '', $whatsappNum) ?: '919585475959';
+    $whatsappUrl = 'https://wa.me/' . $whatsappDigits . '?text=Hi%20Heartgrams%2C%20I%20would%20like%20to%20create%20a%20song';
+    $tagline = \App\PageContent::get('home_footer_tagline', 'Turning your emotions into personalized songs that last a lifetime. Written by real lyricists, composed from your story.');
 @endphp
 
 <footer 
@@ -27,7 +30,7 @@
                     <img src="{{ asset('images/logo.png') }}" alt="Heartgrams" class="h-7 w-auto">
                 </a>
                 <p class="text-white/60 text-[13px] leading-relaxed max-w-[320px] mb-4">
-                    Turning your emotions into personalized songs that last a lifetime. Written by real lyricists, composed from your story.
+                    {{ $tagline }}
                 </p>
                 <div>
                     <a href="{{ route('home') }}#start" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-crimson-600/15 hover:bg-crimson-600/25 text-pink-200 border border-crimson-500/30 text-[12px] font-medium transition-all group">
@@ -219,7 +222,7 @@
                     <img src="{{ asset('images/logo.png') }}" alt="Heartgrams" class="h-8 md:h-9 w-auto">
                 </a>
                 <p class="text-white/60 text-[13px] leading-relaxed max-w-[280px] mb-5">
-                    Turning your emotions into personalized songs that last a lifetime. Written by real lyricists, composed from your story.
+                    {{ $tagline }}
                 </p>
                 <div>
                     <a href="{{ route('home') }}#start" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-crimson-600/15 hover:bg-crimson-600/25 text-pink-200 border border-crimson-500/30 text-[12px] font-medium transition-all group">
@@ -341,7 +344,7 @@
         {{-- Footer Bottom --}}
         <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-[12px]">
             <p class="text-white/40 text-center sm:text-left">
-                &copy; {{ date('Y') }} Heartgrams. <span class="text-brand-pink font-medium">Made with love</span>, one story at a time.
+                {!! \App\PageContent::get('home_footer_copyright', '&copy; ' . date('Y') . ' Heartgrams. <span class="text-brand-pink font-medium">Made with love</span>, one story at a time.') !!}
             </p>
             <div class="flex items-center gap-3 sm:gap-4 text-white/40 text-[11.5px] sm:text-[12px] flex-wrap justify-center">
                 <a href="{{ route('privacy') }}" class="hover:text-pink-300 transition-colors">Privacy Policy</a>

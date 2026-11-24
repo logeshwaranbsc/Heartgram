@@ -1,6 +1,6 @@
 <x-public-layout>
     {{-- Hero Section --}}
-    <section class="relative bg-maroon-900 text-white overflow-hidden flex items-center w-full lg:min-h-[calc(100vh-3.5rem)] lg:min-h-[calc(100dvh-3.5rem)]" style="background-image: url('{{ asset('images/hero_background.png?v=2') }}'); background-size: cover; background-position: center;">
+    <section class="relative bg-maroon-900 text-white overflow-hidden flex items-center w-full lg:min-h-[calc(100vh-3.5rem)] lg:min-h-[calc(100dvh-3.5rem)]" style="background-image: url('{{ asset(ltrim(\App\PageContent::get('home_hero_bg_image', 'images/hero_background.png?v=2'), '/')) }}'); background-size: cover; background-position: center;">
         <div class="absolute inset-0 bg-gradient-to-b from-[#1f070c]/95 via-[#170508]/90 to-[#120306]/95 sm:bg-gradient-to-br sm:from-maroon-900/90 sm:via-maroon-900/80 sm:to-maroon-900/40"></div>
         <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-6 sm:pt-32 sm:pb-8 lg:pt-[76px] lg:pb-3 xl:pt-[82px] xl:pb-4 flex flex-col justify-center h-full">
             <div class="grid lg:grid-cols-2 gap-8 lg:gap-10 xl:gap-14 items-center w-full min-w-0 lg:my-auto">
@@ -11,28 +11,28 @@
                     </div>
 
                     <h1 class="hero-main-title font-display text-[28px] xs:text-[32px] sm:text-4xl md:text-5xl lg:text-[2.9rem] xl:text-[3.4rem] 2xl:text-[3.75rem] font-medium text-white leading-[1.2] sm:leading-[1.22] mb-3 sm:mb-4.5 xl:mb-5">
-                        A personalised song<br>
-                        that leaves them<br>
+                        {{ \App\PageContent::get('home_hero_title_line_1', 'A personalised song') }}<br>
+                        {{ \App\PageContent::get('home_hero_title_line_2', 'that leaves them') }}<br>
                         <span class="text-crimson-500 italic font-serif relative inline-flex items-center flex-wrap mt-0.5 sm:mt-1">
-                            <span>speechless.</span>
+                            <span>{{ \App\PageContent::get('home_hero_title_highlight', 'speechless.') }}</span>
                             <svg class="inline-block ml-2 -mt-1 w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 xl:w-9 xl:h-9 text-crimson-500 shrink-0 align-middle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
                             <svg class="absolute left-0 -bottom-1.5 w-full h-2 text-crimson-500/40" preserveAspectRatio="none" viewBox="0 0 100 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 5 Q 50 10, 100 2" stroke-linecap="round"></path></svg>
                         </span>
                     </h1>
                     
                     <p class="hero-desc-p text-[14px] sm:text-[15px] lg:text-[14.5px] xl:text-[16px] text-white/85 mb-4 sm:mb-5.5 xl:mb-6 w-full max-w-full sm:max-w-[28rem] xl:max-w-[32rem] leading-relaxed font-light mt-2 sm:mt-3">
-                        Tell us the memories only the two of you share. Our lyricists write them into a song made for that one person.
+                        {{ \App\PageContent::get('home_hero_description', 'Tell us the memories only the two of you share. Our lyricists write them into a song made for that one person.') }}
                     </p>
                     
                     <div class="hero-cta-buttons flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-3.5 mb-4.5 sm:mb-5.5 xl:mb-6 w-full max-w-md">
-                        <a href="#start" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-brand-pink to-brand-dark hover:from-brand-pink/90 hover:to-brand-dark/90 text-white px-6 sm:px-6.5 xl:px-7.5 py-2.5 sm:py-3 xl:py-3.5 rounded-full text-sm sm:text-[15px] xl:text-base font-medium transition shadow-lg shadow-crimson-500/20 hover:scale-[1.02] active:scale-[0.98]">
+                        <a href="{{ \App\PageContent::get('home_hero_cta_1_link', '#start') }}" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-brand-pink to-brand-dark hover:from-brand-pink/90 hover:to-brand-dark/90 text-white px-6 sm:px-6.5 xl:px-7.5 py-2.5 sm:py-3 xl:py-3.5 rounded-full text-sm sm:text-[15px] xl:text-base font-medium transition shadow-lg shadow-crimson-500/20 hover:scale-[1.02] active:scale-[0.98]">
                             <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>
-                            <span class="whitespace-nowrap">Start My Song Story</span>
+                            <span class="whitespace-nowrap">{{ \App\PageContent::get('home_hero_cta_1_text', 'Start My Song Story') }}</span>
                             <svg class="w-4 h-4 ml-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                         </a>
-                        <a href="#samples" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white/40 text-white px-6 sm:px-6.5 xl:px-7.5 py-2.5 sm:py-3 xl:py-3.5 rounded-full text-sm sm:text-[15px] xl:text-base font-medium transition bg-black/10 hover:bg-black/20 hover:scale-[1.02] active:scale-[0.98]">
+                        <a href="{{ \App\PageContent::get('home_hero_cta_2_link', '#samples') }}" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white/40 text-white px-6 sm:px-6.5 xl:px-7.5 py-2.5 sm:py-3 xl:py-3.5 rounded-full text-sm sm:text-[15px] xl:text-base font-medium transition bg-black/10 hover:bg-black/20 hover:scale-[1.02] active:scale-[0.98]">
                             <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                            <span class="whitespace-nowrap">Hear a Sample</span>
+                            <span class="whitespace-nowrap">{{ \App\PageContent::get('home_hero_cta_2_text', 'Hear a Sample') }}</span>
                         </a>
                     </div>
                     
@@ -40,22 +40,22 @@
                     <div class="hero-trust-badges grid grid-cols-2 sm:flex sm:flex-nowrap items-center gap-2.5 sm:gap-3 lg:gap-3 xl:gap-4.5 w-full max-w-full pb-1 sm:pb-0">
                         <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
                             <svg class="w-4 h-4 sm:w-5 sm:h-5 text-crimson-500 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                            <span class="text-[11px] sm:text-xs xl:text-[12.5px] text-white/80 leading-tight">Private story<br class="hidden sm:inline"> handling</span>
+                            <span class="text-[11px] sm:text-xs xl:text-[12.5px] text-white/80 leading-tight">{{ \App\PageContent::get('home_hero_badge_1', 'Private story handling') }}</span>
                         </div>
                         <div class="hidden sm:block w-px h-5 bg-white/10 shrink-0"></div>
                         <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
                             <svg class="w-4 h-4 sm:w-5 sm:h-5 text-crimson-500 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
-                            <span class="text-[11px] sm:text-xs xl:text-[12.5px] text-white/80 leading-tight">6 Languages<br class="hidden sm:inline"> available</span>
+                            <span class="text-[11px] sm:text-xs xl:text-[12.5px] text-white/80 leading-tight">{{ \App\PageContent::get('home_hero_badge_2', '6 Languages available') }}</span>
                         </div>
                         <div class="hidden sm:block w-px h-5 bg-white/10 shrink-0"></div>
                         <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
                             <svg class="w-4 h-4 sm:w-5 sm:h-5 text-crimson-500 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                            <span class="text-[11px] sm:text-xs xl:text-[12.5px] text-white/80 leading-tight">Ready in<br class="hidden sm:inline"> 3-5 days</span>
+                            <span class="text-[11px] sm:text-xs xl:text-[12.5px] text-white/80 leading-tight">{{ \App\PageContent::get('home_hero_badge_3', 'Ready in 3-5 days') }}</span>
                         </div>
                         <div class="hidden sm:block w-px h-5 bg-white/10 shrink-0"></div>
                         <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
                             <svg class="w-4 h-4 sm:w-5 sm:h-5 text-crimson-500 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-                            <span class="text-[11px] sm:text-xs xl:text-[12.5px] text-white/80 leading-tight">Delivered on<br class="hidden sm:inline"> WhatsApp & email</span>
+                            <span class="text-[11px] sm:text-xs xl:text-[12.5px] text-white/80 leading-tight">{{ \App\PageContent::get('home_hero_badge_4', 'Delivered on WhatsApp & email') }}</span>
                         </div>
                     </div>
                     
@@ -100,11 +100,11 @@
                         
                         {{-- Album Art --}}
                         <div class="relative w-full aspect-[4/3] rounded-[1.2rem] sm:rounded-[1.3rem] xl:rounded-[1.45rem] overflow-hidden mb-3 xl:mb-3.5 shadow-inner bg-black/40">
-                            <img id="heroAlbumArt" src="{{ asset('images/album_art_amma.png') }}" alt="For Amma, on her 60th" class="w-full h-full object-cover transition-opacity duration-300">
+                            <img id="heroAlbumArt" src="{{ asset(ltrim(\App\PageContent::get('home_hero_album_art', 'images/album_art_amma.png'), '/')) }}" alt="{{ \App\PageContent::get('home_hero_player_title_1', 'For Amma,') }} {{ \App\PageContent::get('home_hero_player_title_2', 'on her 60th.') }}" class="w-full h-full object-cover transition-opacity duration-300">
                             {{-- Gradient Overlay & Text --}}
                             <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-2.5 sm:p-3 xl:p-3.5 text-center">
-                                <h3 id="heroTitleLine1" class="font-display text-sm sm:text-base xl:text-lg font-bold text-white mb-0.5 leading-tight text-shadow-sm transition-all duration-300">For Amma,</h3>
-                                <h3 id="heroTitleLine2" class="font-display text-sm sm:text-base xl:text-lg font-bold text-white italic leading-tight text-shadow-sm transition-all duration-300">on her 60th.</h3>
+                                <h3 id="heroTitleLine1" class="font-display text-sm sm:text-base xl:text-lg font-bold text-white mb-0.5 leading-tight text-shadow-sm transition-all duration-300">{{ \App\PageContent::get('home_hero_player_title_1', 'For Amma,') }}</h3>
+                                <h3 id="heroTitleLine2" class="font-display text-sm sm:text-base xl:text-lg font-bold text-white italic leading-tight text-shadow-sm transition-all duration-300">{{ \App\PageContent::get('home_hero_player_title_2', 'on her 60th.') }}</h3>
                             </div>
                         </div>
 
@@ -203,7 +203,7 @@
             {{-- Mobile Header (shown only on small/medium screens before the categories card) --}}
             <div class="block lg:hidden mb-6 text-center sm:text-left">
                 <div class="flex items-center justify-center sm:justify-start gap-2.5 mb-1.5">
-                    <span class="text-[11px] sm:text-xs font-bold tracking-[0.25em] text-maroon-900/60 uppercase">BEFORE YOU WRITE A WORD</span>
+                    <span class="text-[11px] sm:text-xs font-bold tracking-[0.25em] text-maroon-900/60 uppercase">{{ \App\PageContent::get('home_preview_badge', 'BEFORE YOU WRITE A WORD') }}</span>
                     <div class="h-px bg-maroon-900/15 w-12 sm:w-16"></div>
                     <span class="text-crimson-500 text-[10px]">♥</span>
                 </div>
@@ -211,7 +211,7 @@
                     Hear our <span class="text-crimson-500 italic relative">Heartgrams.<svg class="w-6 h-6 sm:w-7 sm:h-7 absolute -top-3 sm:-top-3.5 -right-6 sm:-right-7 text-crimson-400/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2 7 7 2-7 2-2 7-2-7-7-2 7-2z"/></svg></span>
                 </h2>
                 <p class="text-maroon-800/80 text-sm leading-relaxed font-medium max-w-xl mx-auto sm:mx-0">
-                    Pick a feeling, press play, and hear what a Heartgram sounds like — before you tell us a single memory.
+                    {{ \App\PageContent::get('home_preview_description', 'Pick a feeling, press play, and hear what a Heartgram sounds like — before you tell us a single memory.') }}
                 </p>
             </div>
 
@@ -393,7 +393,7 @@
                                 <div class="w-1.5 h-1.5 rounded-full border border-white"></div>
                                 <div class="w-1.5 h-1.5 rounded-full border border-white"></div>
                             </div>
-                            <span class="text-xs font-medium text-white/90">Explore all categories</span>
+                            <span class="text-xs font-medium text-white/90">{{ \App\PageContent::get('home_preview_btn_text', 'Explore all categories') }}</span>
                         </div>
                         <svg class="w-3.5 h-3.5 text-white/40 group-hover:text-white transition transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </button>
@@ -404,7 +404,7 @@
                     {{-- Header on the Right Side (Desktop only) --}}
                     <div class="hidden lg:block text-left mb-3 sm:mb-4">
                         <div class="flex items-center gap-2.5 mb-1.5">
-                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.25em] text-maroon-900/60 uppercase">BEFORE YOU WRITE A WORD</span>
+                            <span class="text-[11px] sm:text-xs font-bold tracking-[0.25em] text-maroon-900/60 uppercase">{{ \App\PageContent::get('home_preview_badge', 'BEFORE YOU WRITE A WORD') }}</span>
                             <div class="h-px bg-maroon-900/15 w-12 sm:w-16"></div>
                             <span class="text-crimson-500 text-[10px]">♥</span>
                         </div>
@@ -412,7 +412,7 @@
                             Hear our <span class="text-crimson-500 italic relative">Heartgrams.<svg class="w-7 h-7 sm:w-8 sm:h-8 absolute -top-3.5 sm:-top-4 -right-7 sm:-right-8 text-crimson-400/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2 7 7 2-7 2-2 7-2-7-7-2 7-2z"/></svg></span>
                         </h2>
                         <p class="text-maroon-800/80 text-sm sm:text-base max-w-2xl leading-relaxed font-medium">
-                            Pick a feeling, press play, and hear what a Heartgram sounds like — before you tell us a single memory.
+                            {{ \App\PageContent::get('home_preview_description', 'Pick a feeling, press play, and hear what a Heartgram sounds like — before you tell us a single memory.') }}
                         </p>
                     </div>
 
@@ -675,13 +675,13 @@
             {{-- Top Banner Content --}}
             <div class="flex flex-col justify-center">
                 <div class="flex items-center gap-3 mb-1.5">
-                    <span class="text-[10px] sm:text-[11px] font-bold tracking-[0.2em] text-pink-300 uppercase">MADE FOR EVERY OCCASION</span>
+                    <span class="text-[10px] sm:text-[11px] font-bold tracking-[0.2em] text-pink-300 uppercase">{{ \App\PageContent::get('home_occasions_badge', 'MADE FOR EVERY OCCASION') }}</span>
                     <div class="h-px bg-pink-300/30 w-12 sm:w-16"></div>
                     <span class="text-pink-300 text-xs">♥</span>
                 </div>
                 <h2 class="font-display text-2xl xs:text-3xl sm:text-4xl lg:text-[2.6rem] xl:text-[2.9rem] text-white leading-[1.12] sm:leading-[1.08] font-semibold">
-                    For anyone,<br>
-                    for any <span class="text-crimson-500 italic font-normal">reason.</span>
+                    {{ \App\PageContent::get('home_occasions_title_line_1', 'For anyone,') }}<br>
+                    <span class="text-crimson-500 italic font-normal">{{ \App\PageContent::get('home_occasions_title_highlight', 'for any reason.') }}</span>
                 </h2>
             </div>
 
@@ -693,11 +693,11 @@
                             ♥
                         </div>
                         <p class="text-white/80 text-sm sm:text-base max-w-xl font-normal sm:font-medium leading-snug">
-                            Everyone deserves their own song — a birthday, a wedding, an apology, or a Tuesday afternoon.
+                            {{ \App\PageContent::get('home_occasions_description', 'Everyone deserves their own song — a birthday, a wedding, an apology, or a Tuesday afternoon.') }}
                         </p>
                     </div>
-                    <a href="{{ route('occasions') }}" class="inline-flex items-center gap-2 text-pink-300 text-xs sm:text-sm font-semibold hover:text-pink-200 transition group shrink-0">
-                        Explore all occasions
+                    <a href="{{ \App\PageContent::get('home_occasions_btn_link', route('occasions')) }}" class="inline-flex items-center gap-2 text-pink-300 text-xs sm:text-sm font-semibold hover:text-pink-200 transition group shrink-0">
+                        {{ \App\PageContent::get('home_occasions_btn_text', 'Explore all occasions') }}
                         <span class="w-5 h-5 sm:w-6 sm:h-6 rounded-full border border-pink-300/40 flex items-center justify-center group-hover:border-pink-300 transition">
                             <svg class="w-2.5 h-2.5 sm:w-3 sm:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                         </span>
@@ -987,7 +987,7 @@
                 
                 <h2 class="font-display text-2xl sm:text-3xl lg:text-[38px] font-semibold text-maroon-900 mb-2 leading-tight">
                     <span class="relative inline-block">
-                        How <span class="text-crimson-600">Heartgrams</span> Works
+                        {{ \App\PageContent::get('home_hiw_title', 'How Heartgrams Works') }}
                         <span class="absolute -right-7 -top-1 text-pink-300 text-2xl font-sans font-light rotate-12">♡</span>
                     </span>
                 </h2>
@@ -999,7 +999,7 @@
                 </div>
                 
                 <p class="text-[13.5px] sm:text-[14.5px] text-maroon-900/80 max-w-xl mx-auto font-medium">
-                    Five simple steps from your story to a song they'll never forget.
+                    {{ \App\PageContent::get('home_hiw_description', "Five simple steps from your story to a song they'll never forget.") }}
                 </p>
 
             </div>
@@ -1120,7 +1120,7 @@
                                     class="font-sans text-[7.5px] xs:text-[8.5px] sm:font-display sm:text-[12px] lg:text-[14.5px] leading-[1.2] xs:leading-[1.25] sm:leading-[1.35] text-center max-w-[185px] text-[#3D141E] font-medium transition-colors duration-300 group-hover:text-black"
                                     :class="completedSteps >= 1 ? 'opacity-100 text-[#1F050B]' : 'opacity-80 text-[#3D141E]'"
                                 >
-                                    Choose your emotion or occasion.
+                                    {{ \App\PageContent::get('home_hiw_step_1_title', 'Choose your emotion or occasion.') }}
                                 </p>
                             </div>
                         </div>
@@ -1188,7 +1188,7 @@
                                     class="font-sans text-[7.5px] xs:text-[8.5px] sm:font-display sm:text-[12px] lg:text-[14.5px] leading-[1.2] xs:leading-[1.25] sm:leading-[1.35] text-center max-w-[185px] text-[#3D141E] font-medium transition-colors duration-300 group-hover:text-black"
                                     :class="completedSteps >= 2 ? 'opacity-100 text-[#1F050B]' : 'opacity-80 text-[#3D141E]'"
                                 >
-                                    Tell us your story in our short form.
+                                    {{ \App\PageContent::get('home_hiw_step_2_title', 'Tell us your story in our short form.') }}
                                 </p>
                             </div>
                         </div>
@@ -1259,7 +1259,7 @@
                                     class="font-sans text-[7.5px] xs:text-[8.5px] sm:font-display sm:text-[12px] lg:text-[14.5px] leading-[1.2] xs:leading-[1.25] sm:leading-[1.35] text-center max-w-[195px] text-[#3D141E] font-medium transition-colors duration-300 group-hover:text-black"
                                     :class="completedSteps >= 3 ? 'opacity-100 text-[#1F050B]' : 'opacity-80 text-[#3D141E]'"
                                 >
-                                    A lyricist writes it. You approve it.
+                                    {{ \App\PageContent::get('home_hiw_step_3_title', 'A lyricist writes it. You approve it.') }}
                                 </p>
                             </div>
                         </div>
@@ -1328,7 +1328,7 @@
                                     class="font-sans text-[7.5px] xs:text-[8.5px] sm:font-display sm:text-[12px] lg:text-[14.5px] leading-[1.2] xs:leading-[1.25] sm:leading-[1.35] text-center max-w-[195px] text-[#3D141E] font-medium transition-colors duration-300 group-hover:text-black"
                                     :class="completedSteps >= 4 ? 'opacity-100 text-[#1F050B]' : 'opacity-80 text-[#3D141E]'"
                                 >
-                                    Song + lyrics PDF in 3-5 days.
+                                    {{ \App\PageContent::get('home_hiw_step_4_title', 'Song + lyrics PDF in 3-5 days.') }}
                                 </p>
                             </div>
                         </div>
@@ -1399,7 +1399,7 @@
                                     class="font-sans text-[7.5px] xs:text-[8.5px] sm:font-display sm:text-[12px] lg:text-[14.5px] leading-[1.2] xs:leading-[1.25] sm:leading-[1.35] text-center max-w-[195px] text-[#3D141E] font-medium transition-colors duration-300 group-hover:text-black"
                                     :class="completedSteps >= 5 ? 'opacity-100 text-[#1F050B]' : 'opacity-80 text-[#3D141E]'"
                                 >
-                                    Play it for them. Watch their face.
+                                    {{ \App\PageContent::get('home_hiw_step_5_title', 'Play it for them. Watch their face.') }}
                                 </p>
                             </div>
                         </div>
@@ -1910,14 +1910,14 @@
             {{-- Header with Clean Spacing & Proper Typography --}}
             <div class="text-center max-w-2xl mx-auto flex flex-col items-center">
                 <div class="inline-flex items-center gap-2 mb-1.5 sm:mb-2">
-                    <span class="text-[10px] sm:text-[11px] font-bold tracking-[0.22em] text-pink-300 uppercase">WALL OF LOVE</span>
+                    <span class="text-[10px] sm:text-[11px] font-bold tracking-[0.22em] text-pink-300 uppercase">{{ \App\PageContent::get('home_testimonials_badge', 'WALL OF LOVE') }}</span>
                     <span class="text-pink-300 text-xs">♥</span>
                 </div>
                 <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl text-white font-semibold leading-tight tracking-tight">
-                    Songs that made them <span class="text-crimson-400 italic font-normal font-serif">cry, laugh & remember.</span>
+                    {{ \App\PageContent::get('home_testimonials_title', 'Songs that made them cry, laugh & remember.') }}
                 </h2>
                 <p class="text-white/70 text-xs sm:text-sm font-normal leading-relaxed mt-2 max-w-lg mx-auto">
-                    Real reactions from real families, shared with their permission.
+                    {{ \App\PageContent::get('home_testimonials_subtitle', 'Real reactions from real families, shared with their permission.') }}
                 </p>
             </div>
 
@@ -2004,10 +2004,10 @@
             {{-- Bottom "For More" CTA Button --}}
             <div class="flex items-center justify-center text-center">
                 <a 
-                    href="{{ route('testimonials') }}" 
+                    href="{{ \App\PageContent::get('home_testimonials_btn_link', route('testimonials')) }}" 
                     class="inline-flex items-center gap-2.5 px-6 py-2.5 sm:px-8 sm:py-3 rounded-full bg-gradient-to-r from-crimson-500 to-maroon-700 hover:from-crimson-600 hover:to-maroon-800 text-white font-bold text-xs sm:text-[13px] shadow-lg shadow-crimson-600/30 hover:shadow-crimson-600/50 hover:scale-102 transition-all group"
                 >
-                    <span>See more reactions</span>
+                    <span>{{ \App\PageContent::get('home_testimonials_btn_text', 'See more reactions') }}</span>
                     <span class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-1 transition-transform">
                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </span>
@@ -2285,12 +2285,12 @@
                 
                 {{-- Header --}}
                 <div class="text-center mb-5 lg:mb-6 flex flex-col items-center">
-                    <span class="text-[10px] font-bold tracking-[0.2em] text-brand-pink uppercase mb-1.5">CHOOSE YOUR HEARTGRAM</span>
+                    <span class="text-[10px] font-bold tracking-[0.2em] text-brand-pink uppercase mb-1.5">{{ \App\PageContent::get('home_pricing_badge', 'CHOOSE YOUR HEARTGRAM') }}</span>
                     <h2 class="font-serif text-2xl xs:text-3xl sm:text-4xl lg:text-[40px] font-normal text-brand-dark mb-1.5 leading-tight">
-                        Every tier is a real song, written from scratch.
+                        {{ \App\PageContent::get('home_pricing_title', 'Every tier is a real song, written from scratch.') }}
                     </h2>
                     <p class="text-brand-dark/60 max-w-lg mx-auto text-xs sm:text-[13px]">
-                        The difference is the depth of the story we shape.
+                        {{ \App\PageContent::get('home_pricing_subtitle', 'The difference is the depth of the story we shape.') }}
                     </p>
                 </div>
 
@@ -3697,7 +3697,7 @@
             <div class="text-center mb-6 sm:mb-8 relative">
                 <div class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white text-crimson-600 text-[10.5px] sm:text-xs font-bold tracking-[0.2em] uppercase mb-2.5 shadow-[0_2px_10px_rgba(200,50,80,0.04)] border border-pink-100/80">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-                    FREQUENTLY ASKED
+                    {{ \App\PageContent::get('home_faq_badge', 'FREQUENTLY ASKED') }}
                 </div>
                 
                 <h2 class="font-display text-3xl sm:text-4xl lg:text-[42px] font-semibold text-brand-dark tracking-tight leading-tight flex items-center justify-center gap-2.5 flex-wrap relative">
@@ -3730,36 +3730,45 @@
 
             <div class="space-y-3 sm:space-y-3.5 max-w-3xl lg:max-w-4xl mx-auto" x-data="{ openFaq: null }">
                 @php
-                    $faqs = [
-                        (object) [
-                            'question' => 'How long does a personalised song take?', 
-                            'answer' => "Classic songs arrive on WhatsApp and email in 3-5 days. Premium songs arrive in 1-2 days. The clock starts once your story is complete and payment is confirmed, and the time you take to review your lyrics isn't counted. Need it by a certain date? Tell us when you order."
+                    $faqs = [];
+                    $defaultFaqs = [
+                        1 => [
+                            'q' => 'How long does a personalised song take?', 
+                            'a' => "Classic songs arrive on WhatsApp and email in 3-5 days. Premium songs arrive in 1-2 days. The clock starts once your story is complete and payment is confirmed, and the time you take to review your lyrics isn't counted. Need it by a certain date? Tell us when you order."
                         ],
-                        (object) [
-                            'question' => 'Which languages and styles can I choose?', 
-                            'answer' => "Tamil, Malayalam, Kannada, Telugu, Hindi or English. Each language has its own lyricist. For style, pick acoustic, romantic ballad, soulful indie, upbeat pop or classical acoustic. Not sure? Tell us the mood and we'll choose."
+                        2 => [
+                            'q' => 'Which languages and styles can I choose?', 
+                            'a' => "Tamil, Malayalam, Kannada, Telugu, Hindi or English. Each language has its own lyricist. For style, pick acoustic, romantic ballad, soulful indie, upbeat pop or classical acoustic. Not sure? Tell us the mood and we'll choose."
                         ],
-                        (object) [
-                            'question' => 'Who owns the song, and where can I share it?', 
-                            'answer' => "You can play, download, keep and share your song anywhere personal: WhatsApp, Instagram, a wedding screen, a family video. Using it in ads, for a business or on a monetised channel needs a separate licence. Just ask us."
+                        3 => [
+                            'q' => 'Who owns the song, and where can I share it?', 
+                            'a' => "You can play, download, keep and share your song anywhere personal: WhatsApp, Instagram, a wedding screen, a family video. Using it in ads, for a business or on a monetised channel needs a separate licence. Just ask us."
                         ],
-                        (object) [
-                            'question' => 'Can I change the lyrics before the song is made?', 
-                            'answer' => "Yes. After our quality team checks your lyrics, we send them to you. Ask for changes and we'll send the corrected version back. We make the song only once you approve. Classic comes with one lyric option; Premium gives you more than one to choose from."
+                        4 => [
+                            'q' => 'Can I change the lyrics before the song is made?', 
+                            'a' => "Yes. After our quality team checks your lyrics, we send them to you. Ask for changes and we'll send the corrected version back. We make the song only once you approve. Classic comes with one lyric option; Premium gives you more than one to choose from."
                         ],
-                        (object) [
-                            'question' => 'How much does a personalised song cost?', 
-                            'answer' => "Heartgram Classic is ₹1,999 and Heartgram Premium is ₹2,999. Both prices include everything, with no extra fees. Premium adds deeper story shaping, more lyric options, WAV files and 1-2 day delivery."
+                        5 => [
+                            'q' => 'How much does a personalised song cost?', 
+                            'a' => "Heartgram Classic is ₹1,999 and Heartgram Premium is ₹2,999. Both prices include everything, with no extra fees. Premium adds deeper story shaping, more lyric options, WAV files and 1-2 day delivery."
                         ],
-                        (object) [
-                            'question' => 'Is a real person writing my song?', 
-                            'answer' => "Yes. Each language has its own lyricist, from that language's music industry. Your lyricist reads your story and writes the lyrics, our quality team checks them, and you approve them before the song is made."
+                        6 => [
+                            'q' => 'Is a real person writing my song?', 
+                            'a' => "Yes. Each language has its own lyricist, from that language's music industry. Your lyricist reads your story and writes the lyrics, our quality team checks them, and you approve them before the song is made."
                         ],
-                        (object) [
-                            'question' => 'How do I pay?', 
-                            'answer' => "After you send your story, we message you on WhatsApp with a payment link. We start once payment is confirmed."
+                        7 => [
+                            'q' => 'How do I pay?', 
+                            'a' => "After you send your story, we message you on WhatsApp with a payment link. We start once payment is confirmed."
                         ]
                     ];
+
+                    for ($fi = 1; $fi <= 7; $fi++) {
+                        $fq = \App\PageContent::get("home_faq_{$fi}_q", $defaultFaqs[$fi]['q']);
+                        $fa = \App\PageContent::get("home_faq_{$fi}_a", $defaultFaqs[$fi]['a']);
+                        if (!empty($fq)) {
+                            $faqs[] = (object) ['question' => $fq, 'answer' => $fa];
+                        }
+                    }
                 @endphp
 
                 {{-- FAQPage Structured Data (Schema.org) for Google & AI search --}}
@@ -3846,19 +3855,19 @@
                         <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                         </svg>
-                        PRIVACY PROMISE
+                        {{ \App\PageContent::get('home_privacy_badge', 'PRIVACY PROMISE') }}
                     </div>
                     
                     <h2 class="font-serif text-3xl lg:text-4xl font-normal text-brand-dark mb-5 leading-tight">
-                        Your story stays yours.
+                        {{ \App\PageContent::get('home_privacy_title', 'Your story stays yours.') }}
                     </h2>
                     
                     <p class="text-[14px] text-brand-dark/70 leading-relaxed font-medium mb-8">
-                        Some stories are too personal to be public. Heartgrams uses your details only to create your song. We don't share your story, lyrics, audio, photos, or memories publicly without your permission.
+                        {{ \App\PageContent::get('home_privacy_description', "Some stories are too personal to be public. Heartgrams uses your details only to create your song. We don't share your story, lyrics, audio, photos, or memories publicly without your permission.") }}
                     </p>
                     
                     <a href="#start" class="py-3.5 px-7 rounded-full bg-[#c02d4b] text-white font-medium text-[14px] hover:bg-[#a62540] transition-colors flex items-center justify-center gap-2 group shadow-md">
-                        Create My Private Song <span class="group-hover:translate-x-1 transition-transform">→</span>
+                        {{ \App\PageContent::get('home_privacy_btn_text', 'Create My Private Song') }} <span class="group-hover:translate-x-1 transition-transform">→</span>
                     </a>
                 </div>
 
@@ -3869,31 +3878,31 @@
                             <div class="bg-[#c02d4b] text-white rounded-full w-5 h-5 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
                                 <span class="text-[10px] leading-none font-bold">✓</span>
                             </div>
-                            Private story handling — only our song team sees your details
+                            {{ \App\PageContent::get('home_privacy_point_1', 'Private story handling — only our song team sees your details') }}
                         </li>
                         <li class="flex items-start gap-4">
                             <div class="bg-[#c02d4b] text-white rounded-full w-5 h-5 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
                                 <span class="text-[10px] leading-none font-bold">✓</span>
                             </div>
-                            Public samples only with your explicit permission
+                            {{ \App\PageContent::get('home_privacy_point_2', 'Public samples only with your explicit permission') }}
                         </li>
                         <li class="flex items-start gap-4">
                             <div class="bg-[#c02d4b] text-white rounded-full w-5 h-5 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
                                 <span class="text-[10px] leading-none font-bold">✓</span>
                             </div>
-                            Personal details used only for your song creation
+                            {{ \App\PageContent::get('home_privacy_point_3', 'Personal details used only for your song creation') }}
                         </li>
                         <li class="flex items-start gap-4">
                             <div class="bg-[#c02d4b] text-white rounded-full w-5 h-5 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
                                 <span class="text-[10px] leading-none font-bold">✓</span>
                             </div>
-                            WhatsApp support for any sensitive instructions
+                            {{ \App\PageContent::get('home_privacy_point_4', 'WhatsApp support for any sensitive instructions') }}
                         </li>
                         <li class="flex items-start gap-4">
                             <div class="bg-[#c02d4b] text-white rounded-full w-5 h-5 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
                                 <span class="text-[10px] leading-none font-bold">✓</span>
                             </div>
-                            Secure payment flow — confirmed before production starts
+                            {{ \App\PageContent::get('home_privacy_point_5', 'Secure payment flow — confirmed before production starts') }}
                         </li>
                     </ul>
                 </div>
@@ -3910,22 +3919,22 @@
                 {{-- Left Content --}}
                 <div class="w-full lg:w-1/2 lg:pr-8">
                     <h4 class="text-[11px] font-bold tracking-[0.2em] text-[#D4AF37] mb-6 uppercase">
-                        Founder Story
+                        {{ \App\PageContent::get('home_founder_badge', 'Founder Story') }}
                     </h4>
                     
                     <h2 class="font-serif text-4xl md:text-5xl font-normal text-white mb-8 leading-tight">
-                        Why Heartgrams exists.
+                        {{ \App\PageContent::get('home_founder_title', 'Why Heartgrams exists.') }}
                     </h2>
                     
                     <div class="space-y-6 text-[15px] text-white/70 leading-relaxed">
                         <p>
-                            Heartgrams was founded by <span class="text-white font-medium">Hilaary James</span> with one simple thought: many people love deeply, but they do not always say it.
+                            {{ \App\PageContent::get('home_founder_p1', 'Heartgrams was founded by Hilaary James with one simple thought: many people love deeply, but they do not always say it.') }}
                         </p>
                         <p>
-                            Life moves fast — work, distance, screens, small fights, daily routines. Even when someone is close to us, the words in our heart may stay unsaid.
+                            {{ \App\PageContent::get('home_founder_p2', 'Life moves fast — work, distance, screens, small fights, daily routines. Even when someone is close to us, the words in our heart may stay unsaid.') }}
                         </p>
                         <p>
-                            Hilaary created Heartgrams to help people <span class="text-white font-medium">say those words</span> in a beautiful way — a birthday wish, a proposal, an apology, or a memory turned into a song for the person you love.
+                            {{ \App\PageContent::get('home_founder_p3', 'Hilaary created Heartgrams to help people say those words in a beautiful way — a birthday wish, a proposal, an apology, or a memory turned into a song for the person you love.') }}
                         </p>
                     </div>
                 </div>
@@ -3940,18 +3949,25 @@
                         
                         <div class="pt-10 mb-10 relative z-10">
                             <h3 class="font-serif text-[22px] md:text-2xl text-white/90 italic leading-snug">
-                                Some feelings are too important to remain unsaid.
+                                {{ \App\PageContent::get('home_founder_quote', 'Some feelings are too important to remain unsaid.') }}
                             </h3>
                         </div>
                         
                         {{-- Author --}}
                         <div class="flex items-center gap-4 mb-10">
-                            <div class="w-12 h-12 rounded-full bg-[#c02d4b] flex items-center justify-center text-white font-serif text-xl shrink-0">
-                                H
-                            </div>
+                            @php
+                                $founderImg = \App\PageContent::get('home_founder_image', '');
+                            @endphp
+                            @if(!empty($founderImg))
+                                <img src="{{ asset(ltrim($founderImg, '/')) }}" alt="{{ \App\PageContent::get('home_founder_name', 'Hilaary James') }}" class="w-12 h-12 rounded-full object-cover shrink-0 border border-white/10 shadow-sm">
+                            @else
+                                <div class="w-12 h-12 rounded-full bg-[#c02d4b] flex items-center justify-center text-white font-serif text-xl shrink-0">
+                                    {{ substr(\App\PageContent::get('home_founder_name', 'H'), 0, 1) }}
+                                </div>
+                            @endif
                             <div>
-                                <h4 class="text-white text-[15px] font-medium">Hilaary James</h4>
-                                <p class="text-white/40 text-[13px]">Founder, Heartgrams</p>
+                                <h4 class="text-white text-[15px] font-medium">{{ \App\PageContent::get('home_founder_name', 'Hilaary James') }}</h4>
+                                <p class="text-white/40 text-[13px]">{{ \App\PageContent::get('home_founder_role', 'Founder, Heartgrams') }}</p>
                             </div>
                         </div>
                         
@@ -3959,10 +3975,10 @@
                         
                         <div>
                             <h5 class="text-[10px] font-bold tracking-[0.15em] text-[#D4AF37] mb-3 uppercase">
-                                The Gift That Lasts Forever
+                                {{ \App\PageContent::get('home_founder_card_title', 'The Gift That Lasts Forever') }}
                             </h5>
                             <p class="text-[13px] text-white/60 leading-relaxed">
-                                Some gifts are opened. This one is <span class="text-white/80 italic">felt forever</span> — played again at 2am, shared with a parent, cried to alone. A Heartgram outlives any moment.
+                                {{ \App\PageContent::get('home_founder_card_desc', 'Some gifts are opened. This one is felt forever — played again at 2am, shared with a parent, cried to alone. A Heartgram outlives any moment.') }}
                             </p>
                         </div>
                     </div>
@@ -4004,31 +4020,39 @@
             <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.10] backdrop-blur-md border border-white/20 shadow-[0_2px_12px_rgba(0,0,0,0.12)] mb-6">
                 <span class="w-1.5 h-1.5 rounded-full bg-rose-300 animate-pulse"></span>
                 <span class="text-[10px] sm:text-[11px] font-bold tracking-[0.25em] text-[#fdedeb] uppercase">
-                    Ready when you are
+                    {{ \App\PageContent::get('home_cta_badge', 'Ready when you are') }}
                 </span>
                 <span class="text-rose-200/60 text-[10px]">✦</span>
             </div>
 
             {{-- Heading with Editorial Serif Typography --}}
             <h2 class="font-serif text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-normal text-white mb-5 leading-[1.2] sm:leading-[1.18] tracking-tight drop-shadow-[0_2px_18px_rgba(0,0,0,0.22)]">
-                Some feelings deserve <span class="italic font-light font-serif text-rose-100 drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)]">more than a message.</span>
+                {{ \App\PageContent::get('home_cta_title', 'Some feelings deserve more than a message.') }}
             </h2>
 
             {{-- Subtitle --}}
             <p class="text-[15px] sm:text-base md:text-lg text-rose-100/90 font-light max-w-xl mx-auto mb-10 leading-relaxed drop-shadow-sm">
-                Turn your memory into a song they can keep, replay, and feel again.
+                {{ \App\PageContent::get('home_cta_subtitle', 'Turn your memory into a song they can keep, replay, and feel again.') }}
             </p>
 
             {{-- Call To Action Buttons --}}
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
                 {{-- Primary Button --}}
-                <a href="#start" class="w-full sm:w-auto py-4 px-8 rounded-full bg-white text-[#8F162E] font-semibold text-[14.5px] shadow-[0_12px_32px_rgba(0,0,0,0.25),0_1px_2px_rgba(255,255,255,0.8)_inset] hover:shadow-[0_18px_42px_rgba(0,0,0,0.35)] hover:bg-[#fff9f8] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-2.5 group">
-                    <span>Start My Song Story</span>
+                <a href="{{ \App\PageContent::get('home_cta_btn_1_link', '#start') }}" class="w-full sm:w-auto py-4 px-8 rounded-full bg-white text-[#8F162E] font-semibold text-[14.5px] shadow-[0_12px_32px_rgba(0,0,0,0.25),0_1px_2px_rgba(255,255,255,0.8)_inset] hover:shadow-[0_18px_42px_rgba(0,0,0,0.35)] hover:bg-[#fff9f8] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-2.5 group">
+                    <span>{{ \App\PageContent::get('home_cta_btn_1_text', 'Start My Song Story') }}</span>
                     <span class="inline-block font-sans text-base transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </a>
 
                 {{-- Secondary WhatsApp Button --}}
-                <a href="https://wa.me/919585475959?text=Hi%20Heartgrams%2C%20I%20would%20like%20to%20create%20a%20song" target="_blank" class="w-full sm:w-auto py-4 px-8 rounded-full bg-white/[0.08] hover:bg-white/[0.18] backdrop-blur-md border border-white/30 hover:border-white/60 text-white font-medium text-[14.5px] shadow-[0_8px_25px_rgba(0,0,0,0.12)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-2.5 group">
+                <a href="{{ \App\PageContent::get('home_cta_btn_2_link', 'https://wa.me/919585475959?text=Hi%20Heartgrams%2C%20I%20would%20like%20to%20create%20a%20song') }}" target="_blank" class="w-full sm:w-auto py-4 px-8 rounded-full bg-white/[0.08] hover:bg-white/[0.18] backdrop-blur-md border border-white/30 hover:border-white/60 text-white font-medium text-[14.5px] shadow-[0_8px_25px_rgba(0,0,0,0.12)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-2.5 group">
+                    <svg class="w-4 h-4 text-emerald-300 transition-transform duration-300 group-hover:scale-110 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+                    </svg>
+                    <span>{{ \App\PageContent::get('home_cta_btn_2_text', 'Chat on WhatsApp') }}</span>
+                </a>
+            </div>
+        </div>
+    </section>
                     <svg class="w-4 h-4 text-emerald-300 transition-transform duration-300 group-hover:scale-110 shrink-0" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
                     </svg>
