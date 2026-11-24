@@ -1605,10 +1605,10 @@
             </script>
 
             {{-- Bottom Pill --}}
-            <div class="mt-6 sm:mt-8 flex justify-center z-20 relative">
-                <div class="px-6 py-2 rounded-full bg-pink-100/70 text-maroon-900 font-medium text-[13px] sm:text-[13.5px] flex items-center gap-2 shadow-[0_2px_12px_rgba(200,50,100,0.06)] border border-pink-200/80 backdrop-blur-md">
-                    <span class="text-crimson-500 text-sm leading-none">✨</span> 
-                    <span>We make it easy. You hold on to it <span class="text-crimson-600 font-serif italic">forever.</span></span>
+            <div class="mt-3.5 sm:mt-8 flex justify-center z-20 relative px-2">
+                <div class="px-3.5 py-1 sm:px-6 sm:py-2 rounded-full bg-pink-100/70 text-maroon-900 font-medium text-[10.5px] xs:text-[11.5px] sm:text-[13.5px] flex items-center gap-1.5 sm:gap-2 shadow-[0_2px_12px_rgba(200,50,100,0.06)] border border-pink-200/80 backdrop-blur-md">
+                    <span class="text-crimson-500 text-xs sm:text-sm leading-none">✨</span> 
+                    <span class="whitespace-nowrap">We make it easy. You hold on to it <span class="text-crimson-600 font-serif italic">forever.</span></span>
                 </div>
             </div>
         </div>
@@ -1844,15 +1844,15 @@
                 </p>
             </div>
 
-            {{-- Cards Grid: 2 Videos + 2 Images (Clean & Adaptable, No Excess Clutter) --}}
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3.5 lg:gap-4 w-full">
+            {{-- Cards Grid: 2 in a Row on Mobile with Horizontal Scroll, 4 on Desktop --}}
+            <div class="flex sm:grid overflow-x-auto sm:overflow-x-visible no-scrollbar touch-pan-x snap-x snap-mandatory sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5 lg:gap-4 w-full -mx-4 px-4 sm:mx-0 sm:px-0 pb-2 sm:pb-0">
                 @foreach($sampleTestimonials as $item)
                     <div 
                         @click="openModal({{ json_encode($item) }})"
-                        class="group relative rounded-2xl bg-white/[0.04] border border-white/10 hover:border-pink-500/50 hover:bg-white/[0.08] overflow-hidden transition-all duration-300 flex flex-col shadow-xl cursor-pointer hover:-translate-y-1"
+                        class="shrink-0 w-[calc(50%-0.35rem)] xs:w-[calc(50%-0.4rem)] sm:w-auto snap-start group relative rounded-xl sm:rounded-2xl bg-white/[0.04] border border-white/10 hover:border-pink-500/50 hover:bg-white/[0.08] overflow-hidden transition-all duration-300 flex flex-col shadow-xl cursor-pointer hover:-translate-y-1"
                     >
                         {{-- Media Thumbnail --}}
-                        <div class="relative overflow-hidden bg-black/40 w-full aspect-[16/10] sm:aspect-auto sm:h-36 lg:h-36 xl:h-40">
+                        <div class="relative overflow-hidden bg-black/40 w-full aspect-[4/3] xs:aspect-[16/11] sm:aspect-auto sm:h-36 lg:h-36 xl:h-40">
                             <img 
                                 src="{{ $item['media_url'] ?? (str_starts_with($item['media'] ?? '', 'http') ? $item['media'] : asset($item['media'] ?? 'images/anniversary.png')) }}" 
                                 alt="{{ $item['name'] }}" 
@@ -1861,14 +1861,14 @@
                             <div class="absolute inset-0 bg-gradient-to-t from-[#0b030a]/90 via-black/20 to-transparent"></div>
 
                             {{-- Badge --}}
-                            <div class="absolute top-2.5 left-2.5 z-10">
+                            <div class="absolute top-1.5 left-1.5 sm:top-2.5 sm:left-2.5 z-10">
                                 @if($item['type'] === 'video')
-                                    <span class="px-2.5 py-1 rounded-full bg-crimson-600/90 text-white text-[10px] font-bold tracking-wide backdrop-blur-md flex items-center gap-1.5 shadow-md">
-                                        <svg class="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    <span class="px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-crimson-600/90 text-white text-[8px] xs:text-[9px] sm:text-[10px] font-bold tracking-wide backdrop-blur-md flex items-center gap-1 shadow-md whitespace-nowrap">
+                                        <svg class="w-2 h-2 sm:w-2.5 sm:h-2.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                         {{ $item['badge'] }}
                                     </span>
                                 @else
-                                    <span class="px-2.5 py-1 rounded-full bg-white/20 text-white text-[10px] font-bold tracking-wide backdrop-blur-md border border-white/20 flex items-center gap-1.5 shadow-md">
+                                    <span class="px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-white/20 text-white text-[8px] xs:text-[9px] sm:text-[10px] font-bold tracking-wide backdrop-blur-md border border-white/20 flex items-center gap-1 shadow-md whitespace-nowrap">
                                         {{ $item['badge'] }}
                                     </span>
                                 @endif
@@ -1877,44 +1877,51 @@
                             @if($item['type'] === 'video')
                                 {{-- Duration pill --}}
                                 @if(!empty($item['duration']))
-                                    <div class="absolute top-2.5 right-2.5 z-10 px-2 py-0.5 rounded-full bg-black/75 backdrop-blur-md text-white/90 text-[10px] font-medium border border-white/10">
+                                    <div class="absolute top-1.5 right-1.5 sm:top-2.5 sm:right-2.5 z-10 px-1.5 py-0.5 sm:px-2 rounded-full bg-black/75 backdrop-blur-md text-white/90 text-[8px] xs:text-[9px] sm:text-[10px] font-medium border border-white/10 whitespace-nowrap">
                                         {{ $item['duration'] }}
                                     </div>
                                 @endif
 
                                 {{-- Centered Play Button Overlay --}}
                                 <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                    <div class="w-11 h-11 rounded-full bg-white/95 group-hover:bg-crimson-600 group-hover:scale-110 text-crimson-600 group-hover:text-white flex items-center justify-center shadow-xl transition-all duration-300">
-                                        <svg class="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    <div class="w-8 h-8 xs:w-9 xs:h-9 sm:w-11 sm:h-11 rounded-full bg-white/95 group-hover:bg-crimson-600 group-hover:scale-110 text-crimson-600 group-hover:text-white flex items-center justify-center shadow-xl transition-all duration-300">
+                                        <svg class="w-3 h-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                     </div>
                                 </div>
                             @else
                                 {{-- Keepsake Zoom Indicator --}}
-                                <div class="absolute bottom-2.5 right-2.5 z-10 w-7 h-7 rounded-full bg-black/60 backdrop-blur-md text-white/90 flex items-center justify-center group-hover:scale-110 group-hover:bg-crimson-600 transition-all border border-white/10">
-                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+                                <div class="absolute bottom-1.5 right-1.5 sm:bottom-2.5 sm:right-2.5 z-10 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-black/60 backdrop-blur-md text-white/90 flex items-center justify-center group-hover:scale-110 group-hover:bg-crimson-600 transition-all border border-white/10">
+                                    <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
                                 </div>
                             @endif
                         </div>
 
                         {{-- Clean Card Footer (Author Info Only - Matching Testimonials Page) --}}
-                        <div class="p-2.5 sm:p-3 flex items-center justify-between gap-2 bg-white/[0.02]">
-                            <div class="flex items-center gap-2 min-w-0">
-                                <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br {{ $item['type'] === 'video' ? 'from-crimson-500 to-maroon-800' : 'from-amber-600 to-amber-900' }} flex items-center justify-center text-white text-xs font-bold shrink-0 shadow-sm border border-white/10">
+                        <div class="p-2 sm:p-3 flex items-center justify-between gap-1.5 sm:gap-2 bg-white/[0.02]">
+                            <div class="flex items-center gap-1.5 sm:gap-2 min-w-0">
+                                <div class="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br {{ $item['type'] === 'video' ? 'from-crimson-500 to-maroon-800' : 'from-amber-600 to-amber-900' }} flex items-center justify-center text-white text-[10px] sm:text-xs font-bold shrink-0 shadow-sm border border-white/10">
                                     {{ substr($item['name'], 0, 1) }}
                                 </div>
                                 <div class="min-w-0">
-                                    <h4 class="text-xs sm:text-[13px] font-bold text-white group-hover:text-pink-200 transition-colors flex items-center gap-1 truncate">
+                                    <h4 class="text-[11px] xs:text-xs sm:text-[13px] font-bold text-white group-hover:text-pink-200 transition-colors flex items-center gap-1 truncate">
                                         {{ $item['name'] }}
                                     </h4>
-                                    <p class="text-[10px] sm:text-[11px] text-pink-200/70 truncate">{{ $item['occasion'] }}{{ !empty($item['location']) ? ' • ' . $item['location'] : '' }}</p>
+                                    <p class="text-[9px] xs:text-[9.5px] sm:text-[11px] text-pink-200/70 truncate">{{ $item['occasion'] }}{{ !empty($item['location']) ? ' • ' . $item['location'] : '' }}</p>
                                 </div>
                             </div>
-                            <span class="w-6 h-6 rounded-full bg-white/5 border border-white/10 group-hover:border-pink-400/50 group-hover:bg-pink-500/20 text-pink-300 flex items-center justify-center text-xs group-hover:translate-x-0.5 transition-all shrink-0">
+                            <span class="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white/5 border border-white/10 group-hover:border-pink-400/50 group-hover:bg-pink-500/20 text-pink-300 flex items-center justify-center text-[10px] sm:text-xs group-hover:translate-x-0.5 transition-all shrink-0">
                                 →
                             </span>
                         </div>
                     </div>
                 @endforeach
+            </div>
+
+            {{-- Mobile Swipe Cue Dots --}}
+            <div class="flex sm:hidden items-center justify-center gap-1.5 -mt-1 mb-1">
+                <span class="w-4 h-1 rounded-full bg-pink-500"></span>
+                <span class="w-1.5 h-1 rounded-full bg-white/30"></span>
+                <span class="text-[10px] text-pink-200/60 ml-1">Swipe →</span>
             </div>
 
             {{-- Bottom "For More" CTA Button --}}
